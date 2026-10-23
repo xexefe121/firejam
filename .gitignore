@@ -1,0 +1,14 @@
+node_modules
+web/dist
+server/data
+server/media/*.mp4
+.DS_Store
+*.log
+android/.gradle
+android/build
+android/app/build
+android/local.properties
+android/.idea
+*.apk
+deploy/aws/.state
+.claude/

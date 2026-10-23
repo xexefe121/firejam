@@ -1,0 +1,36 @@
+{
+  "CallerReference": "__REF__",
+  "Comment": "firejam",
+  "Enabled": true,
+  "PriceClass": "PriceClass_All",
+  "HttpVersion": "http2and3",
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "firejam-server",
+        "DomainName": "__ORIGIN__",
+        "CustomOriginConfig": {
+          "HTTPPort": 80,
+          "HTTPSPort": 443,
+          "OriginProtocolPolicy": "http-only",
+          "OriginReadTimeout": 60,
+          "OriginKeepaliveTimeout": 60,
+          "OriginSslProtocols": { "Quantity": 1, "Items": ["TLSv1.2"] }
+        }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "firejam-server",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": {
+      "Quantity": 7,
+      "Items": ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"],
+      "CachedMethods": { "Quantity": 2, "Items": ["GET", "HEAD"] }
+    },
+    "Compress": true,
+    "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+    "OriginRequestPolicyId": "216adef6-5c7f-47e4-b989-5492eafa07d3"
+  }
+}

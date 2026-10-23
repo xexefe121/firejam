@@ -1,0 +1,33 @@
+/* Phone companion: normal phone sizing instead of the TV's viewport-relative rem. */
+
+html.phone { font-size: 16px; }
+html.phone body { overflow: auto; font-size: 1rem; }
+
+.companion { min-height: 100%; display: flex; flex-direction: column; max-width: 34rem; margin: 0 auto; padding-bottom: 5.5rem; }
+.companion.center { align-items: center; justify-content: center; text-align: center; gap: 1rem; padding: 2rem; color: var(--muted); min-height: 100vh; }
+.companion header { position: relative; padding: 1.4rem 1.2rem 1.2rem; display: flex; align-items: flex-end; gap: 1rem; min-height: 11rem; overflow: hidden; }
+.c-art { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0.5; }
+.companion header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg), rgba(12, 10, 20, 0.3)); }
+.c-head { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+.c-head .eyebrow { font-size: 0.75rem; }
+.c-head .eyebrow .dot { color: var(--rose); animation: blink 1.6s infinite; }
+.c-head h1 { font-size: 1.7rem; }
+.c-head .muted { font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.c-play { position: relative; z-index: 1; width: 3.6rem; height: 3.6rem; border-radius: 50%; display: grid; place-items: center; background: var(--grad); color: #1b0a0a; }
+.c-members { display: flex; gap: 0.5rem; padding: 0 1.2rem; overflow-x: auto; scrollbar-width: none; }
+.c-member { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.3rem 0.7rem 0.3rem 0.3rem; border-radius: 99rem; background: var(--card); font-size: 0.85rem; white-space: nowrap; }
+.c-member i { font-style: normal; color: var(--muted); }
+.c-reactions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; padding: 1rem 1.2rem; }
+.c-reactions button { font-size: 2rem; text-align: center; padding: 0.7rem 0; border-radius: 1rem; background: var(--card); transition: transform 0.1s; }
+.c-reactions button:active { transform: scale(0.88); background: var(--card-2); }
+.c-feed { flex: 1; display: flex; flex-direction: column; gap: 0.6rem; padding: 0 1.2rem; overflow-y: auto; }
+.c-feed .muted { font-size: 0.9rem; text-align: center; margin-top: 1rem; }
+.c-msg { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.95rem; }
+.c-msg span { display: flex; flex-direction: column; padding: 0.5rem 0.8rem; border-radius: 1rem; background: var(--card); }
+.c-msg b { font-size: 0.75rem; color: var(--amber); }
+.c-msg.mine { flex-direction: row-reverse; }
+.c-msg.mine span { background: rgba(255, 106, 31, 0.2); }
+.c-input { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 0.5rem; padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom)); background: rgba(12, 10, 20, 0.95); border-top: 1px solid var(--line); }
+.c-input input { flex: 1; min-width: 0; padding: 0.8rem 1rem; border-radius: 99rem; border: 0; background: var(--card); font-size: 1rem; }
+.c-input input:focus { outline: 2px solid var(--fire); }
+.c-input button { padding: 0 1.2rem; border-radius: 99rem; background: var(--grad); color: #1b0a0a; font-weight: 700; }

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get FireJam</title>
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      :root { --bg: #0c0a14; --card: #1a1628; --text: #f7f4ff; --muted: #a69ec0; --amber: #ffb547; --grad: linear-gradient(120deg, #ffb547, #ff6a1f 40%, #ff3d6e 75%, #c13cff); }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 18px/1.5 system-ui, Roboto, 'Segoe UI', sans-serif; }
+      main { max-width: 980px; margin: 0 auto; padding: 32px 20px 48px; }
+      h1 { font-size: 40px; margin: 0 0 4px; }
+      h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .lede { color: var(--muted); margin: 0 0 24px; }
+      .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      section { background: var(--card); border-radius: 16px; padding: 20px 22px; }
+      h2 { margin: 0 0 8px; font-size: 22px; }
+      ol { margin: 0; padding-left: 22px; }
+      li { margin: 6px 0; }
+      code, .url { font-family: ui-monospace, Consolas, monospace; color: var(--amber); word-break: break-all; }
+      .url { font-size: 22px; }
+      .btn { display: inline-block; margin-top: 12px; padding: 12px 20px; border-radius: 999px; background: var(--grad); color: #1b0a0a; font-weight: 700; text-decoration: none; }
+      .muted { color: var(--muted); font-size: 15px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>🔥 Fire<span>Jam</span></h1>
+      <p class="lede">The living room is back. Watch together with the people you love, wherever they are.</p>
+      <div class="grid">
+        <section>
+          <h2>Android TV, Google TV or Fire TV</h2>
+          <p class="muted">Sony, TCL, Mi, OnePlus, Philips, Hisense and most smart TVs in India, plus Fire TV Stick.</p>
+          <ol>
+            <li>On the TV, install the free app <b>Downloader</b> from the TV's app store.</li>
+            <li>Open Downloader and type this address:<br /><span class="url" id="apk"></span></li>
+            <li>Allow Downloader to install apps when the TV asks, then press <b>Install</b>.</li>
+            <li>Open <b>FireJam</b>. It signs you in by itself.</li>
+          </ol>
+          <a class="btn" id="dl" href="/firejam.apk">Download FireJam for TV</a>
+        </section>
+        <section>
+          <h2>Samsung or LG</h2>
+          <p class="muted">These TVs can't install outside apps, so FireJam runs in the TV's web browser.</p>
+          <ol>
+            <li>Open the <b>Internet</b> (Samsung) or <b>Web Browser</b> (LG) app on the TV.</li>
+            <li>Go to <span class="url" id="web"></span></li>
+            <li>Bookmark it so it's one click next time.</li>
+          </ol>
+          <p class="muted">Films, chat, reactions and friends all work. Prime Video jams need an Android TV, a Fire TV Stick or a Windows PC.</p>
+        </section>
+        <section>
+          <h2>Phone or laptop</h2>
+          <ol>
+            <li>Open <span class="url" id="web2"></span> in any browser.</li>
+            <li>On a phone, scan the QR code on the TV's <b>Invite</b> screen to react and chat from the sofa.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script>
+      const base = location.origin;
+      document.getElementById('apk').textContent = base + '/firejam.apk';
+      document.getElementById('web').textContent = base;
+      document.getElementById('web2').textContent = base;
+    </script>
+  </body>
+</html>
