@@ -9,7 +9,7 @@
     "volume": 1
   },
   "music": {
-    "src": "music/bed-b.mp3",
+    "src": "music/bed-c.mp3",
     "in": 0,
     "startAt": 0,
     "volume": [
@@ -19,42 +19,46 @@
       },
       {
         "at": 0.6,
-        "v": 0.7
+        "v": 0.85
       },
       {
         "at": 1.2,
-        "v": 0.7
+        "v": 0.85
       },
       {
         "at": 1.7999999999999998,
-        "v": 0.2
+        "v": 0.15
       },
       {
-        "at": 35.904999999999994,
-        "v": 0.2
+        "at": 33.98,
+        "v": 0.15
       },
       {
-        "at": 36.305,
-        "v": 0.45
+        "at": 34.58,
+        "v": 0.05
       },
       {
-        "at": 37.695,
-        "v": 0.2
+        "at": 36.26,
+        "v": 0.05
       },
       {
-        "at": 61.295,
-        "v": 0.2
+        "at": 36.61,
+        "v": 0.15
       },
       {
-        "at": 61.995,
-        "v": 0.7
+        "at": 60.575,
+        "v": 0.15
       },
       {
-        "at": 63.895,
-        "v": 0.7
+        "at": 61.275,
+        "v": 0.85
       },
       {
-        "at": 65.295,
+        "at": 63.175000000000004,
+        "v": 0.85
+      },
+      {
+        "at": 64.575,
         "v": 0
       }
     ]
@@ -68,7 +72,7 @@
       "sub": "Multiplayer TV for Fire TV",
       "captions": false,
       "start": 0,
-      "dur": 3.714
+      "dur": 2.82
     },
     {
       "id": "device",
@@ -88,8 +92,8 @@
           "y": 0.3
         }
       ],
-      "start": 3.714,
-      "dur": 4.145
+      "start": 2.82,
+      "dur": 3.71
     },
     {
       "id": "home",
@@ -115,8 +119,8 @@
           "y": 0.2
         }
       ],
-      "start": 7.859,
-      "dur": 4.273
+      "start": 6.53,
+      "dur": 4.26
     },
     {
       "id": "map",
@@ -136,8 +140,8 @@
           "y": 0.5
         }
       ],
-      "start": 12.132,
-      "dur": 4.218
+      "start": 10.79,
+      "dur": 3.96
     },
     {
       "id": "friends",
@@ -159,8 +163,8 @@
           "y": 0.5
         }
       ],
-      "start": 16.35,
-      "dur": 4.236
+      "start": 14.75,
+      "dur": 4.295
     },
     {
       "id": "join",
@@ -168,7 +172,7 @@
       "src": "broll/tv-join-ma.mp4",
       "in": 0.23000000000000004,
       "label": "Start a jam",
-      "start": 20.586,
+      "start": 19.045,
       "dur": 1.62
     },
     {
@@ -177,12 +181,12 @@
       "title": "Two screens, one playhead",
       "left": {
         "src": "broll/tv-player-sync.mp4",
-        "in": 0.6650000000000036,
+        "in": 0,
         "label": "Fire TV · Sydney"
       },
       "right": {
         "src": "broll/laptop-player-sync.mp4",
-        "in": 0.6650000000000036,
+        "in": 0,
         "label": "Ma's laptop · Hyderabad"
       },
       "callouts": [
@@ -191,12 +195,12 @@
           "text": "Same frame, two countries"
         },
         {
-          "at": 3.484999999999997,
+          "at": 4.220000000000001,
           "text": "Ma pauses. Everyone pauses.",
           "target": "left"
         },
         {
-          "at": 10.524999999999995,
+          "at": 11.19,
           "text": "+10 s for everyone",
           "target": "both"
         }
@@ -207,30 +211,30 @@
           "scale": 1
         },
         {
-          "at": 1.3209999999999993,
+          "at": 1.8450000000000002,
           "scale": 1
         },
         {
-          "at": 2.020999999999999,
+          "at": 2.545,
           "scale": 2.6,
           "on": "left",
           "x": 0.86,
           "y": 0.07
         },
         {
-          "at": 3.720999999999999,
+          "at": 4.245,
           "scale": 2.6,
           "on": "left",
           "x": 0.86,
           "y": 0.07
         },
         {
-          "at": 4.420999999999999,
+          "at": 4.945,
           "scale": 1
         }
       ],
-      "start": 22.206,
-      "dur": 6.03
+      "start": 20.665,
+      "dur": 6.565
     },
     {
       "id": "phone",
@@ -243,8 +247,8 @@
         "src": "broll/web-phone-companion.mp4",
         "in": 0.6
       },
-      "start": 28.236,
-      "dur": 4
+      "start": 27.23,
+      "dur": 3.105
     },
     {
       "id": "prime",
@@ -270,16 +274,16 @@
           "y": 0.45
         }
       ],
-      "start": 32.236,
-      "dur": 3.769
+      "start": 30.335,
+      "dur": 4.245
     },
     {
       "id": "how",
       "kind": "title",
       "text": "How it's built",
       "captions": false,
-      "start": 36.005,
-      "dur": 1.54
+      "start": 34.58,
+      "dur": 1.63
     },
     {
       "id": "native",
@@ -299,8 +303,8 @@
           "y": 0.75
         }
       ],
-      "start": 37.545,
-      "dur": 4.8
+      "start": 36.21,
+      "dur": 5.195
     },
     {
       "id": "aws",
@@ -318,7 +322,7 @@
           ]
         },
         {
-          "at": 5.923,
+          "at": 5.235,
           "focus": "server",
           "title": "One shared clock",
           "lines": [
@@ -327,7 +331,7 @@
           ]
         },
         {
-          "at": 14.346,
+          "at": 14.65,
           "focus": "ai",
           "title": "Amazon Bedrock picks what's next",
           "lines": [
@@ -336,14 +340,14 @@
           ]
         }
       ],
-      "start": 42.345,
-      "dur": 19.35
+      "start": 41.405,
+      "dur": 19.57
     },
     {
       "id": "end",
       "kind": "end",
       "captions": false,
-      "start": 61.695,
+      "start": 60.975,
       "dur": 3.6
     }
   ]

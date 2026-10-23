@@ -10,15 +10,15 @@ Raw media, captures, renders and generated audio are never committed. Everything
 |---|---|---|
 | Capture | `npm run capture [-- <id>...]` | Drives the real FireJam web app (Edge via Playwright, CDP screencast to CFR 30 fps H.264) and the USB Fire TV Stick (adb D-pad keys + `screenrecord`) through every demo beat. Writes `public/broll/<id>.mp4` and `manifest/broll.json` with event times (e.g. when the "Ma paused" banner appears). See [capture/README.md](capture/README.md). |
 | Inspect | `npm run inspect` | Analyses `raw/footage/*`, cleans the voiceover with fal.ai models (DeepFilterNet3, ElevenLabs voice isolation, VEED clean-audio), compares them on pause noise and Whisper large-v3 confidence, normalises the winner and trims long pauses. Writes `public/clips/vo-tight.wav` and `manifest/voiceover.json`. See [inspect/README.md](inspect/README.md). |
-| Edit | `npm run edit` | `edit/voice.py` removes a stray word, brings the narration to 1.1x with Rubber Band (pitch and formants kept) and aligns captions to the script's spelling. `edit/build.mjs` then times every shot to the narration's words and writes `manifest/edit.json`. |
+| Edit | `npm run edit` | `edit/voice.py` takes the isolated voice at its natural pace, shortens only truly silent pauses, applies gentle 2:1 compression and a presence lift, sets -16 LUFS with one linear gain, and aligns captions to the script's spelling. Each step was checked with DNSMOS; time-stretching and dynamic loudnorm were dropped because they cost quality. `edit/build.mjs` then times every shot to the narration's words and writes `manifest/edit.json`. |
 | Preview | `npm run studio` | Remotion Studio on port 3111. |
-| Render | `npm run render` | Rebuilds the edit, renders `out/render.mp4` and masters it to -14 LUFS / -1 dBTP as `out/firejam-demo-1min.mp4`. |
+| Render | `npm run render` | Rebuilds the edit, renders `out/render.mp4` and masters it to -14 LUFS (one linear gain, peaks caught by a limiter) as `out/firejam-demo-1min.mp4`. |
 
 ## Sources
 
 - **Captures:** FireJam itself, recorded on a throwaway local server with the demo bots, so no real users appear. The four Fire TV shots are from a Fire TV Stick 4K Max over USB; the capture restores the stick's server URL afterwards.
 - **Films on screen:** *Sintel* (Blender Foundation, CC BY 3.0), credited on the end card.
-- **Voiceover:** the creator's own recording, cleaned with `fal-ai/elevenlabs/audio-isolation`.
+- **Voiceover:** the creator's own recording, background removed with `fal-ai/elevenlabs/audio-isolation`. `edit/studio.py` also compares restoration models (Lava SR, Nova SR, Chatterbox HD) by DNSMOS; none beat the isolated take enough to replace the real voice.
 - **Music:** generated for this film with ElevenLabs Music v2.5 on fal (`work/music/gen2.py` holds the composition plan, scored to the edit's sections).
 
 ## Secrets and disk

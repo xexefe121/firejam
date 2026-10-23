@@ -142,13 +142,14 @@ add({ id: 'end', kind: 'end', captions: false }, last + END_CARD);
 
 const total = last;
 // Music: full under the open and the end card, ducked under speech.
-// bed-b.mp3 was scored to these sections (work/music/gen2.py), so it is never moved, only ducked.
-const DUCK = 0.2, OPEN = 0.7;
+// bed-c.mp3 was scored to these sections (work/music/gen2.py 3000,17660,12590,3000,24730,5100), so it is
+// never moved, only ducked; it builds through "How it's built", so the volume makes that breath instead.
+const DUCK = 0.15, OPEN = 0.85, BREATH = 0.05;
 const music = {
-  src: 'music/bed-b.mp3', in: 0, startAt: 0,
+  src: 'music/bed-c.mp3', in: 0, startAt: 0,
   volume: [
     { at: 0, v: 0 }, { at: 0.6, v: OPEN }, { at: INTRO - 0.2, v: OPEN }, { at: INTRO + 0.4, v: DUCK },
-    { at: tHow - 0.2, v: DUCK }, { at: tHow + 0.2, v: 0.45 }, { at: tKotlin - 0.1, v: DUCK },
+    { at: tHow - 0.7, v: DUCK }, { at: tHow - 0.1, v: BREATH }, { at: tKotlin - 0.2, v: BREATH }, { at: tKotlin + 0.15, v: DUCK },
     { at: tVoEnd + 0.1, v: DUCK }, { at: tVoEnd + 0.8, v: OPEN }, { at: total - 1.4, v: OPEN }, { at: total, v: 0 },
   ],
 };

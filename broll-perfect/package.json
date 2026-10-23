@@ -8,7 +8,7 @@
     "capture": "node capture/run.mjs",
     "inspect": "node inspect/run.mjs",
     "studio": "remotion studio",
-    "render": "node edit/build.mjs && remotion render FireJamDemo out/render.mp4 --codec=h264 --crf=16 --x264-preset=slow --audio-codec=aac --audio-bitrate=320k && node edit/master.mjs",
+    "render": "node edit/build.mjs && remotion render FireJamDemo out/render.mp4 --codec=h264 --crf=16 --x264-preset=slow --audio-codec=aac --audio-bitrate=320k --port=3123 && node edit/master.mjs",
     "typecheck": "tsc --noEmit",
     "edit": "python -I edit/voice.py && node edit/build.mjs"
   },

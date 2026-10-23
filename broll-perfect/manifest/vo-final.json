@@ -1,773 +1,850 @@
 {
  "file": "clips/vo-final.wav",
- "duration": 59.795458,
- "tempo": 1.1,
- "cuts": [
+ "duration": 60.395,
+ "tempo": 1.0,
+ "gain_db": 17.9,
+ "keep": [
   [
-   26.3,
-   26.74
+   1.14,
+   0.185
+  ],
+  [
+   1.515,
+   4.025
+  ],
+  [
+   4.215,
+   6.835
+  ],
+  [
+   7.185,
+   8.305
+  ],
+  [
+   8.815,
+   10.685
+  ],
+  [
+   10.815,
+   13.235
+  ],
+  [
+   14.025,
+   14.985
+  ],
+  [
+   15.205,
+   18.235
+  ],
+  [
+   18.635,
+   22.945
+  ],
+  [
+   24.085,
+   27.915
+  ],
+  [
+   28.045,
+   29.435
+  ],
+  [
+   29.865,
+   32.875
+  ],
+  [
+   33.655,
+   36.775
+  ],
+  [
+   37.225,
+   41.335
+  ],
+  [
+   42.195,
+   43.285
+  ],
+  [
+   null,
+   0.7
+  ],
+  [
+   43.285,
+   48.515
+  ],
+  [
+   48.955,
+   54.655
+  ],
+  [
+   55.035,
+   64.015
+  ],
+  [
+   64.345,
+   69.01
   ]
  ],
  "words": [
   {
    "text": "FireJam",
-   "start": 0.0,
-   "end": 0.855
+   "start": -0.97,
+   "end": -0.405
   },
   {
    "text": "is",
-   "start": 0.855,
-   "end": 1.127
+   "start": -0.405,
+   "end": -0.105
   },
   {
    "text": "a",
-   "start": 1.127,
-   "end": 1.291
+   "start": -0.105,
+   "end": 0.075
   },
   {
    "text": "native",
-   "start": 1.291,
-   "end": 1.527
+   "start": 0.075,
+   "end": 0.335
   },
   {
    "text": "Fire",
-   "start": 1.527,
-   "end": 1.8
+   "start": 0.335,
+   "end": 0.635
   },
   {
    "text": "TV",
-   "start": 1.8,
-   "end": 2.073
+   "start": 0.635,
+   "end": 0.935
   },
   {
    "text": "app.",
-   "start": 2.073,
-   "end": 2.564
+   "start": 0.935,
+   "end": 1.275
   },
   {
    "text": "It",
-   "start": 2.564,
-   "end": 2.982
+   "start": 1.67,
+   "end": 1.73
   },
   {
    "text": "signs",
-   "start": 2.982,
-   "end": 3.218
+   "start": 1.73,
+   "end": 1.99
   },
   {
    "text": "you",
-   "start": 3.218,
-   "end": 3.473
+   "start": 1.99,
+   "end": 2.27
   },
   {
    "text": "in",
-   "start": 3.473,
-   "end": 3.636
+   "start": 2.27,
+   "end": 2.45
   },
   {
    "text": "from",
-   "start": 3.636,
-   "end": 4.018
+   "start": 2.45,
+   "end": 2.87
   },
   {
    "text": "the",
-   "start": 4.018,
-   "end": 4.182
+   "start": 2.87,
+   "end": 3.05
   },
   {
    "text": "TV",
-   "start": 4.182,
-   "end": 4.418
+   "start": 3.05,
+   "end": 3.31
   },
   {
    "text": "itself.",
-   "start": 4.418,
-   "end": 5.236
+   "start": 3.31,
+   "end": 3.65
   },
   {
    "text": "No",
-   "start": 5.236,
-   "end": 5.745
+   "start": 4.275,
+   "end": 4.405
   },
   {
    "text": "forms.",
-   "start": 5.745,
-   "end": 6.709
+   "start": 4.405,
+   "end": 4.745
   },
   {
    "text": "Home",
-   "start": 6.709,
-   "end": 7.218
+   "start": 5.38,
+   "end": 5.5
   },
   {
    "text": "shows",
-   "start": 7.218,
-   "end": 7.436
+   "start": 5.5,
+   "end": 5.74
   },
   {
    "text": "who's",
-   "start": 7.436,
-   "end": 7.927
+   "start": 5.74,
+   "end": 6.28
   },
   {
    "text": "watching,",
-   "start": 7.927,
-   "end": 8.473
+   "start": 6.28,
+   "end": 6.62
   },
   {
    "text": "where,",
-   "start": 8.473,
-   "end": 9.218
+   "start": 7.235,
+   "end": 7.375
   },
   {
    "text": "and",
-   "start": 9.218,
-   "end": 9.618
+   "start": 7.975,
+   "end": 8.015
   },
   {
    "text": "what",
-   "start": 9.618,
-   "end": 9.782
+   "start": 7.995,
+   "end": 8.175
   },
   {
    "text": "time",
-   "start": 9.782,
-   "end": 10.018
+   "start": 8.175,
+   "end": 8.435
   },
   {
    "text": "it",
-   "start": 10.018,
-   "end": 10.2
+   "start": 8.435,
+   "end": 8.635
   },
   {
    "text": "is",
-   "start": 10.2,
-   "end": 10.327
+   "start": 8.635,
+   "end": 8.775
   },
   {
    "text": "for",
-   "start": 10.327,
-   "end": 10.491
+   "start": 8.775,
+   "end": 8.955
   },
   {
    "text": "them.",
-   "start": 10.491,
-   "end": 10.982
+   "start": 8.955,
+   "end": 9.195
   },
   {
    "text": "The",
-   "start": 10.982,
-   "end": 11.491
+   "start": 9.64,
+   "end": 9.68
   },
   {
    "text": "Jam",
-   "start": 11.491,
-   "end": 11.691
+   "start": 9.67,
+   "end": 9.89
   },
   {
    "text": "Map.",
-   "start": 11.691,
-   "end": 12.218
+   "start": 9.89,
+   "end": 10.17
   },
   {
    "text": "Everyone",
-   "start": 12.218,
-   "end": 12.727
+   "start": 10.585,
+   "end": 10.795
   },
   {
    "text": "you",
-   "start": 12.727,
-   "end": 12.982
+   "start": 10.795,
+   "end": 11.075
   },
   {
    "text": "love,",
-   "start": 12.982,
-   "end": 13.255
+   "start": 11.075,
+   "end": 11.375
   },
   {
    "text": "lit",
-   "start": 13.255,
-   "end": 13.727
+   "start": 11.825,
+   "end": 11.895
   },
   {
    "text": "up",
-   "start": 13.727,
-   "end": 13.927
+   "start": 11.895,
+   "end": 12.115
   },
   {
    "text": "by",
-   "start": 13.927,
-   "end": 14.109
+   "start": 12.115,
+   "end": 12.315
   },
   {
    "text": "what",
-   "start": 14.109,
-   "end": 14.273
+   "start": 12.315,
+   "end": 12.495
   },
   {
    "text": "they're",
-   "start": 14.273,
-   "end": 14.436
+   "start": 12.495,
+   "end": 12.675
   },
   {
    "text": "watching.",
-   "start": 14.436,
-   "end": 15.2
+   "start": 12.675,
+   "end": 12.995
   },
   {
    "text": "Add",
-   "start": 15.2,
-   "end": 15.709
+   "start": 13.6,
+   "end": 13.66
   },
   {
    "text": "friends,",
-   "start": 15.709,
-   "end": 16.309
+   "start": 13.66,
+   "end": 14.08
   },
   {
    "text": "see",
-   "start": 16.309,
-   "end": 16.764
+   "start": 14.75,
+   "end": 14.82
   },
   {
    "text": "what",
-   "start": 16.764,
-   "end": 16.945
+   "start": 14.82,
+   "end": 15.02
   },
   {
    "text": "they",
-   "start": 16.945,
-   "end": 17.109
+   "start": 15.02,
+   "end": 15.2
   },
   {
    "text": "watched,",
-   "start": 17.109,
-   "end": 17.564
+   "start": 15.2,
+   "end": 15.58
   },
   {
    "text": "and",
-   "start": 17.564,
-   "end": 17.782
+   "start": 15.7,
+   "end": 15.94
   },
   {
    "text": "get",
-   "start": 17.782,
-   "end": 17.909
+   "start": 15.94,
+   "end": 16.08
   },
   {
    "text": "a",
-   "start": 17.909,
-   "end": 18.0
+   "start": 16.08,
+   "end": 16.18
   },
   {
    "text": "pop-up",
-   "start": 18.0,
-   "end": 18.382
+   "start": 16.18,
+   "end": 16.6
   },
   {
    "text": "when",
-   "start": 18.382,
-   "end": 18.564
+   "start": 16.6,
+   "end": 16.8
   },
   {
    "text": "they",
-   "start": 18.564,
-   "end": 18.727
+   "start": 16.8,
+   "end": 16.98
   },
   {
    "text": "press",
-   "start": 18.727,
-   "end": 18.927
+   "start": 16.98,
+   "end": 17.2
   },
   {
    "text": "play.",
-   "start": 18.927,
-   "end": 19.436
+   "start": 17.2,
+   "end": 17.46
   },
   {
    "text": "Start",
-   "start": 19.436,
-   "end": 19.945
+   "start": 17.895,
+   "end": 18.045
   },
   {
    "text": "a",
-   "start": 19.945,
-   "end": 20.091
+   "start": 18.045,
+   "end": 18.205
   },
   {
    "text": "jam",
-   "start": 20.091,
-   "end": 20.309
+   "start": 18.205,
+   "end": 18.445
   },
   {
    "text": "and",
-   "start": 20.309,
-   "end": 20.655
+   "start": 18.875,
+   "end": 18.915
   },
   {
    "text": "every",
-   "start": 20.655,
-   "end": 21.055
+   "start": 18.875,
+   "end": 19.265
   },
   {
    "text": "TV",
-   "start": 21.055,
-   "end": 21.382
+   "start": 19.265,
+   "end": 19.625
   },
   {
    "text": "plays",
-   "start": 21.382,
-   "end": 21.727
+   "start": 19.625,
+   "end": 20.005
   },
   {
    "text": "from",
-   "start": 21.727,
-   "end": 21.982
+   "start": 20.005,
+   "end": 20.285
   },
   {
    "text": "one",
-   "start": 21.982,
-   "end": 22.218
+   "start": 20.285,
+   "end": 20.545
   },
   {
    "text": "shared",
-   "start": 22.218,
-   "end": 22.473
+   "start": 20.545,
+   "end": 20.825
   },
   {
    "text": "clock,",
-   "start": 22.473,
-   "end": 22.727
+   "start": 20.825,
+   "end": 21.105
   },
   {
    "text": "within",
-   "start": 22.727,
-   "end": 23.491
+   "start": 21.71,
+   "end": 21.8
   },
   {
    "text": "milliseconds.",
-   "start": 23.491,
-   "end": 23.891
+   "start": 21.8,
+   "end": 22.24
   },
   {
    "text": "Anyone",
-   "start": 23.891,
-   "end": 23.931
+   "start": 23.085,
+   "end": 23.125
   },
   {
    "text": "can",
-   "start": 24.705,
-   "end": 25.159
+   "start": 23.115,
+   "end": 23.615
   },
   {
    "text": "pause",
-   "start": 25.159,
-   "end": 25.468
+   "start": 23.615,
+   "end": 23.955
   },
   {
    "text": "or",
-   "start": 25.468,
-   "end": 25.65
+   "start": 23.955,
+   "end": 24.155
   },
   {
    "text": "skip,",
-   "start": 25.65,
-   "end": 25.868
+   "start": 24.155,
+   "end": 24.395
   },
   {
    "text": "even",
-   "start": 25.868,
-   "end": 26.377
+   "start": 24.395,
+   "end": 24.955
   },
   {
    "text": "with",
-   "start": 26.377,
-   "end": 26.577
+   "start": 24.955,
+   "end": 25.175
   },
   {
    "text": "Alexa.",
-   "start": 26.577,
-   "end": 27.086
+   "start": 25.175,
+   "end": 25.735
   },
   {
    "text": "Your",
-   "start": 27.086,
-   "end": 28.141
+   "start": 26.08,
+   "end": 26.12
   },
   {
    "text": "phone",
-   "start": 28.141,
-   "end": 28.45
+   "start": 26.1,
+   "end": 26.44
   },
   {
    "text": "is",
-   "start": 28.45,
-   "end": 28.65
+   "start": 26.44,
+   "end": 26.66
   },
   {
    "text": "the",
-   "start": 28.65,
-   "end": 28.795
+   "start": 26.66,
+   "end": 26.82
   },
   {
    "text": "remote,",
-   "start": 28.795,
-   "end": 29.05
+   "start": 26.82,
+   "end": 27.1
   },
   {
    "text": "for",
-   "start": 29.05,
-   "end": 29.323
+   "start": 27.1,
+   "end": 27.4
   },
   {
    "text": "chat",
-   "start": 29.323,
-   "end": 29.614
+   "start": 27.4,
+   "end": 27.72
   },
   {
    "text": "and",
-   "start": 29.614,
-   "end": 29.905
+   "start": 27.72,
+   "end": 28.04
   },
   {
    "text": "reactions.",
-   "start": 29.905,
-   "end": 31.086
+   "start": 28.04,
+   "end": 28.54
   },
   {
    "text": "Prime",
-   "start": 31.086,
-   "end": 31.395
+   "start": 29.185,
+   "end": 29.225
   },
   {
    "text": "titles",
-   "start": 31.395,
-   "end": 31.795
+   "start": 29.215,
+   "end": 29.655
   },
   {
    "text": "play",
-   "start": 31.795,
-   "end": 32.214
+   "start": 29.655,
+   "end": 30.115
   },
   {
    "text": "in",
-   "start": 32.214,
-   "end": 32.414
+   "start": 30.115,
+   "end": 30.335
   },
   {
    "text": "each",
-   "start": 32.414,
-   "end": 32.668
+   "start": 30.335,
+   "end": 30.615
   },
   {
    "text": "TV's",
-   "start": 32.668,
-   "end": 33.141
+   "start": 30.615,
+   "end": 31.135
   },
   {
    "text": "own",
-   "start": 33.141,
-   "end": 33.341
+   "start": 31.135,
+   "end": 31.355
   },
   {
    "text": "Prime",
-   "start": 33.341,
-   "end": 33.577
+   "start": 31.355,
+   "end": 31.615
   },
   {
    "text": "Video,",
-   "start": 33.577,
-   "end": 33.923
+   "start": 31.615,
+   "end": 31.995
   },
   {
    "text": "in",
-   "start": 33.923,
-   "end": 34.414
+   "start": 31.995,
+   "end": 32.535
   },
   {
    "text": "step.",
-   "start": 34.414,
-   "end": 34.705
+   "start": 32.535,
+   "end": 32.855
   },
   {
    "text": "How",
-   "start": 34.705,
-   "end": 35.923
+   "start": 33.28,
+   "end": 33.32
   },
   {
    "text": "it's",
-   "start": 35.923,
-   "end": 36.159
+   "start": 33.32,
+   "end": 33.58
   },
   {
    "text": "built.",
-   "start": 36.159,
-   "end": 36.395
+   "start": 33.58,
+   "end": 33.84
   },
   {
    "text": "A",
-   "start": 36.395,
-   "end": 36.923
+   "start": 35.06,
+   "end": 35.1
   },
   {
    "text": "Kotlin",
-   "start": 36.923,
-   "end": 37.323
+   "start": 35.09,
+   "end": 35.53
   },
   {
    "text": "Fire",
-   "start": 37.323,
-   "end": 37.632
+   "start": 35.53,
+   "end": 35.87
   },
   {
    "text": "TV",
-   "start": 37.632,
-   "end": 37.905
+   "start": 35.87,
+   "end": 36.17
   },
   {
    "text": "app",
-   "start": 37.905,
-   "end": 38.286
+   "start": 36.17,
+   "end": 36.59
   },
   {
    "text": "hosts",
-   "start": 38.286,
-   "end": 38.886
+   "start": 37.08,
+   "end": 37.25
   },
   {
    "text": "a",
-   "start": 38.886,
-   "end": 39.068
+   "start": 37.25,
+   "end": 37.45
   },
   {
    "text": "React",
-   "start": 39.068,
-   "end": 39.341
+   "start": 37.45,
+   "end": 37.75
   },
   {
    "text": "interface",
-   "start": 39.341,
-   "end": 39.741
+   "start": 37.75,
+   "end": 38.19
   },
   {
    "text": "designed",
-   "start": 39.741,
-   "end": 40.414
+   "start": 38.19,
+   "end": 38.93
   },
   {
    "text": "for",
-   "start": 40.414,
-   "end": 40.705
+   "start": 38.93,
+   "end": 39.25
   },
   {
    "text": "the",
-   "start": 40.705,
-   "end": 40.85
+   "start": 39.25,
+   "end": 39.41
   },
   {
    "text": "D-pad.",
-   "start": 40.85,
-   "end": 41.195
+   "start": 39.41,
+   "end": 39.79
   },
   {
    "text": "It",
-   "start": 41.195,
-   "end": 42.032
+   "start": 40.255,
+   "end": 40.295
   },
   {
    "text": "follows",
-   "start": 42.032,
-   "end": 42.468
+   "start": 40.255,
+   "end": 40.735
   },
   {
    "text": "Prime",
-   "start": 42.468,
-   "end": 42.85
+   "start": 41.125,
+   "end": 41.165
   },
   {
    "text": "Video",
-   "start": 42.85,
-   "end": 43.177
+   "start": 41.155,
+   "end": 41.515
   },
   {
    "text": "through",
-   "start": 43.177,
-   "end": 43.65
+   "start": 41.515,
+   "end": 42.035
   },
   {
    "text": "Android's",
-   "start": 43.65,
-   "end": 44.195
+   "start": 42.035,
+   "end": 42.635
   },
   {
    "text": "media",
-   "start": 44.195,
-   "end": 44.395
+   "start": 42.635,
+   "end": 42.855
   },
   {
    "text": "session",
-   "start": 44.395,
-   "end": 44.723
+   "start": 42.855,
+   "end": 43.215
   },
   {
    "text": "and",
-   "start": 44.723,
-   "end": 45.105
+   "start": 43.215,
+   "end": 43.635
   },
   {
    "text": "handles",
-   "start": 45.105,
-   "end": 45.577
+   "start": 43.635,
+   "end": 44.155
   },
   {
    "text": "Alexa",
-   "start": 45.577,
-   "end": 45.868
+   "start": 44.155,
+   "end": 44.475
   },
   {
    "text": "voice",
-   "start": 45.868,
-   "end": 46.232
+   "start": 44.475,
+   "end": 44.875
   },
   {
    "text": "commands.",
-   "start": 46.232,
-   "end": 47.468
+   "start": 44.875,
+   "end": 45.275
   },
   {
    "text": "A",
-   "start": 47.468,
-   "end": 47.65
+   "start": 45.84,
+   "end": 46.04
   },
   {
    "text": "Node",
-   "start": 47.65,
-   "end": 47.832
+   "start": 46.04,
+   "end": 46.24
   },
   {
    "text": "and",
-   "start": 47.832,
-   "end": 48.232
+   "start": 46.24,
+   "end": 46.68
   },
   {
    "text": "Socket.IO",
-   "start": 48.232,
-   "end": 49.159
+   "start": 46.68,
+   "end": 47.7
   },
   {
    "text": "server",
-   "start": 49.159,
-   "end": 49.614
+   "start": 47.7,
+   "end": 48.2
   },
   {
    "text": "on",
-   "start": 49.614,
-   "end": 50.286
+   "start": 48.2,
+   "end": 48.94
   },
   {
    "text": "AWS",
-   "start": 50.286,
-   "end": 50.65
+   "start": 48.94,
+   "end": 49.34
   },
   {
    "text": "Graviton",
-   "start": 50.65,
-   "end": 51.614
+   "start": 49.34,
+   "end": 50.4
   },
   {
    "text": "syncs",
-   "start": 51.614,
-   "end": 52.432
+   "start": 50.4,
+   "end": 51.3
   },
   {
    "text": "every",
-   "start": 52.432,
-   "end": 52.705
+   "start": 51.3,
+   "end": 51.6
   },
   {
    "text": "jam,",
-   "start": 52.705,
-   "end": 53.05
+   "start": 51.6,
+   "end": 51.98
   },
   {
    "text": "served",
-   "start": 53.05,
-   "end": 53.759
+   "start": 51.98,
+   "end": 52.76
   },
   {
    "text": "worldwide",
-   "start": 53.759,
-   "end": 54.177
+   "start": 52.76,
+   "end": 53.22
   },
   {
    "text": "through",
-   "start": 54.177,
-   "end": 54.686
+   "start": 53.22,
+   "end": 53.78
   },
   {
    "text": "CloudFront.",
-   "start": 54.686,
-   "end": 55.541
+   "start": 53.78,
+   "end": 54.42
   },
   {
    "text": "Amazon",
-   "start": 55.541,
-   "end": 55.905
+   "start": 54.905,
+   "end": 55.115
   },
   {
    "text": "Bedrock",
-   "start": 55.905,
-   "end": 56.468
+   "start": 55.115,
+   "end": 55.735
   },
   {
    "text": "picks",
-   "start": 56.468,
-   "end": 56.723
+   "start": 55.735,
+   "end": 56.015
   },
   {
    "text": "what",
-   "start": 56.723,
-   "end": 56.959
+   "start": 56.015,
+   "end": 56.275
   },
   {
    "text": "to",
-   "start": 56.959,
-   "end": 57.123
+   "start": 56.275,
+   "end": 56.455
   },
   {
    "text": "watch",
-   "start": 57.123,
-   "end": 57.305
+   "start": 56.455,
+   "end": 56.655
   },
   {
    "text": "next,",
-   "start": 57.305,
-   "end": 57.559
+   "start": 56.655,
+   "end": 56.935
   },
   {
    "text": "and",
-   "start": 57.559,
-   "end": 58.068
+   "start": 56.935,
+   "end": 57.495
   },
   {
    "text": "it",
-   "start": 58.068,
-   "end": 58.268
+   "start": 57.495,
+   "end": 57.715
   },
   {
    "text": "knows",
-   "start": 58.268,
-   "end": 58.523
+   "start": 57.715,
+   "end": 57.995
   },
   {
    "text": "everyone's",
-   "start": 58.523,
-   "end": 59.305
+   "start": 57.995,
+   "end": 58.855
   },
   {
    "text": "bedtime.",
-   "start": 59.305,
-   "end": 59.795
+   "start": 58.855,
+   "end": 59.075
   }
  ]
 }
