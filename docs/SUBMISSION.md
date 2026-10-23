@@ -22,11 +22,13 @@ FireJam is Spotify Jam for Fire TV.
 - **Join in one click, same frame.** Every screen in a jam plays from one shared playhead, typically within a few tens of milliseconds. Anyone can play, pause, skip or switch film, and everyone sees who did it.
 - **Friends, requests and invites.** Friends-only, public and invite-only jams. Hosts get a prompt when someone knocks. Four-letter join codes.
 - **Friend pop-ups.** When a friend starts watching, your Fire TV pops up "🔥 Ma is watching Sintel" over whatever is on, even with FireJam closed; the notification opens FireJam straight into their jam.
-- **Follows Fire TV profiles.** Each Fire TV profile is one person: pick your FireJam profile once, and from then on switching Fire TV profiles switches FireJam at the same moment, pop-ups and activity sharing included.
+- **Follows Fire TV profiles.** Each Fire TV profile is one person: pick your FireJam profile once, and from then on switching Fire TV profiles switches FireJam at the same moment, pop-ups and activity sharing included. Fire TV keeps profile names private, so you set your name once in FireJam's profile (Name).
 - **"Alexa, pause."** Alexa's transport commands (pause, play, rewind 30 seconds, restart) drive the whole jam for everyone.
 - **Laptops join Prime jams too.** A Windows bridge keeps the Prime Video app on a PC in the same jam as the TVs, through Windows' media controls.
 - **Friend activity for everyone.** Like Spotify's friend activity: see what friends are watching right now, even outside FireJam (Prime Video, YouTube, any app with a media session), and what they watched recently and with whom. If a friend is on a Prime title and you both have Prime, one button starts a jam at their exact spot.
 - **Share first.** Starting a jam opens its invite: a QR code anyone can scan (it opens a join page with the code and how to join from a TV or a browser) and a four-letter code. The jam waits until the host presses Start; for Prime titles every TV then opens Prime Video together.
+- **Prime-first Watch screen.** With Prime Video, the Watch screen leads with 19 Prime shows and films (Fallout, Reacher, The Family Man, Mirzapur, Panchayat…); FireJam's free films sit below.
+- **Private sign-in.** Everyone's id is visible on the map, so an id alone signs nobody in: a screen needs the profile's secret token (carried by the phone-pairing QR) or has to be a TV the profile is bound to.
 - **Your phone is the remote.** Pair your phone from the Invite screen to send reactions and chat with no app install (works on iPhone in Safari). Reactions and messages pop up on every TV, over Prime Video too.
 - **Voice, remote and phone in one flow.** The same jam answers to "Alexa, pause", the D-pad and a phone.
 - **Any TV can join.** Fire TV first, and the same app runs on Android TV / Google TV (tested on a Google TV emulator, including a two-switch permission setup done with the remote). Samsung/LG join in the TV browser.
