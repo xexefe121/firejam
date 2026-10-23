@@ -1,0 +1,29 @@
+{
+  "name": "firejam-broll-perfect",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Programmatic b-roll capture and Remotion edit for the FireJam demo video.",
+  "type": "module",
+  "scripts": {
+    "capture": "node capture/run.mjs",
+    "inspect": "node inspect/run.mjs",
+    "studio": "remotion studio",
+    "render": "node edit/build.mjs && remotion render FireJamDemo out/render.mp4 --codec=h264 --crf=16 --x264-preset=slow --audio-codec=aac --audio-bitrate=320k && node edit/master.mjs",
+    "typecheck": "tsc --noEmit",
+    "edit": "python -I edit/voice.py && node edit/build.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "@remotion/google-fonts": "4.0.538",
+    "@remotion/media": "4.0.538",
+    "@remotion/transitions": "4.0.538",
+    "playwright-core": "1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}

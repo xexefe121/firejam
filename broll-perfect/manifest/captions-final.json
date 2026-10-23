@@ -1,0 +1,1066 @@
+[
+ {
+  "text": "FireJam",
+  "startMs": 0,
+  "endMs": 855,
+  "timestampMs": 0,
+  "confidence": 0.625
+ },
+ {
+  "text": " is",
+  "startMs": 855,
+  "endMs": 1127,
+  "timestampMs": 855,
+  "confidence": 0.984863
+ },
+ {
+  "text": " a",
+  "startMs": 1127,
+  "endMs": 1291,
+  "timestampMs": 1127,
+  "confidence": 0.3479
+ },
+ {
+  "text": " native",
+  "startMs": 1291,
+  "endMs": 1527,
+  "timestampMs": 1291,
+  "confidence": 0.979004
+ },
+ {
+  "text": " Fire",
+  "startMs": 1527,
+  "endMs": 1800,
+  "timestampMs": 1527,
+  "confidence": 0.73877
+ },
+ {
+  "text": " TV",
+  "startMs": 1800,
+  "endMs": 2073,
+  "timestampMs": 1800,
+  "confidence": 0.953125
+ },
+ {
+  "text": " app.",
+  "startMs": 2073,
+  "endMs": 2564,
+  "timestampMs": 2073,
+  "confidence": 0.913574
+ },
+ {
+  "text": " It",
+  "startMs": 2564,
+  "endMs": 2982,
+  "timestampMs": 2564,
+  "confidence": 0.991211
+ },
+ {
+  "text": " signs",
+  "startMs": 2982,
+  "endMs": 3218,
+  "timestampMs": 2982,
+  "confidence": 0.985352
+ },
+ {
+  "text": " you",
+  "startMs": 3218,
+  "endMs": 3473,
+  "timestampMs": 3218,
+  "confidence": 0.997559
+ },
+ {
+  "text": " in",
+  "startMs": 3473,
+  "endMs": 3636,
+  "timestampMs": 3473,
+  "confidence": 0.995605
+ },
+ {
+  "text": " from",
+  "startMs": 3636,
+  "endMs": 4018,
+  "timestampMs": 3636,
+  "confidence": 0.980469
+ },
+ {
+  "text": " the",
+  "startMs": 4018,
+  "endMs": 4182,
+  "timestampMs": 4018,
+  "confidence": 0.994629
+ },
+ {
+  "text": " TV",
+  "startMs": 4182,
+  "endMs": 4418,
+  "timestampMs": 4182,
+  "confidence": 0.950684
+ },
+ {
+  "text": " itself.",
+  "startMs": 4418,
+  "endMs": 5236,
+  "timestampMs": 4418,
+  "confidence": 0.994629
+ },
+ {
+  "text": " No",
+  "startMs": 5236,
+  "endMs": 5745,
+  "timestampMs": 5236,
+  "confidence": 0.982422
+ },
+ {
+  "text": " forms.",
+  "startMs": 5745,
+  "endMs": 6709,
+  "timestampMs": 5745,
+  "confidence": 0.96582
+ },
+ {
+  "text": " Home",
+  "startMs": 6709,
+  "endMs": 7218,
+  "timestampMs": 6709,
+  "confidence": 0.991211
+ },
+ {
+  "text": " shows",
+  "startMs": 7218,
+  "endMs": 7436,
+  "timestampMs": 7218,
+  "confidence": 0.994629
+ },
+ {
+  "text": " who's",
+  "startMs": 7436,
+  "endMs": 7927,
+  "timestampMs": 7436,
+  "confidence": 0.956543
+ },
+ {
+  "text": " watching,",
+  "startMs": 7927,
+  "endMs": 8473,
+  "timestampMs": 7927,
+  "confidence": 0.999023
+ },
+ {
+  "text": " where,",
+  "startMs": 8473,
+  "endMs": 9218,
+  "timestampMs": 8473,
+  "confidence": 0.997559
+ },
+ {
+  "text": " and",
+  "startMs": 9218,
+  "endMs": 9618,
+  "timestampMs": 9218,
+  "confidence": 0.998047
+ },
+ {
+  "text": " what",
+  "startMs": 9618,
+  "endMs": 9782,
+  "timestampMs": 9618,
+  "confidence": 0.999512
+ },
+ {
+  "text": " time",
+  "startMs": 9782,
+  "endMs": 10018,
+  "timestampMs": 9782,
+  "confidence": 0.999512
+ },
+ {
+  "text": " it",
+  "startMs": 10018,
+  "endMs": 10200,
+  "timestampMs": 10018,
+  "confidence": 0.997559
+ },
+ {
+  "text": " is",
+  "startMs": 10200,
+  "endMs": 10327,
+  "timestampMs": 10200,
+  "confidence": 0.999512
+ },
+ {
+  "text": " for",
+  "startMs": 10327,
+  "endMs": 10491,
+  "timestampMs": 10327,
+  "confidence": 0.999023
+ },
+ {
+  "text": " them.",
+  "startMs": 10491,
+  "endMs": 10982,
+  "timestampMs": 10491,
+  "confidence": 1.0
+ },
+ {
+  "text": " The",
+  "startMs": 10982,
+  "endMs": 11491,
+  "timestampMs": 10982,
+  "confidence": 0.997559
+ },
+ {
+  "text": " Jam",
+  "startMs": 11491,
+  "endMs": 11691,
+  "timestampMs": 11491,
+  "confidence": 0.874512
+ },
+ {
+  "text": " Map.",
+  "startMs": 11691,
+  "endMs": 12218,
+  "timestampMs": 11691,
+  "confidence": 0.710938
+ },
+ {
+  "text": " Everyone",
+  "startMs": 12218,
+  "endMs": 12727,
+  "timestampMs": 12218,
+  "confidence": 0.998535
+ },
+ {
+  "text": " you",
+  "startMs": 12727,
+  "endMs": 12982,
+  "timestampMs": 12727,
+  "confidence": 1.0
+ },
+ {
+  "text": " love,",
+  "startMs": 12982,
+  "endMs": 13255,
+  "timestampMs": 12982,
+  "confidence": 0.999512
+ },
+ {
+  "text": " lit",
+  "startMs": 13255,
+  "endMs": 13727,
+  "timestampMs": 13255,
+  "confidence": 0.817383
+ },
+ {
+  "text": " up",
+  "startMs": 13727,
+  "endMs": 13927,
+  "timestampMs": 13727,
+  "confidence": 0.999512
+ },
+ {
+  "text": " by",
+  "startMs": 13927,
+  "endMs": 14109,
+  "timestampMs": 13927,
+  "confidence": 0.999512
+ },
+ {
+  "text": " what",
+  "startMs": 14109,
+  "endMs": 14273,
+  "timestampMs": 14109,
+  "confidence": 0.999512
+ },
+ {
+  "text": " they're",
+  "startMs": 14273,
+  "endMs": 14436,
+  "timestampMs": 14273,
+  "confidence": 0.997314
+ },
+ {
+  "text": " watching.",
+  "startMs": 14436,
+  "endMs": 15200,
+  "timestampMs": 14436,
+  "confidence": 1.0
+ },
+ {
+  "text": " Add",
+  "startMs": 15200,
+  "endMs": 15709,
+  "timestampMs": 15200,
+  "confidence": 0.996582
+ },
+ {
+  "text": " friends,",
+  "startMs": 15709,
+  "endMs": 16309,
+  "timestampMs": 15709,
+  "confidence": 0.995605
+ },
+ {
+  "text": " see",
+  "startMs": 16309,
+  "endMs": 16764,
+  "timestampMs": 16309,
+  "confidence": 0.999512
+ },
+ {
+  "text": " what",
+  "startMs": 16764,
+  "endMs": 16945,
+  "timestampMs": 16764,
+  "confidence": 1.0
+ },
+ {
+  "text": " they",
+  "startMs": 16945,
+  "endMs": 17109,
+  "timestampMs": 16945,
+  "confidence": 1.0
+ },
+ {
+  "text": " watched,",
+  "startMs": 17109,
+  "endMs": 17564,
+  "timestampMs": 17109,
+  "confidence": 0.992188
+ },
+ {
+  "text": " and",
+  "startMs": 17564,
+  "endMs": 17782,
+  "timestampMs": 17564,
+  "confidence": 1.0
+ },
+ {
+  "text": " get",
+  "startMs": 17782,
+  "endMs": 17909,
+  "timestampMs": 17782,
+  "confidence": 1.0
+ },
+ {
+  "text": " a",
+  "startMs": 17909,
+  "endMs": 18000,
+  "timestampMs": 17909,
+  "confidence": 1.0
+ },
+ {
+  "text": " pop-up",
+  "startMs": 18000,
+  "endMs": 18382,
+  "timestampMs": 18000,
+  "confidence": 0.9
+ },
+ {
+  "text": " when",
+  "startMs": 18382,
+  "endMs": 18564,
+  "timestampMs": 18382,
+  "confidence": 0.999512
+ },
+ {
+  "text": " they",
+  "startMs": 18564,
+  "endMs": 18727,
+  "timestampMs": 18564,
+  "confidence": 0.999512
+ },
+ {
+  "text": " press",
+  "startMs": 18727,
+  "endMs": 18927,
+  "timestampMs": 18727,
+  "confidence": 0.999023
+ },
+ {
+  "text": " play.",
+  "startMs": 18927,
+  "endMs": 19436,
+  "timestampMs": 18927,
+  "confidence": 0.992676
+ },
+ {
+  "text": " Start",
+  "startMs": 19436,
+  "endMs": 19945,
+  "timestampMs": 19436,
+  "confidence": 0.998047
+ },
+ {
+  "text": " a",
+  "startMs": 19945,
+  "endMs": 20091,
+  "timestampMs": 19945,
+  "confidence": 0.999023
+ },
+ {
+  "text": " jam",
+  "startMs": 20091,
+  "endMs": 20309,
+  "timestampMs": 20091,
+  "confidence": 0.730469
+ },
+ {
+  "text": " and",
+  "startMs": 20309,
+  "endMs": 20655,
+  "timestampMs": 20309,
+  "confidence": 0.123962
+ },
+ {
+  "text": " every",
+  "startMs": 20655,
+  "endMs": 21055,
+  "timestampMs": 20655,
+  "confidence": 0.998047
+ },
+ {
+  "text": " TV",
+  "startMs": 21055,
+  "endMs": 21382,
+  "timestampMs": 21055,
+  "confidence": 0.98877
+ },
+ {
+  "text": " plays",
+  "startMs": 21382,
+  "endMs": 21727,
+  "timestampMs": 21382,
+  "confidence": 0.999023
+ },
+ {
+  "text": " from",
+  "startMs": 21727,
+  "endMs": 21982,
+  "timestampMs": 21727,
+  "confidence": 0.998535
+ },
+ {
+  "text": " one",
+  "startMs": 21982,
+  "endMs": 22218,
+  "timestampMs": 21982,
+  "confidence": 0.940918
+ },
+ {
+  "text": " shared",
+  "startMs": 22218,
+  "endMs": 22473,
+  "timestampMs": 22218,
+  "confidence": 0.973633
+ },
+ {
+  "text": " clock,",
+  "startMs": 22473,
+  "endMs": 22727,
+  "timestampMs": 22473,
+  "confidence": 0.999023
+ },
+ {
+  "text": " within",
+  "startMs": 22727,
+  "endMs": 23491,
+  "timestampMs": 22727,
+  "confidence": 0.955566
+ },
+ {
+  "text": " milliseconds.",
+  "startMs": 23491,
+  "endMs": 23891,
+  "timestampMs": 23491,
+  "confidence": 0.99707
+ },
+ {
+  "text": " Anyone",
+  "startMs": 23891,
+  "endMs": 23931,
+  "timestampMs": 23891,
+  "confidence": 0.9
+ },
+ {
+  "text": " can",
+  "startMs": 24705,
+  "endMs": 25159,
+  "timestampMs": 24705,
+  "confidence": 0.999023
+ },
+ {
+  "text": " pause",
+  "startMs": 25159,
+  "endMs": 25468,
+  "timestampMs": 25159,
+  "confidence": 0.996094
+ },
+ {
+  "text": " or",
+  "startMs": 25468,
+  "endMs": 25650,
+  "timestampMs": 25468,
+  "confidence": 0.986328
+ },
+ {
+  "text": " skip,",
+  "startMs": 25650,
+  "endMs": 25868,
+  "timestampMs": 25650,
+  "confidence": 0.994629
+ },
+ {
+  "text": " even",
+  "startMs": 25868,
+  "endMs": 26377,
+  "timestampMs": 25868,
+  "confidence": 0.984863
+ },
+ {
+  "text": " with",
+  "startMs": 26377,
+  "endMs": 26577,
+  "timestampMs": 26377,
+  "confidence": 0.993164
+ },
+ {
+  "text": " Alexa.",
+  "startMs": 26577,
+  "endMs": 27086,
+  "timestampMs": 26577,
+  "confidence": 0.917155
+ },
+ {
+  "text": " Your",
+  "startMs": 27086,
+  "endMs": 28141,
+  "timestampMs": 27086,
+  "confidence": 0.916992
+ },
+ {
+  "text": " phone",
+  "startMs": 28141,
+  "endMs": 28450,
+  "timestampMs": 28141,
+  "confidence": 1.0
+ },
+ {
+  "text": " is",
+  "startMs": 28450,
+  "endMs": 28650,
+  "timestampMs": 28450,
+  "confidence": 0.999512
+ },
+ {
+  "text": " the",
+  "startMs": 28650,
+  "endMs": 28795,
+  "timestampMs": 28650,
+  "confidence": 0.999512
+ },
+ {
+  "text": " remote,",
+  "startMs": 28795,
+  "endMs": 29050,
+  "timestampMs": 28795,
+  "confidence": 0.998047
+ },
+ {
+  "text": " for",
+  "startMs": 29050,
+  "endMs": 29323,
+  "timestampMs": 29050,
+  "confidence": 0.999023
+ },
+ {
+  "text": " chat",
+  "startMs": 29323,
+  "endMs": 29614,
+  "timestampMs": 29323,
+  "confidence": 0.998047
+ },
+ {
+  "text": " and",
+  "startMs": 29614,
+  "endMs": 29905,
+  "timestampMs": 29614,
+  "confidence": 0.999023
+ },
+ {
+  "text": " reactions.",
+  "startMs": 29905,
+  "endMs": 31086,
+  "timestampMs": 29905,
+  "confidence": 0.998535
+ },
+ {
+  "text": " Prime",
+  "startMs": 31086,
+  "endMs": 31395,
+  "timestampMs": 31086,
+  "confidence": 0.973145
+ },
+ {
+  "text": " titles",
+  "startMs": 31395,
+  "endMs": 31795,
+  "timestampMs": 31395,
+  "confidence": 0.99707
+ },
+ {
+  "text": " play",
+  "startMs": 31795,
+  "endMs": 32214,
+  "timestampMs": 31795,
+  "confidence": 0.989746
+ },
+ {
+  "text": " in",
+  "startMs": 32214,
+  "endMs": 32414,
+  "timestampMs": 32214,
+  "confidence": 0.998047
+ },
+ {
+  "text": " each",
+  "startMs": 32414,
+  "endMs": 32668,
+  "timestampMs": 32414,
+  "confidence": 0.991699
+ },
+ {
+  "text": " TV's",
+  "startMs": 32668,
+  "endMs": 33141,
+  "timestampMs": 32668,
+  "confidence": 0.94751
+ },
+ {
+  "text": " own",
+  "startMs": 33141,
+  "endMs": 33341,
+  "timestampMs": 33141,
+  "confidence": 0.924316
+ },
+ {
+  "text": " Prime",
+  "startMs": 33341,
+  "endMs": 33577,
+  "timestampMs": 33341,
+  "confidence": 0.981445
+ },
+ {
+  "text": " Video,",
+  "startMs": 33577,
+  "endMs": 33923,
+  "timestampMs": 33577,
+  "confidence": 0.998047
+ },
+ {
+  "text": " in",
+  "startMs": 33923,
+  "endMs": 34414,
+  "timestampMs": 33923,
+  "confidence": 0.865723
+ },
+ {
+  "text": " step.",
+  "startMs": 34414,
+  "endMs": 34705,
+  "timestampMs": 34414,
+  "confidence": 0.995605
+ },
+ {
+  "text": " How",
+  "startMs": 34705,
+  "endMs": 35923,
+  "timestampMs": 34705,
+  "confidence": 0.969727
+ },
+ {
+  "text": " it's",
+  "startMs": 35923,
+  "endMs": 36159,
+  "timestampMs": 35923,
+  "confidence": 0.988281
+ },
+ {
+  "text": " built.",
+  "startMs": 36159,
+  "endMs": 36395,
+  "timestampMs": 36159,
+  "confidence": 0.998535
+ },
+ {
+  "text": " A",
+  "startMs": 36395,
+  "endMs": 36923,
+  "timestampMs": 36395,
+  "confidence": 0.989258
+ },
+ {
+  "text": " Kotlin",
+  "startMs": 36923,
+  "endMs": 37323,
+  "timestampMs": 36923,
+  "confidence": 0.912354
+ },
+ {
+  "text": " Fire",
+  "startMs": 37323,
+  "endMs": 37632,
+  "timestampMs": 37323,
+  "confidence": 0.315918
+ },
+ {
+  "text": " TV",
+  "startMs": 37632,
+  "endMs": 37905,
+  "timestampMs": 37632,
+  "confidence": 0.978516
+ },
+ {
+  "text": " app",
+  "startMs": 37905,
+  "endMs": 38286,
+  "timestampMs": 37905,
+  "confidence": 0.942383
+ },
+ {
+  "text": " hosts",
+  "startMs": 38286,
+  "endMs": 38886,
+  "timestampMs": 38286,
+  "confidence": 0.984375
+ },
+ {
+  "text": " a",
+  "startMs": 38886,
+  "endMs": 39068,
+  "timestampMs": 38886,
+  "confidence": 0.999023
+ },
+ {
+  "text": " React",
+  "startMs": 39068,
+  "endMs": 39341,
+  "timestampMs": 39068,
+  "confidence": 0.999023
+ },
+ {
+  "text": " interface",
+  "startMs": 39341,
+  "endMs": 39741,
+  "timestampMs": 39341,
+  "confidence": 1.0
+ },
+ {
+  "text": " designed",
+  "startMs": 39741,
+  "endMs": 40414,
+  "timestampMs": 39741,
+  "confidence": 0.999512
+ },
+ {
+  "text": " for",
+  "startMs": 40414,
+  "endMs": 40705,
+  "timestampMs": 40414,
+  "confidence": 1.0
+ },
+ {
+  "text": " the",
+  "startMs": 40705,
+  "endMs": 40850,
+  "timestampMs": 40705,
+  "confidence": 0.996582
+ },
+ {
+  "text": " D-pad.",
+  "startMs": 40850,
+  "endMs": 41195,
+  "timestampMs": 40850,
+  "confidence": 0.9
+ },
+ {
+  "text": " It",
+  "startMs": 41195,
+  "endMs": 42032,
+  "timestampMs": 41195,
+  "confidence": 0.998047
+ },
+ {
+  "text": " follows",
+  "startMs": 42032,
+  "endMs": 42468,
+  "timestampMs": 42032,
+  "confidence": 1.0
+ },
+ {
+  "text": " Prime",
+  "startMs": 42468,
+  "endMs": 42850,
+  "timestampMs": 42468,
+  "confidence": 0.990723
+ },
+ {
+  "text": " Video",
+  "startMs": 42850,
+  "endMs": 43177,
+  "timestampMs": 42850,
+  "confidence": 0.996094
+ },
+ {
+  "text": " through",
+  "startMs": 43177,
+  "endMs": 43650,
+  "timestampMs": 43177,
+  "confidence": 1.0
+ },
+ {
+  "text": " Android's",
+  "startMs": 43650,
+  "endMs": 44195,
+  "timestampMs": 43650,
+  "confidence": 0.989746
+ },
+ {
+  "text": " media",
+  "startMs": 44195,
+  "endMs": 44395,
+  "timestampMs": 44195,
+  "confidence": 0.99707
+ },
+ {
+  "text": " session",
+  "startMs": 44395,
+  "endMs": 44723,
+  "timestampMs": 44395,
+  "confidence": 0.988281
+ },
+ {
+  "text": " and",
+  "startMs": 44723,
+  "endMs": 45105,
+  "timestampMs": 44723,
+  "confidence": 0.473145
+ },
+ {
+  "text": " handles",
+  "startMs": 45105,
+  "endMs": 45577,
+  "timestampMs": 45105,
+  "confidence": 0.986816
+ },
+ {
+  "text": " Alexa",
+  "startMs": 45577,
+  "endMs": 45868,
+  "timestampMs": 45577,
+  "confidence": 0.953613
+ },
+ {
+  "text": " voice",
+  "startMs": 45868,
+  "endMs": 46232,
+  "timestampMs": 45868,
+  "confidence": 0.939453
+ },
+ {
+  "text": " commands.",
+  "startMs": 46232,
+  "endMs": 47468,
+  "timestampMs": 46232,
+  "confidence": 0.99707
+ },
+ {
+  "text": " A",
+  "startMs": 47468,
+  "endMs": 47650,
+  "timestampMs": 47468,
+  "confidence": 0.9
+ },
+ {
+  "text": " Node",
+  "startMs": 47650,
+  "endMs": 47832,
+  "timestampMs": 47650,
+  "confidence": 0.9
+ },
+ {
+  "text": " and",
+  "startMs": 47832,
+  "endMs": 48232,
+  "timestampMs": 47832,
+  "confidence": 0.953125
+ },
+ {
+  "text": " Socket.IO",
+  "startMs": 48232,
+  "endMs": 49159,
+  "timestampMs": 48232,
+  "confidence": 0.9
+ },
+ {
+  "text": " server",
+  "startMs": 49159,
+  "endMs": 49614,
+  "timestampMs": 49159,
+  "confidence": 0.898926
+ },
+ {
+  "text": " on",
+  "startMs": 49614,
+  "endMs": 50286,
+  "timestampMs": 49614,
+  "confidence": 0.984375
+ },
+ {
+  "text": " AWS",
+  "startMs": 50286,
+  "endMs": 50650,
+  "timestampMs": 50286,
+  "confidence": 0.99707
+ },
+ {
+  "text": " Graviton",
+  "startMs": 50650,
+  "endMs": 51614,
+  "timestampMs": 50650,
+  "confidence": 0.993164
+ },
+ {
+  "text": " syncs",
+  "startMs": 51614,
+  "endMs": 52432,
+  "timestampMs": 51614,
+  "confidence": 0.890137
+ },
+ {
+  "text": " every",
+  "startMs": 52432,
+  "endMs": 52705,
+  "timestampMs": 52432,
+  "confidence": 0.986328
+ },
+ {
+  "text": " jam,",
+  "startMs": 52705,
+  "endMs": 53050,
+  "timestampMs": 52705,
+  "confidence": 0.823242
+ },
+ {
+  "text": " served",
+  "startMs": 53050,
+  "endMs": 53759,
+  "timestampMs": 53050,
+  "confidence": 0.89502
+ },
+ {
+  "text": " worldwide",
+  "startMs": 53759,
+  "endMs": 54177,
+  "timestampMs": 53759,
+  "confidence": 0.971191
+ },
+ {
+  "text": " through",
+  "startMs": 54177,
+  "endMs": 54686,
+  "timestampMs": 54177,
+  "confidence": 0.98877
+ },
+ {
+  "text": " CloudFront.",
+  "startMs": 54686,
+  "endMs": 55541,
+  "timestampMs": 54686,
+  "confidence": 0.987956
+ },
+ {
+  "text": " Amazon",
+  "startMs": 55541,
+  "endMs": 55905,
+  "timestampMs": 55541,
+  "confidence": 0.991699
+ },
+ {
+  "text": " Bedrock",
+  "startMs": 55905,
+  "endMs": 56468,
+  "timestampMs": 55905,
+  "confidence": 0.984619
+ },
+ {
+  "text": " picks",
+  "startMs": 56468,
+  "endMs": 56723,
+  "timestampMs": 56468,
+  "confidence": 0.991699
+ },
+ {
+  "text": " what",
+  "startMs": 56723,
+  "endMs": 56959,
+  "timestampMs": 56723,
+  "confidence": 0.994629
+ },
+ {
+  "text": " to",
+  "startMs": 56959,
+  "endMs": 57123,
+  "timestampMs": 56959,
+  "confidence": 0.998047
+ },
+ {
+  "text": " watch",
+  "startMs": 57123,
+  "endMs": 57305,
+  "timestampMs": 57123,
+  "confidence": 0.999512
+ },
+ {
+  "text": " next,",
+  "startMs": 57305,
+  "endMs": 57559,
+  "timestampMs": 57305,
+  "confidence": 0.999512
+ },
+ {
+  "text": " and",
+  "startMs": 57559,
+  "endMs": 58068,
+  "timestampMs": 57559,
+  "confidence": 0.673828
+ },
+ {
+  "text": " it",
+  "startMs": 58068,
+  "endMs": 58268,
+  "timestampMs": 58068,
+  "confidence": 0.994629
+ },
+ {
+  "text": " knows",
+  "startMs": 58268,
+  "endMs": 58523,
+  "timestampMs": 58268,
+  "confidence": 0.998535
+ },
+ {
+  "text": " everyone's",
+  "startMs": 58523,
+  "endMs": 59305,
+  "timestampMs": 58523,
+  "confidence": 0.994141
+ },
+ {
+  "text": " bedtime.",
+  "startMs": 59305,
+  "endMs": 59795,
+  "timestampMs": 59305,
+  "confidence": 0.96875
+ }
+]

@@ -1,0 +1,15 @@
+# Media never goes in git: raw footage, captures, cut clips, renders, scratch.
+node_modules
+raw/
+work/
+out/
+public/broll/
+public/clips/
+public/films/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.m4a
+public/music/
+*.mp3

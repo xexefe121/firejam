@@ -1,0 +1,372 @@
+{
+  "clips": [
+    {
+      "id": "tv-home-hero",
+      "file": "broll/tv-home-hero.mp4",
+      "duration": 6,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "beat": "Ma is watching: the living room is back",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) streamed from the app’s archive.org source; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take.",
+      "events": [
+        {
+          "t": 1.99,
+          "label": "hero-focus-next"
+        },
+        {
+          "t": 3.98,
+          "label": "hero-focus-return"
+        }
+      ]
+    },
+    {
+      "id": "tv-jam-map",
+      "file": "broll/tv-jam-map.mp4",
+      "duration": 9,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "beat": "Discover friends and public jams around the world",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) streamed from the app’s archive.org source; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take.",
+      "events": [
+        {
+          "t": 0.39,
+          "label": "home-left-to-rail"
+        },
+        {
+          "t": 1.09,
+          "label": "open-jam-map"
+        },
+        {
+          "t": 2.42,
+          "label": "london-pin"
+        },
+        {
+          "t": 4.41,
+          "label": "sao-paulo-public-jam-arcs"
+        },
+        {
+          "t": 7,
+          "label": "hyderabad-pin"
+        }
+      ]
+    },
+    {
+      "id": "tv-join-ma",
+      "file": "broll/tv-join-ma.mp4",
+      "duration": 5,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "beat": "Join Ma from Hyderabad in one click",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take.",
+      "events": [
+        {
+          "t": 0.68,
+          "label": "ma-pin-ok"
+        },
+        {
+          "t": 0.7,
+          "label": "ma-pin-ok-visible"
+        },
+        {
+          "t": 1.68,
+          "label": "join-ma"
+        },
+        {
+          "t": 1.7,
+          "label": "player-started"
+        }
+      ]
+    },
+    {
+      "id": "tv-player-sync",
+      "file": "broll/tv-player-sync.mp4",
+      "duration": 14,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "syncGroup": "join-ma",
+      "beat": "Same moment: Ma pauses, Dhanu resumes and skips",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take. Shared wall-clock start 2026-10-23T14:45:19.533Z. Player member chips naturally auto-hide after five seconds, return while paused.",
+      "events": [
+        {
+          "t": 3.18,
+          "label": "ma-controls-hidden"
+        },
+        {
+          "t": 4.19,
+          "label": "ma-pause"
+        },
+        {
+          "t": 4.2,
+          "label": "ma-paused-banner"
+        },
+        {
+          "t": 8.18,
+          "label": "tv-resume"
+        },
+        {
+          "t": 8.19,
+          "label": "resume-on-laptop"
+        },
+        {
+          "t": 9.48,
+          "label": "tv-controls-hidden"
+        },
+        {
+          "t": 11.18,
+          "label": "tv-skip-plus-10s"
+        },
+        {
+          "t": 11.19,
+          "label": "skip-hud"
+        }
+      ]
+    },
+    {
+      "id": "laptop-player-sync",
+      "file": "broll/laptop-player-sync.mp4",
+      "duration": 14,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-laptop",
+      "syncGroup": "join-ma",
+      "beat": "Same moment: Ma pauses, Dhanu resumes and skips",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take. Shared wall-clock start 2026-10-23T14:45:19.533Z. Player member chips naturally auto-hide after five seconds, return while paused.",
+      "events": [
+        {
+          "t": 3.18,
+          "label": "ma-controls-hidden"
+        },
+        {
+          "t": 4.19,
+          "label": "ma-pause"
+        },
+        {
+          "t": 4.2,
+          "label": "ma-paused-banner"
+        },
+        {
+          "t": 8.18,
+          "label": "tv-resume"
+        },
+        {
+          "t": 8.19,
+          "label": "resume-on-laptop"
+        },
+        {
+          "t": 9.48,
+          "label": "tv-controls-hidden"
+        },
+        {
+          "t": 11.18,
+          "label": "tv-skip-plus-10s"
+        },
+        {
+          "t": 11.19,
+          "label": "skip-hud"
+        }
+      ]
+    },
+    {
+      "id": "tv-invite-qr",
+      "file": "broll/tv-invite-qr.mp4",
+      "duration": 5,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "beat": "Invite friends, or pair a phone with the QR",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take.",
+      "events": [
+        {
+          "t": 0.49,
+          "label": "player-down"
+        },
+        {
+          "t": 1.85,
+          "label": "invite-qr-visible"
+        }
+      ]
+    },
+    {
+      "id": "web-phone-companion",
+      "file": "broll/web-phone-companion.mp4",
+      "duration": 9,
+      "width": 780,
+      "height": 1688,
+      "fps": 30,
+      "source": "web-phone",
+      "syncGroup": "phone",
+      "beat": "Phone is the remote: reactions and Miss you Ma",
+      "notes": "390x844 viewport, device scale 2. Genuine token-paired companion page; touch input. Shared wall-clock start 2026-10-23T14:46:15.618Z.",
+      "events": [
+        {
+          "t": 1.24,
+          "label": "phone-heart-tap"
+        },
+        {
+          "t": 1.25,
+          "label": "tv-heart-reaction"
+        },
+        {
+          "t": 2.84,
+          "label": "phone-laugh-tap"
+        },
+        {
+          "t": 2.84,
+          "label": "tv-laugh-reaction"
+        },
+        {
+          "t": 5.13,
+          "label": "phone-message-type"
+        },
+        {
+          "t": 6.04,
+          "label": "phone-message-send"
+        },
+        {
+          "t": 6.05,
+          "label": "tv-miss-you-ma-message"
+        }
+      ]
+    },
+    {
+      "id": "tv-reactions",
+      "file": "broll/tv-reactions.mp4",
+      "duration": 9,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "syncGroup": "phone",
+      "beat": "Phone is the remote: reactions and Miss you Ma",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take. Shared wall-clock start 2026-10-23T14:46:15.618Z.",
+      "events": [
+        {
+          "t": 1.24,
+          "label": "phone-heart-tap"
+        },
+        {
+          "t": 1.25,
+          "label": "tv-heart-reaction"
+        },
+        {
+          "t": 2.84,
+          "label": "phone-laugh-tap"
+        },
+        {
+          "t": 2.84,
+          "label": "tv-laugh-reaction"
+        },
+        {
+          "t": 5.13,
+          "label": "phone-message-type"
+        },
+        {
+          "t": 6.04,
+          "label": "phone-message-send"
+        },
+        {
+          "t": 6.05,
+          "label": "tv-miss-you-ma-message"
+        }
+      ]
+    },
+    {
+      "id": "tv-leo-joined",
+      "file": "broll/tv-leo-joined.mp4",
+      "duration": 5,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "web-tv",
+      "beat": "Bring Leo in from London",
+      "notes": "Actual FireJam UI and controls. Sintel (Blender Foundation, CC-BY 3.0) mirrored to capture-local storage; decoded film audio captured for established player takes. Join take has no audio track because its video mounts during the take.",
+      "events": [
+        {
+          "t": 0.33,
+          "label": "invite-leo"
+        },
+        {
+          "t": 3.18,
+          "label": "leo-joined-from-london-toast"
+        }
+      ]
+    },
+    {
+      "id": "firetv-home",
+      "file": "broll/firetv-home.mp4",
+      "duration": 5.6,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "firetv",
+      "beat": "Real Fire TV: the hook",
+      "notes": "USB Fire TV Stick 4K Max, serial G072JM1352950DJM. Real adb D-pad input; native 20 Mbps screenrecord. Android screenrecord does not record the film audio.",
+      "events": [
+        {
+          "t": 3.82,
+          "label": "focus-next"
+        },
+        {
+          "t": 6.82,
+          "label": "focus-return"
+        }
+      ]
+    },
+    {
+      "id": "firetv-map",
+      "file": "broll/firetv-map.mp4",
+      "duration": 9.266667,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "firetv",
+      "beat": "Real Fire TV: world of jams",
+      "notes": "USB Fire TV Stick 4K Max, serial G072JM1352950DJM. Real adb D-pad input; native 20 Mbps screenrecord. Android screenrecord does not record the film audio.",
+      "events": [
+        {
+          "t": 6.56,
+          "label": "london-pin"
+        },
+        {
+          "t": 11.45,
+          "label": "sao-paulo-public-jam"
+        },
+        {
+          "t": 16.11,
+          "label": "hyderabad-pin"
+        }
+      ]
+    },
+    {
+      "id": "firetv-player",
+      "file": "broll/firetv-player.mp4",
+      "duration": 6.366016,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "source": "firetv",
+      "beat": "Real Fire TV: shared film",
+      "notes": "USB Fire TV Stick 4K Max, serial G072JM1352950DJM. Real adb D-pad input; native 20 Mbps screenrecord. Android screenrecord does not record the film audio.",
+      "events": [
+        {
+          "t": 4.22,
+          "label": "player-controls"
+        },
+        {
+          "t": 8.8,
+          "label": "player-focus-next"
+        }
+      ]
+    }
+  ]
+}

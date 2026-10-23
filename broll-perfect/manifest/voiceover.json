@@ -1,0 +1,1773 @@
+{
+  "model": "fal-ai/elevenlabs/audio-isolation",
+  "candidates": [
+    {
+      "model": "fal-ai/deepfilternet3",
+      "file": "work/audio/fal-deepfilternet3.wav",
+      "metrics": {
+        "duration": 69.717333,
+        "sample_rate": 48000,
+        "integrated_lufs": -33.84,
+        "true_peak_dbtp": -15.31,
+        "loudness_range_lu": 4.7,
+        "rms_dbfs": -34.14,
+        "sample_peak_dbfs": -15.685,
+        "clipped_samples": 0,
+        "pause_noise_dbfs": -74.383,
+        "pause_noise_at_minus16_lufs_dbfs": -56.543,
+        "pause_measurement_seconds": 9.323854,
+        "pause_windows": [
+          [
+            3.892979,
+            4.256458
+          ],
+          [
+            6.707417,
+            7.233479
+          ],
+          [
+            8.172479000000001,
+            8.857061999999999
+          ],
+          [
+            10.545604,
+            10.849167
+          ],
+          [
+            11.387062,
+            11.591854
+          ],
+          [
+            13.095771000000001,
+            13.514062
+          ],
+          [
+            13.792562,
+            14.065187
+          ],
+          [
+            14.95825,
+            15.242812
+          ],
+          [
+            18.122228999999997,
+            18.675333000000002
+          ],
+          [
+            19.587895999999997,
+            19.821646
+          ],
+          [
+            22.810771,
+            23.675708
+          ],
+          [
+            23.835811999999997,
+            24.103563
+          ],
+          [
+            27.787812,
+            28.087271
+          ],
+          [
+            29.495124999999998,
+            29.907333
+          ],
+          [
+            32.737666999999995,
+            33.699688
+          ],
+          [
+            36.667041999999995,
+            37.26525
+          ],
+          [
+            41.555062,
+            42.246729
+          ],
+          [
+            48.420688,
+            48.942083000000004
+          ],
+          [
+            54.530229,
+            55.081437
+          ],
+          [
+            57.852917,
+            58.011458000000005
+          ],
+          [
+            61.533395999999996,
+            61.685042
+          ]
+        ],
+        "astats": {
+          "RMS level dB": -34.140263,
+          "Peak level dB": -15.685285,
+          "Noise floor dB": null
+        },
+        "spectrum": "work/audio/fal-deepfilternet3-spectrum.png",
+        "level_matched_spectrum": "work/audio/fal-deepfilternet3-spectrum-level-matched.png",
+        "level_matched_spectrum_gain_db": 17.840000000000003,
+        "average_word_probability": 0.9209805064102565,
+        "word_count": 156,
+        "device": "cuda",
+        "raw_token_recall": 1.0,
+        "token_similarity": 0.996742671009772,
+        "raw_only_tokens": [],
+        "candidate_only_tokens": [
+          [
+            "seconds"
+          ]
+        ],
+        "asr_model": "large-v3",
+        "alignment_delay_seconds": 0.0,
+        "speech_envelope_correlation": 0.9861023729684082,
+        "average_word_probability_delta": -0.025589125847807703,
+        "eligible": false
+      }
+    },
+    {
+      "model": "fal-ai/elevenlabs/audio-isolation",
+      "file": "work/audio/fal-elevenlabs-audio-isolation.wav",
+      "metrics": {
+        "duration": 69.746958,
+        "sample_rate": 48000,
+        "integrated_lufs": -32.74,
+        "true_peak_dbtp": -12.7,
+        "loudness_range_lu": 4.5,
+        "rms_dbfs": -33.046,
+        "sample_peak_dbfs": -12.708,
+        "clipped_samples": 0,
+        "pause_noise_dbfs": -71.872,
+        "pause_noise_at_minus16_lufs_dbfs": -55.132,
+        "pause_measurement_seconds": 9.323854,
+        "pause_windows": [
+          [
+            3.912979,
+            4.276458
+          ],
+          [
+            6.727417,
+            7.253479
+          ],
+          [
+            8.192479,
+            8.877061999999999
+          ],
+          [
+            10.565604,
+            10.869167
+          ],
+          [
+            11.407062,
+            11.611854
+          ],
+          [
+            13.115771,
+            13.534061999999999
+          ],
+          [
+            13.812562,
+            14.085187
+          ],
+          [
+            14.97825,
+            15.262812
+          ],
+          [
+            18.142228999999997,
+            18.695333
+          ],
+          [
+            19.607895999999997,
+            19.841646
+          ],
+          [
+            22.830771,
+            23.695708
+          ],
+          [
+            23.855811999999997,
+            24.123563
+          ],
+          [
+            27.807812,
+            28.107271
+          ],
+          [
+            29.515124999999998,
+            29.927333
+          ],
+          [
+            32.757667,
+            33.719688000000005
+          ],
+          [
+            36.687042,
+            37.285250000000005
+          ],
+          [
+            41.575062,
+            42.266729000000005
+          ],
+          [
+            48.440688,
+            48.96208300000001
+          ],
+          [
+            54.550229,
+            55.101437000000004
+          ],
+          [
+            57.872917,
+            58.03145800000001
+          ],
+          [
+            61.553396,
+            61.705042000000006
+          ]
+        ],
+        "astats": {
+          "RMS level dB": -33.045943,
+          "Peak level dB": -12.707968,
+          "Noise floor dB": -83.836922
+        },
+        "spectrum": "work/audio/fal-elevenlabs-audio-isolation-spectrum.png",
+        "level_matched_spectrum": "work/audio/fal-elevenlabs-audio-isolation-spectrum-level-matched.png",
+        "level_matched_spectrum_gain_db": 16.740000000000002,
+        "average_word_probability": 0.9414373076923076,
+        "word_count": 156,
+        "device": "cuda",
+        "raw_token_recall": 0.9803921568627451,
+        "token_similarity": 0.9771986970684039,
+        "raw_only_tokens": [
+          [
+            "5"
+          ],
+          [
+            "anore"
+          ],
+          [
+            "sings"
+          ]
+        ],
+        "candidate_only_tokens": [
+          [
+            "seconds"
+          ],
+          [
+            "fire"
+          ],
+          [
+            "anode"
+          ],
+          [
+            "syncs"
+          ]
+        ],
+        "asr_model": "large-v3",
+        "alignment_delay_seconds": 0.02,
+        "speech_envelope_correlation": 0.9599139395888193,
+        "average_word_probability_delta": -0.00513232456575663,
+        "eligible": true
+      }
+    },
+    {
+      "model": "veed/clean-audio",
+      "file": "work/audio/fal-veed-clean-audio.wav",
+      "metrics": {
+        "duration": 69.717333,
+        "sample_rate": 48000,
+        "integrated_lufs": -22.65,
+        "true_peak_dbtp": -0.94,
+        "loudness_range_lu": 3.3,
+        "rms_dbfs": -23.26,
+        "sample_peak_dbfs": -1.1,
+        "clipped_samples": 0,
+        "pause_noise_dbfs": -56.272,
+        "pause_noise_at_minus16_lufs_dbfs": -49.622,
+        "pause_measurement_seconds": 9.323854,
+        "pause_windows": [
+          [
+            3.892979,
+            4.256458
+          ],
+          [
+            6.707417,
+            7.233479
+          ],
+          [
+            8.172479000000001,
+            8.857061999999999
+          ],
+          [
+            10.545604,
+            10.849167
+          ],
+          [
+            11.387062,
+            11.591854
+          ],
+          [
+            13.095771000000001,
+            13.514062
+          ],
+          [
+            13.792562,
+            14.065187
+          ],
+          [
+            14.95825,
+            15.242812
+          ],
+          [
+            18.122228999999997,
+            18.675333000000002
+          ],
+          [
+            19.587895999999997,
+            19.821646
+          ],
+          [
+            22.810771,
+            23.675708
+          ],
+          [
+            23.835811999999997,
+            24.103563
+          ],
+          [
+            27.787812,
+            28.087271
+          ],
+          [
+            29.495124999999998,
+            29.907333
+          ],
+          [
+            32.737666999999995,
+            33.699688
+          ],
+          [
+            36.667041999999995,
+            37.26525
+          ],
+          [
+            41.555062,
+            42.246729
+          ],
+          [
+            48.420688,
+            48.942083000000004
+          ],
+          [
+            54.530229,
+            55.081437
+          ],
+          [
+            57.852917,
+            58.011458000000005
+          ],
+          [
+            61.533395999999996,
+            61.685042
+          ]
+        ],
+        "astats": {
+          "RMS level dB": -23.260193,
+          "Peak level dB": -1.099762,
+          "Noise floor dB": null
+        },
+        "spectrum": "work/audio/fal-veed-clean-audio-spectrum.png",
+        "level_matched_spectrum": "work/audio/fal-veed-clean-audio-spectrum-level-matched.png",
+        "level_matched_spectrum_gain_db": 6.649999999999999,
+        "average_word_probability": 0.9432526516129032,
+        "word_count": 155,
+        "device": "cuda",
+        "raw_token_recall": 0.9934640522875817,
+        "token_similarity": 0.9934640522875817,
+        "raw_only_tokens": [
+          [
+            "anore"
+          ]
+        ],
+        "candidate_only_tokens": [
+          [
+            "anor"
+          ]
+        ],
+        "asr_model": "large-v3",
+        "alignment_delay_seconds": 0.0,
+        "speech_envelope_correlation": 0.9865250659792982,
+        "average_word_probability_delta": -0.0033169806451610606,
+        "eligible": true
+      }
+    }
+  ],
+  "raw": {
+    "duration": 69.717333,
+    "sample_rate": 48000,
+    "integrated_lufs": -33.32,
+    "true_peak_dbtp": -15.17,
+    "loudness_range_lu": 3.1,
+    "rms_dbfs": -33.586,
+    "sample_peak_dbfs": -15.543,
+    "clipped_samples": 0,
+    "pause_noise_dbfs": -60.931,
+    "pause_noise_at_minus16_lufs_dbfs": -43.611,
+    "pause_measurement_seconds": 9.323854,
+    "pause_windows": [
+      [
+        3.892979,
+        4.256458
+      ],
+      [
+        6.707417,
+        7.233479
+      ],
+      [
+        8.172479000000001,
+        8.857061999999999
+      ],
+      [
+        10.545604,
+        10.849167
+      ],
+      [
+        11.387062,
+        11.591854
+      ],
+      [
+        13.095771000000001,
+        13.514062
+      ],
+      [
+        13.792562,
+        14.065187
+      ],
+      [
+        14.95825,
+        15.242812
+      ],
+      [
+        18.122228999999997,
+        18.675333000000002
+      ],
+      [
+        19.587895999999997,
+        19.821646
+      ],
+      [
+        22.810771,
+        23.675708
+      ],
+      [
+        23.835811999999997,
+        24.103563
+      ],
+      [
+        27.787812,
+        28.087271
+      ],
+      [
+        29.495124999999998,
+        29.907333
+      ],
+      [
+        32.737666999999995,
+        33.699688
+      ],
+      [
+        36.667041999999995,
+        37.26525
+      ],
+      [
+        41.555062,
+        42.246729
+      ],
+      [
+        48.420688,
+        48.942083000000004
+      ],
+      [
+        54.530229,
+        55.081437
+      ],
+      [
+        57.852917,
+        58.011458000000005
+      ],
+      [
+        61.533395999999996,
+        61.685042
+      ]
+    ],
+    "astats": {
+      "RMS level dB": -33.586273,
+      "Peak level dB": -15.543498,
+      "Noise floor dB": null
+    },
+    "spectrum": "work/audio/raw-spectrum.png",
+    "level_matched_spectrum": "work/audio/raw-spectrum-level-matched.png",
+    "level_matched_spectrum_gain_db": 17.32,
+    "file": "raw/footage/vo-recording-5.m4a",
+    "source_sha256": "cbb9f5db03c023ece078891f85fb49ea6c5de8b9afa208656792b1a766f14faf",
+    "average_word_probability": 0.9465696322580642,
+    "word_count": 155,
+    "model": "large-v3",
+    "device": "cuda"
+  },
+  "full": "clips/vo-clean.wav",
+  "full_metrics": {
+    "duration": 69.746958,
+    "sample_rate": 48000,
+    "integrated_lufs": -16.08,
+    "true_peak_dbtp": -1.49,
+    "loudness_range_lu": 3.8,
+    "rms_dbfs": -16.379,
+    "sample_peak_dbfs": -1.499,
+    "clipped_samples": 0,
+    "pause_noise_dbfs": -54.989,
+    "pause_noise_at_minus16_lufs_dbfs": -54.909,
+    "pause_measurement_seconds": 9.323854,
+    "pause_windows": [
+      [
+        3.912979,
+        4.276458
+      ],
+      [
+        6.727417,
+        7.253479
+      ],
+      [
+        8.192479,
+        8.877061999999999
+      ],
+      [
+        10.565604,
+        10.869167
+      ],
+      [
+        11.407062,
+        11.611854
+      ],
+      [
+        13.115771,
+        13.534061999999999
+      ],
+      [
+        13.812562,
+        14.085187
+      ],
+      [
+        14.97825,
+        15.262812
+      ],
+      [
+        18.142228999999997,
+        18.695333
+      ],
+      [
+        19.607895999999997,
+        19.841646
+      ],
+      [
+        22.830771,
+        23.695708
+      ],
+      [
+        23.855811999999997,
+        24.123563
+      ],
+      [
+        27.807812,
+        28.107271
+      ],
+      [
+        29.515124999999998,
+        29.927333
+      ],
+      [
+        32.757667,
+        33.719688000000005
+      ],
+      [
+        36.687042,
+        37.285250000000005
+      ],
+      [
+        41.575062,
+        42.266729000000005
+      ],
+      [
+        48.440688,
+        48.96208300000001
+      ],
+      [
+        54.550229,
+        55.101437000000004
+      ],
+      [
+        57.872917,
+        58.03145800000001
+      ],
+      [
+        61.553396,
+        61.705042000000006
+      ]
+    ],
+    "astats": {
+      "RMS level dB": -16.379463,
+      "Peak level dB": -1.498969,
+      "Noise floor dB": -71.235466
+    },
+    "spectrum": "work/audio/vo-clean-spectrum.png",
+    "level_matched_spectrum": "work/audio/vo-clean-spectrum-level-matched.png",
+    "level_matched_spectrum_gain_db": 0.0799999999999983
+  },
+  "tight": {
+    "file": "clips/vo-tight.wav",
+    "duration": 66.2,
+    "metrics": {
+      "duration": 66.2,
+      "sample_rate": 48000,
+      "integrated_lufs": -16.08,
+      "true_peak_dbtp": -1.5,
+      "loudness_range_lu": 3.4,
+      "rms_dbfs": -16.075,
+      "sample_peak_dbfs": -1.498,
+      "clipped_samples": 0,
+      "pause_noise_dbfs": -60.998,
+      "pause_noise_at_minus16_lufs_dbfs": -60.918,
+      "pause_measurement_seconds": 4.857854,
+      "pause_windows": [
+        [
+          7.228667,
+          7.369417
+        ],
+        [
+          9.515833,
+          9.715729
+        ],
+        [
+          12.007125,
+          12.526708
+        ],
+        [
+          16.623020999999998,
+          16.888604
+        ],
+        [
+          21.310686999999998,
+          21.666708000000003
+        ],
+        [
+          25.445082999999997,
+          25.664729
+        ],
+        [
+          27.012666999999997,
+          27.478625
+        ],
+        [
+          30.422832999999997,
+          31.277792
+        ],
+        [
+          34.582146,
+          34.835729
+        ],
+        [
+          38.982354,
+          39.490833
+        ],
+        [
+          40.793521,
+          40.971479
+        ],
+        [
+          46.079229,
+          46.58375
+        ],
+        [
+          52.150604,
+          52.328938
+        ],
+        [
+          61.413833,
+          61.626417000000004
+        ]
+      ],
+      "astats": {
+        "RMS level dB": -16.074864,
+        "Peak level dB": -1.498473,
+        "Noise floor dB": -62.740189
+      }
+    }
+  },
+  "segments": [
+    {
+      "id": "01",
+      "file": "clips/vo/01.wav",
+      "start": 0.0,
+      "end": 2.72,
+      "text": "FireJam is a native Fire TV app.",
+      "words": [
+        {
+          "text": "FireJam",
+          "start": 0.1,
+          "end": 0.94,
+          "p": 0.625
+        },
+        {
+          "text": "is",
+          "start": 0.94,
+          "end": 1.24,
+          "p": 0.984863
+        },
+        {
+          "text": "a",
+          "start": 1.24,
+          "end": 1.42,
+          "p": 0.3479
+        },
+        {
+          "text": "native",
+          "start": 1.42,
+          "end": 1.68,
+          "p": 0.979004
+        },
+        {
+          "text": "Fire",
+          "start": 1.68,
+          "end": 1.98,
+          "p": 0.73877
+        },
+        {
+          "text": "TV",
+          "start": 1.98,
+          "end": 2.28,
+          "p": 0.953125
+        },
+        {
+          "text": "app.",
+          "start": 2.28,
+          "end": 2.62,
+          "p": 0.913574
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "file": "clips/vo/02.wav",
+      "start": 2.72,
+      "end": 5.48,
+      "text": "It signs you in from the TV itself.",
+      "words": [
+        {
+          "text": "It",
+          "start": 2.82,
+          "end": 3.28,
+          "p": 0.991211
+        },
+        {
+          "text": "signs",
+          "start": 3.28,
+          "end": 3.54,
+          "p": 0.985352
+        },
+        {
+          "text": "you",
+          "start": 3.54,
+          "end": 3.82,
+          "p": 0.997559
+        },
+        {
+          "text": "in",
+          "start": 3.82,
+          "end": 4.0,
+          "p": 0.995605
+        },
+        {
+          "text": "from",
+          "start": 4.0,
+          "end": 4.42,
+          "p": 0.980469
+        },
+        {
+          "text": "the",
+          "start": 4.42,
+          "end": 4.6,
+          "p": 0.994629
+        },
+        {
+          "text": "TV",
+          "start": 4.6,
+          "end": 4.86,
+          "p": 0.950684
+        },
+        {
+          "text": "itself.",
+          "start": 4.86,
+          "end": 5.2,
+          "p": 0.994629
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "file": "clips/vo/03.wav",
+      "start": 5.48,
+      "end": 7.02,
+      "text": "No forms.",
+      "words": [
+        {
+          "text": "No",
+          "start": 5.76,
+          "end": 6.32,
+          "p": 0.982422
+        },
+        {
+          "text": "forms.",
+          "start": 6.32,
+          "end": 6.66,
+          "p": 0.96582
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "file": "clips/vo/04.wav",
+      "start": 7.02,
+      "end": 11.93,
+      "text": "Home shows who's watching, where, and what time it is for them.",
+      "words": [
+        {
+          "text": "Home",
+          "start": 7.38,
+          "end": 7.94,
+          "p": 0.991211
+        },
+        {
+          "text": "shows",
+          "start": 7.94,
+          "end": 8.18,
+          "p": 0.994629
+        },
+        {
+          "text": "who's",
+          "start": 8.18,
+          "end": 8.72,
+          "p": 0.956543
+        },
+        {
+          "text": "watching,",
+          "start": 8.72,
+          "end": 9.06,
+          "p": 0.999023
+        },
+        {
+          "text": "where,",
+          "start": 9.32,
+          "end": 9.96,
+          "p": 0.997559
+        },
+        {
+          "text": "and",
+          "start": 10.14,
+          "end": 10.58,
+          "p": 0.998047
+        },
+        {
+          "text": "what",
+          "start": 10.58,
+          "end": 10.76,
+          "p": 0.999512
+        },
+        {
+          "text": "time",
+          "start": 10.76,
+          "end": 11.02,
+          "p": 0.999512
+        },
+        {
+          "text": "it",
+          "start": 11.02,
+          "end": 11.22,
+          "p": 0.997559
+        },
+        {
+          "text": "is",
+          "start": 11.22,
+          "end": 11.36,
+          "p": 0.999512
+        },
+        {
+          "text": "for",
+          "start": 11.36,
+          "end": 11.54,
+          "p": 0.999023
+        },
+        {
+          "text": "them.",
+          "start": 11.54,
+          "end": 11.78,
+          "p": 1.0
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "file": "clips/vo/05.wav",
+      "start": 11.93,
+      "end": 13.29,
+      "text": "The Jam Map.",
+      "words": [
+        {
+          "text": "The",
+          "start": 12.08,
+          "end": 12.64,
+          "p": 0.997559
+        },
+        {
+          "text": "Jam",
+          "start": 12.64,
+          "end": 12.86,
+          "p": 0.874512
+        },
+        {
+          "text": "Map.",
+          "start": 12.86,
+          "end": 13.14,
+          "p": 0.710938
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "file": "clips/vo/06.wav",
+      "start": 13.29,
+      "end": 16.46,
+      "text": "Everyone you love lit up by what they're watching.",
+      "words": [
+        {
+          "text": "Everyone",
+          "start": 13.44,
+          "end": 14.0,
+          "p": 0.998535
+        },
+        {
+          "text": "you",
+          "start": 14.0,
+          "end": 14.28,
+          "p": 1.0
+        },
+        {
+          "text": "love",
+          "start": 14.28,
+          "end": 14.58,
+          "p": 0.999512
+        },
+        {
+          "text": "lit",
+          "start": 14.58,
+          "end": 15.1,
+          "p": 0.817383
+        },
+        {
+          "text": "up",
+          "start": 15.1,
+          "end": 15.32,
+          "p": 0.999512
+        },
+        {
+          "text": "by",
+          "start": 15.32,
+          "end": 15.52,
+          "p": 0.999512
+        },
+        {
+          "text": "what",
+          "start": 15.52,
+          "end": 15.7,
+          "p": 0.999512
+        },
+        {
+          "text": "they're",
+          "start": 15.7,
+          "end": 15.88,
+          "p": 0.997314
+        },
+        {
+          "text": "watching.",
+          "start": 15.88,
+          "end": 16.2,
+          "p": 1.0
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "file": "clips/vo/07.wav",
+      "start": 16.46,
+      "end": 21.23,
+      "text": "Add friends, see what they watched, and get a pop -up when they press play.",
+      "words": [
+        {
+          "text": "Add",
+          "start": 16.72,
+          "end": 17.28,
+          "p": 0.996582
+        },
+        {
+          "text": "friends,",
+          "start": 17.28,
+          "end": 17.7,
+          "p": 0.995605
+        },
+        {
+          "text": "see",
+          "start": 17.94,
+          "end": 18.44,
+          "p": 0.999512
+        },
+        {
+          "text": "what",
+          "start": 18.44,
+          "end": 18.64,
+          "p": 1.0
+        },
+        {
+          "text": "they",
+          "start": 18.64,
+          "end": 18.82,
+          "p": 1.0
+        },
+        {
+          "text": "watched,",
+          "start": 18.82,
+          "end": 19.2,
+          "p": 0.992188
+        },
+        {
+          "text": "and",
+          "start": 19.32,
+          "end": 19.56,
+          "p": 1.0
+        },
+        {
+          "text": "get",
+          "start": 19.56,
+          "end": 19.7,
+          "p": 1.0
+        },
+        {
+          "text": "a",
+          "start": 19.7,
+          "end": 19.8,
+          "p": 1.0
+        },
+        {
+          "text": "pop",
+          "start": 19.8,
+          "end": 20.04,
+          "p": 1.0
+        },
+        {
+          "text": "-up",
+          "start": 20.04,
+          "end": 20.22,
+          "p": 0.995117
+        },
+        {
+          "text": "when",
+          "start": 20.22,
+          "end": 20.42,
+          "p": 0.999512
+        },
+        {
+          "text": "they",
+          "start": 20.42,
+          "end": 20.6,
+          "p": 0.999512
+        },
+        {
+          "text": "press",
+          "start": 20.6,
+          "end": 20.82,
+          "p": 0.999023
+        },
+        {
+          "text": "play.",
+          "start": 20.82,
+          "end": 21.08,
+          "p": 0.992676
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "file": "clips/vo/08.wav",
+      "start": 21.23,
+      "end": 26.28,
+      "text": "Start a jam and every TV plays from one shared clock within milliseconds.",
+      "words": [
+        {
+          "text": "Start",
+          "start": 21.38,
+          "end": 21.94,
+          "p": 0.998047
+        },
+        {
+          "text": "a",
+          "start": 21.94,
+          "end": 22.1,
+          "p": 0.999023
+        },
+        {
+          "text": "jam",
+          "start": 22.1,
+          "end": 22.34,
+          "p": 0.730469
+        },
+        {
+          "text": "and",
+          "start": 22.34,
+          "end": 22.72,
+          "p": 0.123962
+        },
+        {
+          "text": "every",
+          "start": 22.72,
+          "end": 23.16,
+          "p": 0.998047
+        },
+        {
+          "text": "TV",
+          "start": 23.16,
+          "end": 23.52,
+          "p": 0.98877
+        },
+        {
+          "text": "plays",
+          "start": 23.52,
+          "end": 23.9,
+          "p": 0.999023
+        },
+        {
+          "text": "from",
+          "start": 23.9,
+          "end": 24.18,
+          "p": 0.998535
+        },
+        {
+          "text": "one",
+          "start": 24.18,
+          "end": 24.44,
+          "p": 0.940918
+        },
+        {
+          "text": "shared",
+          "start": 24.44,
+          "end": 24.72,
+          "p": 0.973633
+        },
+        {
+          "text": "clock",
+          "start": 24.72,
+          "end": 25.0,
+          "p": 0.999023
+        },
+        {
+          "text": "within",
+          "start": 25.0,
+          "end": 25.84,
+          "p": 0.955566
+        },
+        {
+          "text": "milliseconds.",
+          "start": 25.84,
+          "end": 26.28,
+          "p": 0.99707
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "file": "clips/vo/09.wav",
+      "start": 26.28,
+      "end": 52.16,
+      "text": "seconds anyone can pause or skip even with Alexa your phone is the remote for chat and reactions prime titles play in each tv's own Prime Video in step how it's built a kotlin Fire TV app hosts a react interface designed for the d -pad it follows Prime Video through android's media session and handles Alexa voice commands.",
+      "words": [
+        {
+          "text": "seconds",
+          "start": 26.28,
+          "end": 26.56,
+          "p": 0.806641
+        },
+        {
+          "text": "anyone",
+          "start": 26.56,
+          "end": 27.6,
+          "p": 0.260742
+        },
+        {
+          "text": "can",
+          "start": 27.6,
+          "end": 28.1,
+          "p": 0.999023
+        },
+        {
+          "text": "pause",
+          "start": 28.1,
+          "end": 28.44,
+          "p": 0.996094
+        },
+        {
+          "text": "or",
+          "start": 28.44,
+          "end": 28.64,
+          "p": 0.986328
+        },
+        {
+          "text": "skip",
+          "start": 28.64,
+          "end": 28.88,
+          "p": 0.994629
+        },
+        {
+          "text": "even",
+          "start": 28.88,
+          "end": 29.44,
+          "p": 0.984863
+        },
+        {
+          "text": "with",
+          "start": 29.44,
+          "end": 29.66,
+          "p": 0.993164
+        },
+        {
+          "text": "Alexa",
+          "start": 29.66,
+          "end": 30.22,
+          "p": 0.917155
+        },
+        {
+          "text": "your",
+          "start": 30.22,
+          "end": 31.38,
+          "p": 0.916992
+        },
+        {
+          "text": "phone",
+          "start": 31.38,
+          "end": 31.72,
+          "p": 1.0
+        },
+        {
+          "text": "is",
+          "start": 31.72,
+          "end": 31.94,
+          "p": 0.999512
+        },
+        {
+          "text": "the",
+          "start": 31.94,
+          "end": 32.1,
+          "p": 0.999512
+        },
+        {
+          "text": "remote",
+          "start": 32.1,
+          "end": 32.38,
+          "p": 0.998047
+        },
+        {
+          "text": "for",
+          "start": 32.38,
+          "end": 32.68,
+          "p": 0.999023
+        },
+        {
+          "text": "chat",
+          "start": 32.68,
+          "end": 33.0,
+          "p": 0.998047
+        },
+        {
+          "text": "and",
+          "start": 33.0,
+          "end": 33.32,
+          "p": 0.999023
+        },
+        {
+          "text": "reactions",
+          "start": 33.32,
+          "end": 33.82,
+          "p": 0.998535
+        },
+        {
+          "text": "prime",
+          "start": 34.62,
+          "end": 34.96,
+          "p": 0.973145
+        },
+        {
+          "text": "titles",
+          "start": 34.96,
+          "end": 35.4,
+          "p": 0.99707
+        },
+        {
+          "text": "play",
+          "start": 35.4,
+          "end": 35.86,
+          "p": 0.989746
+        },
+        {
+          "text": "in",
+          "start": 35.86,
+          "end": 36.08,
+          "p": 0.998047
+        },
+        {
+          "text": "each",
+          "start": 36.08,
+          "end": 36.36,
+          "p": 0.991699
+        },
+        {
+          "text": "tv's",
+          "start": 36.36,
+          "end": 36.88,
+          "p": 0.94751
+        },
+        {
+          "text": "own",
+          "start": 36.88,
+          "end": 37.1,
+          "p": 0.924316
+        },
+        {
+          "text": "Prime",
+          "start": 37.1,
+          "end": 37.36,
+          "p": 0.981445
+        },
+        {
+          "text": "Video",
+          "start": 37.36,
+          "end": 37.74,
+          "p": 0.998047
+        },
+        {
+          "text": "in",
+          "start": 37.74,
+          "end": 38.28,
+          "p": 0.865723
+        },
+        {
+          "text": "step",
+          "start": 38.28,
+          "end": 38.6,
+          "p": 0.995605
+        },
+        {
+          "text": "how",
+          "start": 38.6,
+          "end": 39.94,
+          "p": 0.969727
+        },
+        {
+          "text": "it's",
+          "start": 39.94,
+          "end": 40.2,
+          "p": 0.988281
+        },
+        {
+          "text": "built",
+          "start": 40.2,
+          "end": 40.46,
+          "p": 0.998535
+        },
+        {
+          "text": "a",
+          "start": 40.46,
+          "end": 41.04,
+          "p": 0.989258
+        },
+        {
+          "text": "kotlin",
+          "start": 41.04,
+          "end": 41.48,
+          "p": 0.912354
+        },
+        {
+          "text": "Fire",
+          "start": 41.48,
+          "end": 41.82,
+          "p": 0.315918
+        },
+        {
+          "text": "TV",
+          "start": 41.82,
+          "end": 42.12,
+          "p": 0.978516
+        },
+        {
+          "text": "app",
+          "start": 42.12,
+          "end": 42.54,
+          "p": 0.942383
+        },
+        {
+          "text": "hosts",
+          "start": 42.54,
+          "end": 43.2,
+          "p": 0.984375
+        },
+        {
+          "text": "a",
+          "start": 43.2,
+          "end": 43.4,
+          "p": 0.999023
+        },
+        {
+          "text": "react",
+          "start": 43.4,
+          "end": 43.7,
+          "p": 0.999023
+        },
+        {
+          "text": "interface",
+          "start": 43.7,
+          "end": 44.14,
+          "p": 1.0
+        },
+        {
+          "text": "designed",
+          "start": 44.14,
+          "end": 44.88,
+          "p": 0.999512
+        },
+        {
+          "text": "for",
+          "start": 44.88,
+          "end": 45.2,
+          "p": 1.0
+        },
+        {
+          "text": "the",
+          "start": 45.2,
+          "end": 45.36,
+          "p": 0.996582
+        },
+        {
+          "text": "d",
+          "start": 45.36,
+          "end": 45.52,
+          "p": 0.981445
+        },
+        {
+          "text": "-pad",
+          "start": 45.52,
+          "end": 45.74,
+          "p": 0.936768
+        },
+        {
+          "text": "it",
+          "start": 45.74,
+          "end": 46.66,
+          "p": 0.998047
+        },
+        {
+          "text": "follows",
+          "start": 46.66,
+          "end": 47.14,
+          "p": 1.0
+        },
+        {
+          "text": "Prime",
+          "start": 47.14,
+          "end": 47.56,
+          "p": 0.990723
+        },
+        {
+          "text": "Video",
+          "start": 47.56,
+          "end": 47.92,
+          "p": 0.996094
+        },
+        {
+          "text": "through",
+          "start": 47.92,
+          "end": 48.44,
+          "p": 1.0
+        },
+        {
+          "text": "android's",
+          "start": 48.44,
+          "end": 49.04,
+          "p": 0.989746
+        },
+        {
+          "text": "media",
+          "start": 49.04,
+          "end": 49.26,
+          "p": 0.99707
+        },
+        {
+          "text": "session",
+          "start": 49.26,
+          "end": 49.62,
+          "p": 0.988281
+        },
+        {
+          "text": "and",
+          "start": 49.62,
+          "end": 50.04,
+          "p": 0.473145
+        },
+        {
+          "text": "handles",
+          "start": 50.04,
+          "end": 50.56,
+          "p": 0.986816
+        },
+        {
+          "text": "Alexa",
+          "start": 50.56,
+          "end": 50.88,
+          "p": 0.953613
+        },
+        {
+          "text": "voice",
+          "start": 50.88,
+          "end": 51.28,
+          "p": 0.939453
+        },
+        {
+          "text": "commands.",
+          "start": 51.28,
+          "end": 51.68,
+          "p": 0.99707
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "file": "clips/vo/10.wav",
+      "start": 52.16,
+      "end": 61.37,
+      "text": "Anode and Socket .io server on AWS Graviton syncs every jam served worldwide through CloudFront.",
+      "words": [
+        {
+          "text": "Anode",
+          "start": 52.64,
+          "end": 53.04,
+          "p": 0.560913
+        },
+        {
+          "text": "and",
+          "start": 53.04,
+          "end": 53.48,
+          "p": 0.953125
+        },
+        {
+          "text": "Socket",
+          "start": 53.48,
+          "end": 53.88,
+          "p": 0.574036
+        },
+        {
+          "text": ".io",
+          "start": 53.88,
+          "end": 54.5,
+          "p": 0.955078
+        },
+        {
+          "text": "server",
+          "start": 54.5,
+          "end": 55.0,
+          "p": 0.898926
+        },
+        {
+          "text": "on",
+          "start": 55.0,
+          "end": 55.74,
+          "p": 0.984375
+        },
+        {
+          "text": "AWS",
+          "start": 55.74,
+          "end": 56.14,
+          "p": 0.99707
+        },
+        {
+          "text": "Graviton",
+          "start": 56.14,
+          "end": 57.2,
+          "p": 0.993164
+        },
+        {
+          "text": "syncs",
+          "start": 57.2,
+          "end": 58.1,
+          "p": 0.890137
+        },
+        {
+          "text": "every",
+          "start": 58.1,
+          "end": 58.4,
+          "p": 0.986328
+        },
+        {
+          "text": "jam",
+          "start": 58.4,
+          "end": 58.78,
+          "p": 0.823242
+        },
+        {
+          "text": "served",
+          "start": 58.78,
+          "end": 59.56,
+          "p": 0.89502
+        },
+        {
+          "text": "worldwide",
+          "start": 59.56,
+          "end": 60.02,
+          "p": 0.971191
+        },
+        {
+          "text": "through",
+          "start": 60.02,
+          "end": 60.58,
+          "p": 0.98877
+        },
+        {
+          "text": "CloudFront.",
+          "start": 60.58,
+          "end": 61.22,
+          "p": 0.987956
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "file": "clips/vo/11.wav",
+      "start": 61.37,
+      "end": 66.2,
+      "text": "Amazon Bedrock picks what to watch next and it knows everyone's bedtime.",
+      "words": [
+        {
+          "text": "Amazon",
+          "start": 61.52,
+          "end": 61.92,
+          "p": 0.991699
+        },
+        {
+          "text": "Bedrock",
+          "start": 61.92,
+          "end": 62.54,
+          "p": 0.984619
+        },
+        {
+          "text": "picks",
+          "start": 62.54,
+          "end": 62.82,
+          "p": 0.991699
+        },
+        {
+          "text": "what",
+          "start": 62.82,
+          "end": 63.08,
+          "p": 0.994629
+        },
+        {
+          "text": "to",
+          "start": 63.08,
+          "end": 63.26,
+          "p": 0.998047
+        },
+        {
+          "text": "watch",
+          "start": 63.26,
+          "end": 63.46,
+          "p": 0.999512
+        },
+        {
+          "text": "next",
+          "start": 63.46,
+          "end": 63.74,
+          "p": 0.999512
+        },
+        {
+          "text": "and",
+          "start": 63.74,
+          "end": 64.3,
+          "p": 0.673828
+        },
+        {
+          "text": "it",
+          "start": 64.3,
+          "end": 64.52,
+          "p": 0.994629
+        },
+        {
+          "text": "knows",
+          "start": 64.52,
+          "end": 64.8,
+          "p": 0.998535
+        },
+        {
+          "text": "everyone's",
+          "start": 64.8,
+          "end": 65.66,
+          "p": 0.994141
+        },
+        {
+          "text": "bedtime.",
+          "start": 65.66,
+          "end": 65.88,
+          "p": 0.96875
+        }
+      ]
+    }
+  ],
+  "word_timing_basis": "Absolute seconds in clips/vo-tight.wav",
+  "caption_timing": "Display intervals cover full file; timestampMs retains actual word onset.",
+  "selection": {
+    "rule": "Reject mean word probability drops over 0.01, token recall <97%, duration drift >=0.2s or speech envelope correlation <=0.9; then lowest gain-matched pause RMS wins.",
+    "reason": "Lowest pause noise at equal -16 LUFS speech loudness among candidates preserving words and transcription confidence.",
+    "spectrogram_review": "Compare raw and both candidate spectrograms for intact speech bands, missing words and isolated tonal remnants; objective measures cannot exclude all perceptual artifacts.",
+    "raw_pause_threshold_dbfs": -45,
+    "raw_pause_minimum_seconds": 0.25,
+    "pause_edge_exclusion_seconds": 0.08,
+    "endpoint_silences_excluded": true,
+    "same_pause_windows_for_all_candidates": true
+  },
+  "finish": {
+    "highpass_hz": 80,
+    "deesser": null,
+    "deesser_reason": "No de-esser applied; avoid unnecessary attenuation of consonants.",
+    "loudnorm_pass1": {
+      "input_i": -32.77,
+      "input_tp": -13.64,
+      "input_lra": 4.5,
+      "input_thresh": -43.27,
+      "output_i": -16.27,
+      "output_tp": -1.5,
+      "output_lra": 3.4,
+      "output_thresh": -27.12,
+      "target_offset": 0.27
+    },
+    "target_integrated_lufs": -16,
+    "target_true_peak_dbtp": -1.5
+  },
+  "edit_count": 5,
+  "schema_version": 1
+}

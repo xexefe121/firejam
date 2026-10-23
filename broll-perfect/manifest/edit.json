@@ -1,0 +1,350 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voiceover": {
+    "src": "clips/vo-final.wav",
+    "in": 0,
+    "startAt": 1.4,
+    "volume": 1
+  },
+  "music": {
+    "src": "music/bed-b.mp3",
+    "in": 0,
+    "startAt": 0,
+    "volume": [
+      {
+        "at": 0,
+        "v": 0
+      },
+      {
+        "at": 0.6,
+        "v": 0.7
+      },
+      {
+        "at": 1.2,
+        "v": 0.7
+      },
+      {
+        "at": 1.7999999999999998,
+        "v": 0.2
+      },
+      {
+        "at": 35.904999999999994,
+        "v": 0.2
+      },
+      {
+        "at": 36.305,
+        "v": 0.45
+      },
+      {
+        "at": 37.695,
+        "v": 0.2
+      },
+      {
+        "at": 61.295,
+        "v": 0.2
+      },
+      {
+        "at": 61.995,
+        "v": 0.7
+      },
+      {
+        "at": 63.895,
+        "v": 0.7
+      },
+      {
+        "at": 65.295,
+        "v": 0
+      }
+    ]
+  },
+  "segments": [
+    {
+      "id": "open",
+      "kind": "title",
+      "logo": true,
+      "text": "FireJam",
+      "sub": "Multiplayer TV for Fire TV",
+      "captions": false,
+      "start": 0,
+      "dur": 3.714
+    },
+    {
+      "id": "device",
+      "kind": "clip",
+      "src": "broll/firetv-home.mp4",
+      "in": 0,
+      "label": "Real Fire TV Stick 4K Max",
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1
+        },
+        {
+          "at": 4,
+          "scale": 1.05,
+          "x": 0.35,
+          "y": 0.3
+        }
+      ],
+      "start": 3.714,
+      "dur": 4.145
+    },
+    {
+      "id": "home",
+      "kind": "clip",
+      "src": "broll/tv-home-hero.mp4",
+      "in": 0,
+      "label": "Home",
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.6,
+          "scale": 1
+        },
+        {
+          "at": 3.6,
+          "scale": 1.75,
+          "x": 0.2,
+          "y": 0.2
+        }
+      ],
+      "start": 7.859,
+      "dur": 4.273
+    },
+    {
+      "id": "map",
+      "kind": "clip",
+      "src": "broll/tv-jam-map.mp4",
+      "in": 1.54,
+      "label": "Jam Map",
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1
+        },
+        {
+          "at": 5,
+          "scale": 1.12,
+          "x": 0.55,
+          "y": 0.5
+        }
+      ],
+      "start": 12.132,
+      "dur": 4.218
+    },
+    {
+      "id": "friends",
+      "kind": "clip",
+      "src": "broll/firetv-map.mp4",
+      "in": 1.2,
+      "label": "Real Fire TV",
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 4.5,
+          "scale": 1.12,
+          "x": 0.56,
+          "y": 0.5
+        }
+      ],
+      "start": 16.35,
+      "dur": 4.236
+    },
+    {
+      "id": "join",
+      "kind": "clip",
+      "src": "broll/tv-join-ma.mp4",
+      "in": 0.23000000000000004,
+      "label": "Start a jam",
+      "start": 20.586,
+      "dur": 1.62
+    },
+    {
+      "id": "sync",
+      "kind": "split",
+      "title": "Two screens, one playhead",
+      "left": {
+        "src": "broll/tv-player-sync.mp4",
+        "in": 0.6650000000000036,
+        "label": "Fire TV · Sydney"
+      },
+      "right": {
+        "src": "broll/laptop-player-sync.mp4",
+        "in": 0.6650000000000036,
+        "label": "Ma's laptop · Hyderabad"
+      },
+      "callouts": [
+        {
+          "at": 0.6,
+          "text": "Same frame, two countries"
+        },
+        {
+          "at": 3.484999999999997,
+          "text": "Ma pauses. Everyone pauses.",
+          "target": "left"
+        },
+        {
+          "at": 10.524999999999995,
+          "text": "+10 s for everyone",
+          "target": "both"
+        }
+      ],
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1
+        },
+        {
+          "at": 1.3209999999999993,
+          "scale": 1
+        },
+        {
+          "at": 2.020999999999999,
+          "scale": 2.6,
+          "on": "left",
+          "x": 0.86,
+          "y": 0.07
+        },
+        {
+          "at": 3.720999999999999,
+          "scale": 2.6,
+          "on": "left",
+          "x": 0.86,
+          "y": 0.07
+        },
+        {
+          "at": 4.420999999999999,
+          "scale": 1
+        }
+      ],
+      "start": 22.206,
+      "dur": 6.03
+    },
+    {
+      "id": "phone",
+      "kind": "phone",
+      "tv": {
+        "src": "broll/tv-reactions.mp4",
+        "in": 0.6
+      },
+      "phone": {
+        "src": "broll/web-phone-companion.mp4",
+        "in": 0.6
+      },
+      "start": 28.236,
+      "dur": 4
+    },
+    {
+      "id": "prime",
+      "kind": "clip",
+      "src": "broll/tv-home-hero.mp4",
+      "in": 0.5,
+      "label": "Prime Video jams",
+      "crop": {
+        "x": 0.02,
+        "y": 0.56,
+        "w": 0.5,
+        "h": 0.42
+      },
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1
+        },
+        {
+          "at": 3,
+          "scale": 1.08,
+          "x": 0.3,
+          "y": 0.45
+        }
+      ],
+      "start": 32.236,
+      "dur": 3.769
+    },
+    {
+      "id": "how",
+      "kind": "title",
+      "text": "How it's built",
+      "captions": false,
+      "start": 36.005,
+      "dur": 1.54
+    },
+    {
+      "id": "native",
+      "kind": "clip",
+      "src": "broll/firetv-player.mp4",
+      "in": 1.6,
+      "label": "Kotlin + React, built for the D-pad",
+      "camera": [
+        {
+          "at": 0,
+          "scale": 1
+        },
+        {
+          "at": 4,
+          "scale": 1.08,
+          "x": 0.5,
+          "y": 0.75
+        }
+      ],
+      "start": 37.545,
+      "dur": 4.8
+    },
+    {
+      "id": "aws",
+      "kind": "aws",
+      "captions": false,
+      "steps": [
+        {
+          "at": 0,
+          "focus": "tv",
+          "title": "Native Fire TV app",
+          "lines": [
+            "Follows Prime Video through Android's media session",
+            "Handles Alexa voice commands",
+            "Kotlin shell, React UI built for the D-pad"
+          ]
+        },
+        {
+          "at": 5.923,
+          "focus": "server",
+          "title": "One shared clock",
+          "lines": [
+            "Node + Socket.IO on AWS Graviton (EC2 t4g)",
+            "Every jam synced, served worldwide via CloudFront"
+          ]
+        },
+        {
+          "at": 14.346,
+          "focus": "ai",
+          "title": "Amazon Bedrock picks what's next",
+          "lines": [
+            "Amazon Nova Lite knows everyone's local time",
+            "\"It's 11:40 pm in Hyderabad, so something short\""
+          ]
+        }
+      ],
+      "start": 42.345,
+      "dur": 19.35
+    },
+    {
+      "id": "end",
+      "kind": "end",
+      "captions": false,
+      "start": 61.695,
+      "dur": 3.6
+    }
+  ]
+}
