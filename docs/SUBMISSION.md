@@ -7,69 +7,82 @@ Drafts for the Devpost form, ready to paste. "What we learned" is a first draft 
 
 ## Tagline
 
-The living room is back. FireJam makes watching TV multiplayer.
+The living room is dead. Ela brought it back. FireJam puts her in Sydney and her Ma in Hyderabad on the same film, at the same second, on Fire TV.
 
 ## Inspiration
 
-FireJam is Ela's idea. Ela lives in Sydney; her Ma lives in India, five and a half hours behind. Growing up, TV was the thing they did together on one couch: the same show, the same laugh, Ma asking "have you eaten yet?" in the ad break. Now there's an ocean between them. Video calls are for talking, and nothing lets you just sit and watch something together.
+When Ela was small, Sunday night meant one thing. Ma, Ela, the sofa, one blanket, one TV. Nobody remembers what they watched. Everybody remembers watching it together.
 
-Spotify Jam showed how good "see what my people are playing, tap to join" feels for music. Ela asked why the biggest screen in the house can't do the same, and FireJam is the answer: Ma presses play in India, and Ela's Fire TV in Sydney is on the same frame, with her chat and reactions on screen. The living room, back.
+Then they grew up and moved apart. Ma is in Hyderabad. Ela is in Sydney. Same shows, nine thousand kilometres apart, texting "did you see that?" into the dark.
+
+We have more screens than ever: a TV in every room, a phone in every hand. And we don't share moments anymore. We share links. "Have you seen it yet?" "No spoilers." "I'll watch it later."
+
+The living room is dead.
+
+FireJam is Ela's idea for bringing it back.
 
 ## What it does
 
-FireJam is Spotify Jam for Fire TV.
+Ela turns on her Fire TV. Before she has picked anything, it tells her: *Ma is watching Sintel. It's 8:42 pm in Hyderabad. Pull up a chair.*
 
-- **See what friends are watching.** Home shows friends' live jams with their city and local time: "Ma is watching Sintel. It's 8:42 pm in Hyderabad."
-- **Jam Map.** A Snap-Map-style world map of friends and public jams. Arcs connect everyone watching together. Move between people with the D-pad, then join, add a friend, or invite. Ghost mode hides you.
-- **Join in one click, same frame.** Every screen in a jam plays from one shared playhead, typically within a few tens of milliseconds. Anyone can play, pause, skip or switch film, and everyone sees who did it.
-- **Friends, requests and invites.** Friends-only, public and invite-only jams. Hosts get a prompt when someone knocks. Four-letter join codes.
-- **Friend pop-ups.** When a friend starts watching, your Fire TV pops up "🔥 Ma is watching Sintel" over whatever is on, even with FireJam closed; the notification opens FireJam straight into their jam.
-- **Follows Fire TV profiles.** Each Fire TV profile is one person: pick your FireJam profile once, and from then on switching Fire TV profiles switches FireJam at the same moment, pop-ups and activity sharing included. Fire TV keeps profile names private, so you set your name once in FireJam's profile (Name).
-- **"Alexa, pause."** Alexa's transport commands (pause, play, rewind 30 seconds, restart) drive the whole jam for everyone.
-- **Laptops join Prime jams too.** A Windows bridge keeps the Prime Video app on a PC in the same jam as the TVs, through Windows' media controls.
-- **Friend activity for everyone.** Like Spotify's friend activity: see what friends are watching right now, even outside FireJam (Prime Video, YouTube, any app with a media session), and what they watched recently and with whom. If a friend is on a Prime title and you both have Prime, one button starts a jam at their exact spot.
-- **Share first.** Starting a jam opens its invite: a QR code anyone can scan (it opens a join page with the code and how to join from a TV or a browser) and a four-letter code. The jam waits until the host presses Start; for Prime titles every TV then opens Prime Video together.
-- **Prime-first Watch screen.** With Prime Video, the Watch screen leads with 19 Prime shows and films (Fallout, Reacher, The Family Man, Mirzapur, Panchayat…); FireJam's free films sit below.
-- **Private sign-in.** Everyone's id is visible on the map, so an id alone signs nobody in: a screen needs the profile's secret token (carried by the phone-pairing QR) or has to be a TV the profile is bound to.
-- **Your phone is the remote.** Pair your phone from the Invite screen to send reactions and chat with no app install (works on iPhone in Safari). Reactions and messages pop up on every TV, over Prime Video too.
-- **Voice, remote and phone in one flow.** The same jam answers to "Alexa, pause", the D-pad and a phone.
-- **Any TV can join.** Fire TV first, and the same app runs on Android TV / Google TV (tested on a Google TV emulator, including a two-switch permission setup done with the remote). Samsung/LG join in the TV browser.
-- **Prime Video jams, bring your own subscription.** If everyone in a jam has Prime Video, each TV opens the title in its own Prime Video app and FireJam keeps them in step through Android's media session controls, with reactions drawn on top. No Prime, no entry: the server enforces it for starting, joining, invites and switching titles.
+One click and she's on the sofa. Same film, same second. Ma pauses, and Ela's TV pauses too and says who did it. Ma types "Have you eaten yet?" on her phone, and it pops up on Ela's TV, over the film.
+
+That's FireJam: Spotify Jam for the biggest screen in the house.
+
+- **See your people.** Home opens on who's watching right now, where they are, and what time it is there.
+- **The Jam Map.** Everyone you love, lit up by what they're watching. A world map of friends and public jams, with arcs between people watching together. Move pin to pin with the D-pad, then join, add a friend or invite. Ghost mode hides you.
+- **One click, same frame.** Every screen in a jam plays from one shared clock, typically within a few tens of milliseconds. Anyone can play, pause, skip or switch film, and everyone sees who did it.
+- **"Alexa, pause."** Pauses the jam for everyone. Play, rewind 30 seconds and restart work too.
+- **Your phone is the keyboard.** Scan a QR code; there's no app to install. Chat and reactions from an iPhone or Android phone pop up on every TV in the jam, even over Prime Video.
+- **Prime Video, together.** If everyone in the jam has Prime, every TV opens the title in its own Prime Video app and FireJam keeps them in step. The Watch screen leads with 19 Prime titles: Fallout, Reacher, The Family Man, Mirzapur, Panchayat. No Prime, no entry; the server enforces it.
+- **Share first.** A new jam opens on its invite: a QR code anyone can scan and a four-letter code. It waits until the host presses Start.
+- **A tap on the shoulder.** When a friend presses play, your Fire TV says so over whatever is on: "🔥 Ma is watching Sintel." One press takes you into their jam, even with FireJam closed.
+- **It knows who's on the sofa.** No forms. FireJam follows Fire TV profiles: switch profile and FireJam switches with you. An id alone signs nobody in; a profile needs its secret token or a TV it trusts.
+- **"Pick for us."** Amazon Bedrock picks what the group watches next, and it knows everyone's bedtime: when it's late for Ma, it picks something short and says why.
+- **Everyone's invited.** Fire TV first. The same app runs on Android TV and Google TV, a Windows bridge brings a laptop's Prime Video into the jam, and any other smart TV joins in its browser.
 
 ## How we built it
 
 - **TV app:** React + TypeScript (Vite) built for the 10-foot UI. A custom spatial-navigation layer moves focus by on-screen geometry, so every screen works with a D-pad without hand-wired focus maps. Layout scales from the Fire TV WebView's 960×540 CSS pixels up to 4K.
-- **Fire OS shell:** a small Kotlin app (`android/`) with a full-screen WebView, leanback launcher banner, and forwarding for the remote's Back and media keys, which WebViews don't pass to JavaScript. Hold Menu to point the TV at a different server.
-- **Realtime server:** Node + Socket.IO. Presence, friend graph, jams, join requests and invites, rate-limited reactions and chat, JSON persistence for profiles.
-- **Sync engine:** the server stores each jam as `(playing, position, updatedAt)` on its clock. Each screen estimates its clock offset NTP-style, computes the expected playhead, and corrects drift by nudging `playbackRate` (±10%, inaudible) or, for big jumps, seeking ahead by the device's measured seek latency.
-- **Map:** `d3-geo` Natural Earth projection over `world-atlas` data, rendered as SVG with HTML pins layered on top so they're focusable.
-- **Content:** Blender Foundation open movies (CC-BY), MP4 and HLS (`hls.js`), streamed by FireJam itself. Prime Video titles play in each viewer's own Prime Video app; the Fire TV shell follows Prime Video's media session (notification-listener access) and draws jam bubbles over it.
+- **Fire OS app:** a small Kotlin app with a full-screen WebView and a launcher banner. It forwards the remote's Back and media keys (WebViews don't pass them to JavaScript), answers Alexa through a MediaSession, follows Prime Video's media session, follows the active Fire TV profile, and draws chat and pop-ups over other apps.
+- **Realtime server:** Node + Socket.IO. Presence, friend graph, jams, join requests and invites, rate-limited reactions and chat.
+- **Sync engine:** the server stores each jam as (playing, position, updatedAt) on its own clock. Each screen estimates its clock offset NTP-style, computes the expected playhead, and corrects drift by nudging the playback rate (±10%, inaudible) or, for big jumps, seeking ahead by the device's measured seek latency.
+- **On AWS:** the server runs on an EC2 Graviton (t4g.micro) instance in Sydney behind CloudFront, which carries HTTPS and WebSockets worldwide. Releases go through S3 and deploys through Systems Manager, with no SSH. Amazon Bedrock (Nova Lite, Converse API) powers "Pick for us".
+- **Map:** d3-geo Natural Earth projection over world-atlas data, rendered as SVG with focusable HTML pins on top.
+- **Content:** Blender Foundation open movies (CC-BY) streamed by FireJam itself, plus Prime Video titles that play in each viewer's own Prime Video app.
 
 ## Challenges we ran into
 
-- **Remote input in a WebView.** Back and media keys never reach JavaScript, so the native shell forwards them and asks the web app whether it handled Back before exiting.
+- **Remote input in a WebView.** Back and media keys never reach JavaScript, so the native app forwards them and asks the web app whether it handled Back before exiting.
 - **Spatial navigation that feels right.** Early versions jumped from a card row into the side rail, or skipped rows. The fix was preferring the current group, requiring a candidate's centre to lie past the current element's edge, and scoring same-row neighbours far above diagonal ones.
-- **Performance on a streaming stick.** Profiling the real device showed the TV burning 58% of a CPU core on an idle Home screen: progress bars animated `width` (a page layout every frame) and decorative loops kept it redrawing at 60 fps. Fixing those took idle CPU to 8% (Home) and 19% (Jam Map, from 128%), and giving the map its own layer removed the ~130 ms frame drops when moving between pins.
-- **Fire TV profiles without an API.** The profile-switch broadcast is restricted to Amazon's apps, so FireJam follows the active profile id in secure settings instead, hashed before it leaves the TV.
-- **Sync on slow hardware.** Naive "seek when off by more than X" loops forever on a Fire TV Stick, because each seek lands late. Measuring seek latency and aiming ahead, plus rate nudging for small drift, fixed it.
+- **Performance on a streaming stick.** Profiling the real device showed the TV burning 58% of a CPU core on an idle Home screen: progress bars animated their width (a page layout every frame) and decorative loops kept it redrawing at 60 fps. Fixing those took idle CPU to 8% on Home and 19% on the Jam Map (from 128%).
+- **Fire TV profiles without an API.** The profile-switch broadcast is reserved for Amazon's apps, so FireJam follows the active profile id in secure settings instead, hashed before it leaves the TV.
+- **Sync on slow hardware.** "Seek when off by more than X" loops forever on a Fire TV Stick, because each seek lands late. Measuring seek latency and aiming ahead, plus rate nudging for small drift, fixed it.
 
 ## Accomplishments that we're proud of
 
-- Pausing on a laptop in "Hyderabad" pauses a Fire TV in "Sydney" with a banner saying who did it, and the corner reads *In sync · 18 ms*.
-- The whole app is usable with nothing but a Fire TV remote.
+- A pause on one screen pauses every TV in the jam, with a banner saying who did it, and the corner reads *In sync · 18 ms*.
+- The whole app works with nothing but a Fire TV remote, or your voice.
+- It runs on a real Fire TV Stick 4K Max, not just a simulator, and idles at 8% CPU on Home.
 
 ## What we learned
 
-- A TV is not a big phone. Measuring on the real Fire TV Stick changed the design: endless CSS animations that look free on a laptop cost half a CPU core on a stick, and text that looked fine on a monitor was below Amazon's 28 px minimum from the sofa.
-- Sync is mostly about time, not video. The hard parts were a TV clock 162 s off, seeks that land late, Prime Video reporting position 0 during ads, and timers that freeze when an app is in the background.
-- Fire TV gives apps a lot (media sessions, Alexa transport controls, overlays), but the things a social app needs most, Prime Video deep links and Fire TV profiles, are reserved for Amazon's own apps. Finding the edges of what's allowed was half the work.
+- A TV is not a big phone. Endless CSS animations that look free on a laptop cost half a CPU core on a stick, and text that looked fine on a monitor was below Amazon's 28 px minimum from the sofa.
+- Sync is about time, not video. The hard parts were a TV clock 162 s off, seeks that land late, Prime Video reporting position 0 during ads, and timers that freeze in the background.
+- Fire TV gives apps a lot: media sessions, Alexa transport controls, overlays. But the two things a social app needs most, Prime Video deep links and Fire TV profiles, are reserved for Amazon's own apps. Finding the edges of what's allowed was half the work.
 
 ## What's next for FireJam
 
-- Sync the apps people already watch in, through Fire TV deep links and playback hooks, instead of an in-app catalogue.
-- "Alexa, start a jam with Mum." Voice start, join and invite through Alexa+.
-- Push-to-talk from the phone companion, ducking the film's audio while someone speaks.
+- "Alexa, start a jam with Ma." Start, join and invite by voice through Alexa+.
+- Push-to-talk from the phone, ducking the film while someone speaks.
+- Deep links into the apps people already watch in, instead of a catalogue.
 - Login with Amazon, contact-based friend discovery, and moderation before public jams go beyond a demo.
+
+---
+
+They told us the living room was dead. We never stopped loving the same things. We just stopped feeling them together.
+
+FireJam is the living room, back. Pull up a chair, Ma.
 
 ## Built with
 
