@@ -11,7 +11,9 @@ The living room is back. FireJam makes watching TV multiplayer.
 
 ## Inspiration
 
-My mum is in India and I'm in Sydney. When I was a kid, TV was what we did together on one couch. Smart TVs got smarter, but watching became single-player. Spotify Jam showed how good "what are my friends listening to, let me join" can feel for music. Nothing does that for the biggest screen in the house.
+FireJam is Ela's idea. Ela lives in Sydney; her Ma lives in India, five and a half hours behind. Growing up, TV was the thing they did together on one couch: the same show, the same laugh, Ma asking "have you eaten yet?" in the ad break. Now there's an ocean between them. Video calls are for talking, and nothing lets you just sit and watch something together.
+
+Spotify Jam showed how good "see what my people are playing, tap to join" feels for music. Ela asked why the biggest screen in the house can't do the same, and FireJam is the answer: Ma presses play in India, and Ela's Fire TV in Sydney is on the same frame, with her chat and reactions on screen. The living room, back.
 
 ## What it does
 

@@ -2,11 +2,23 @@
 
 **The living room is back.** FireJam makes watching TV multiplayer again.
 
-TV used to be something families did together on one couch. Then the family spread out: a mum in Hyderabad, a kid in Sydney, a best friend in London. TVs got smarter, but watching became single-player.
+**FireJam is Ela's idea.** Ela lives in Sydney; her Ma lives in India, five and a half hours behind. TV used to be what they did together on one couch: the same show, the same laugh, Ma asking "have you eaten yet?" in the ad break. Now there's an ocean between them, and while TVs got smarter, watching became single-player. Ela wanted Ma to press play in India and have her Fire TV in Sydney land on the same frame, with Ma's messages popping up on screen. That's FireJam.
 
 FireJam is Spotify Jam for Fire TV. You see what your friends are watching, join them in one click, and land on the exact same frame. Everyone can play, pause and skip, and everyone sees who did it. Reactions float up on every screen, your phone becomes the keyboard, and a Snap-Map-style **Jam Map** shows who's watching what around the world.
 
 > Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX).
+
+![FireJam Home on a Fire TV Stick 4K Max: Ma is watching Sintel in Hyderabad](docs/gallery/01-home.png)
+
+| Watching with Ma | Jam Map |
+| --- | --- |
+| ![Ma's chat and reactions on Ela's TV](docs/gallery/05-watching-with-ma.png) | ![Jam Map with friends around the world](docs/gallery/02-jam-map.png) |
+| **Share first** | **Prime Video jam** |
+| ![A new jam opens its invite QR first](docs/gallery/04-share-first-invite.png) | ![Prime Video jam invite](docs/gallery/07-prime-video-jam.png) |
+| **Prime-first Watch screen** | **Shared controls** |
+| ![Prime Video titles first](docs/gallery/03-watch-prime-first.png) | ![Player controls](docs/gallery/06-player-controls.png) |
+
+All screenshots were taken on a real Fire TV Stick 4K Max running FireJam against the live AWS server.
 
 ---
 
