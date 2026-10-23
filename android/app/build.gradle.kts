@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -20,11 +22,23 @@ android {
         buildConfigField("String", "FIREJAM_URL", "\"$firejamUrl\"")
     }
 
+    // Store builds pass -PfirejamSigning=<keystore.properties> (storeFile, storePassword, keyAlias,
+    // keyPassword). Without it the release build is debug-signed so it can be sideloaded straight away.
+    val signingFile = (project.findProperty("firejamSigning") as String?)?.let { file(it) }
+    signingConfigs {
+        if (signingFile != null) create("store") {
+            val props = Properties().apply { signingFile.inputStream().use { load(it) } }
+            storeFile = file(props.getProperty("storeFile"))
+            storePassword = props.getProperty("storePassword")
+            keyAlias = props.getProperty("keyAlias")
+            keyPassword = props.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            // Debug-signed so the hackathon build can be sideloaded straight away.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName(if (signingFile != null) "store" else "debug")
         }
     }
 
