@@ -12,8 +12,14 @@ FireJam is Spotify Jam for Fire TV. You see what your friends are watching, join
 
 > Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX).
 
-![FireJam: the living room is back](docs/gallery/00-thumbnail.png)
+## Demo
 
+<!-- Vimeo embed code for HTML pages; GitHub README does not render iframes.
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/1238894842?h=40702f1acb" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+-->
+[![Watch the FireJam demo](docs/gallery/00-thumbnail.png)](https://player.vimeo.com/video/1238894842?h=40702f1acb)
+
+[Watch the FireJam demo on Vimeo](https://player.vimeo.com/video/1238894842?h=40702f1acb)
 | Home | Jam Map |
 | --- | --- |
 | ![Ma is watching Sintel in Hyderabad. One click pulls up a chair.](docs/gallery/01-home.png) | ![Everyone you love, lit up by what they're watching](docs/gallery/02-jam-map.png) |
