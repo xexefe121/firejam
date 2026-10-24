@@ -1,5 +1,11 @@
 # FireJam 🔥
 
+
+
+https://github.com/user-attachments/assets/1c8f86b5-697b-439e-ba3c-3973743d2122
+
+
+
 **The living room is back.** FireJam makes watching TV multiplayer again.
 
 **FireJam is Ela's idea.** When Ela was small, Sunday night meant one thing. Ma, Ela, the sofa, one blanket, one TV. Nobody remembers what they watched. Everybody remembers watching it together.
