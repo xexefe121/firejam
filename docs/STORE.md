@@ -4,10 +4,16 @@ Everything the Amazon Developer Console asks for, ready to paste. Images are in 
 
 ## App file
 
-- **APK:** `android/app/build/outputs/apk/release/app-release.apk`, built with
-  `./gradlew assembleRelease -x lintVitalRelease -PfirejamSigning=<keystore.properties>`.
+- **APK:** `android/app/build/outputs/apk/release/app-release.apk`. Build from `android/` in PowerShell with JDK 17 and Android SDK platform 34 / build-tools 34.0.0:
+
+  ```powershell
+  $env:JAVA_HOME = 'H:/firejam-tools/jdk-17'
+  .\gradlew.bat assembleRelease -PfirejamSigning=H:/firejam-tools/signing/keystore.properties
+  ```
+
+  Set `sdk.dir=H:\\firejam-tools\\android-sdk` in `android/local.properties`. The wrapper uses Gradle 8.2.1 with AGP 8.2.2 and Kotlin 1.9.22. If lint dependencies cannot resolve, append `-x lintVitalRelease`.
   The release key and its passwords live outside the repo (`H:\firejam-tools\signing`). Back them up: updates must be signed with the same key.
-- **Package:** `app.firejam.tv`, version 0.2.0 (code 2), min API 22 (Fire OS 5), target API 30 (Fire OS 8).
+- **Package:** `app.firejam.tv`, version 0.2.0 (code 2), min API 22 (Fire OS 5), compile/target API 34.
 - **Devices:** Fire TV only (Fire TV Stick, Stick 4K / 4K Max, Fire TV Cube, Fire TV smart TVs). Not tablets or phones: the interface is built for a TV and a remote.
 - **Uses:** internet; draw over other apps (chat and reactions on top of other apps); foreground service (keeps a jam alive while another app is in front); Alexa voice transport controls; notification access (optional, follows other apps' playback).
 

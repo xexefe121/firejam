@@ -8,15 +8,19 @@ plugins {
 val firejamUrl = (project.findProperty("firejamUrl") as String?) ?: "https://d12le9d1o14nhz.cloudfront.net"
 
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.2")
+    namespace = "app.firejam.tv"
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "app.firejam.tv"
         // Fire OS 5 (Fire TV Stick 1st gen) is API 22; every Fire OS device since runs this.
-        minSdkVersion(22)
-        // Fire OS 8 is API 30.
-        targetSdkVersion(30)
+        minSdk = 22
+        targetSdk = 34
         versionCode = 2
         versionName = "0.2.0"
         buildConfigField("String", "FIREJAM_URL", "\"$firejamUrl\"")
@@ -52,5 +56,5 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
 }

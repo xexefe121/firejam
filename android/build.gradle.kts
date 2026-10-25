@@ -1,13 +1,12 @@
-// Android Gradle Plugin 4.2.2 is the newest that runs on JDK 8 and build-tools 30.0.2,
-// which is what Unity's bundled Android SDK ships with. Any newer SDK works too.
+// AGP 8.2 supports API 34 and requires JDK 17 and Gradle 8.2+.
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
     }
 }
 

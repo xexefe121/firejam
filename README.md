@@ -200,11 +200,12 @@ Open **https://d12le9d1o14nhz.cloudfront.net/get** for step-by-step instructions
 
 1. On the Fire TV: **Settings → My Fire TV → Developer options** → turn on **ADB debugging** and **Apps from unknown sources**. Note its IP under **Settings → My Fire TV → About → Network**.
 2. Put your computer's LAN address in `android/gradle.properties` (`firejamUrl=http://<your-ip>:3000`), or change it later on the TV by holding the **Menu** button.
-3. Build and install. The project uses Android Gradle Plugin 4.2.2, so it builds with JDK 8+ and an SDK with platform 30 and build-tools 30.0.2: Android Studio's SDK, or the one bundled with Unity's Android support (`…/Editor/Data/PlaybackEngines/AndroidPlayer/SDK`, with its `OpenJDK` as `JAVA_HOME`). Put the SDK path in `android/local.properties` as `sdk.dir=…`, then:
+3. Build and install. The project uses Android Gradle Plugin 8.2.2, Gradle 8.2.1, and Kotlin 1.9.22. Use JDK 17 and an Android SDK with platform 34 and build-tools 34.0.0 (Android Studio's SDK works). Compile and target API are 34; min API stays 22 (Fire OS 5). Put the SDK path in `android/local.properties` as `sdk.dir=…`, then in PowerShell:
 
-```bash
+```powershell
 cd android
-./gradlew assembleDebug
+$env:JAVA_HOME = '<path to JDK 17>'
+.\gradlew.bat assembleDebug
 adb connect <fire-tv-ip>:5555
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
