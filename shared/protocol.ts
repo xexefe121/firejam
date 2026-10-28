@@ -114,6 +114,18 @@ export interface MeState {
   incoming: UserId[]; // friend requests waiting for me
   outgoing: UserId[]; // friend requests I sent
   pendingJoin: JamId | null; // jam I asked to join
+  /** People I blocked: their chat, reactions, requests and invites never reach me. */
+  blocked: UserId[];
+}
+
+export type ReportReason = 'offensive-name' | 'abusive-messages' | 'spam' | 'other';
+
+/** A viewer flags someone (and optionally one of their chat messages) for review. */
+export interface ReportMsg {
+  target: UserId;
+  reason: ReportReason;
+  jamId?: JamId;
+  messageId?: string;
 }
 
 /** What a Fire TV reports about its foreground player (see android/…/ActivityReporter.kt). */
@@ -248,5 +260,12 @@ export interface ClientToServer {
   'prompt:answer': (id: string, accept: boolean) => void;
   'jam:control': (msg: ControlMsg) => void;
   'jam:react': (emoji: string) => void;
+  /** The server filters objectionable words before anyone sees the message. */
   'jam:chat': (text: string) => void;
+  /** Flag a person (or one of their messages) for review. Also blocks them for the reporter. */
+  'user:report': (msg: ReportMsg, ack: Ack) => void;
+  'user:block': (target: UserId, ack: Ack) => void;
+  'user:unblock': (target: UserId, ack: Ack) => void;
+  /** Host only: take someone out of my jam. They can't rejoin that jam. */
+  'jam:remove': (target: UserId, ack: Ack) => void;
 }

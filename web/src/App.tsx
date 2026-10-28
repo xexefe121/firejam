@@ -2,6 +2,7 @@ import { Rail } from './components/Rail';
 import { Prompts, Toasts } from './components/Overlays';
 import { Flame } from './components/Icon';
 import { scopeRoot, useKeys } from './lib/nav';
+import { BAN_TEXT } from './lib/safety';
 import { getState, go, useStore } from './lib/store';
 import { Friends } from './screens/Friends';
 import { Home } from './screens/Home';
@@ -9,6 +10,17 @@ import { Library } from './screens/Library';
 import { MapScreen } from './screens/MapScreen';
 import { Onboarding } from './screens/Onboarding';
 import { Player } from './screens/Player';
+
+/** A suspended profile sees only this. */
+function Suspended() {
+  return (
+    <div className="splash suspended" role="alert">
+      <Flame size="8rem" />
+      <h1>Profile suspended</h1>
+      <p>{BAN_TEXT}</p>
+    </div>
+  );
+}
 
 export function App() {
   const status = useStore((s) => s.status);
@@ -31,6 +43,7 @@ export function App() {
       </div>
     );
   }
+  if (status === 'banned') return <Suspended />;
   if (status === 'onboarding') return <Onboarding />;
 
   return (

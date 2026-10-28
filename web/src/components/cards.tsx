@@ -12,7 +12,7 @@ import { Avatar, AvatarStack, Progress } from './ui';
  */
 export function Still({ media, className = '' }: { media?: Media; className?: string }) {
   if (media && !media.still) {
-    const [a, b] = media.tint ?? ['#16243f', '#3a6fb8'];
+    const [a, b] = media.tint ?? ['#241a3d', '#7a3fc0'];
     return (
       <span
         className={`still typo ${className}`}
@@ -25,14 +25,10 @@ export function Still({ media, className = '' }: { media?: Media; className?: st
   return <span className={`still ${className}`} style={{ backgroundImage: media ? `url(${media.still})` : undefined }} />;
 }
 
-/** "Prime Video" pill on anything that plays in a viewer's own service app. */
+/** Plain "Prime Video" tag on anything that plays in a viewer's own service app (FireJam's own neutral style). */
 export function ServiceBadge({ media, className = '' }: { media: Media; className?: string }) {
   if (media.provider === 'firejam') return null;
-  return (
-    <span className={`svc-badge ${media.provider} ${className}`}>
-      <Icon name="play" fill size="0.9em" /> {SERVICE_NAME[media.provider]}
-    </span>
-  );
+  return <span className={`svc-badge ${media.provider} ${className}`}>{SERVICE_NAME[media.provider]}</span>;
 }
 
 /** Shown over a title the viewer can't watch because they don't have its service. */

@@ -13,6 +13,7 @@ import { Hub, type IO, type Sock, tokenMatches } from './hub.ts';
 import { PLACES, placeById, placeForTz } from './places.ts';
 import { pickForUs } from './pick.ts';
 import { load, scheduleSave } from './store.ts';
+import { nameAllowed } from './moderation.ts';
 
 // FIREJAM_PORT, not PORT: dev tooling sets PORT for the Vite server.
 const PORT = Number(process.env.FIREJAM_PORT ?? 3000);
@@ -33,6 +34,33 @@ seedBots(hub);
 load(hub);
 hub.bots = makeBotHooks(hub);
 hub.onPersist = () => scheduleSave(hub);
+
+app.use('/api/admin', (req, res, next) => {
+  const token = process.env.FIREJAM_ADMIN_TOKEN;
+  res.setHeader('Cache-Control', 'no-store');
+  if (!token) return res.status(404).end();
+  if (!tokenMatches({ token: `Bearer ${token}` }, req.headers.authorization)) return res.status(401).end();
+  next();
+});
+app.get('/api/admin/reports', (_req, res) => res.json(hub.moderation.review()));
+app.post('/api/admin/ban', express.json({ limit: '2kb' }), (req, res) => {
+  if (typeof req.body?.userId !== 'string' || !hub.ban(req.body.userId)) return res.status(400).json({ error: 'Unknown user or demo bot' });
+  res.json({ ok: true });
+});
+app.post('/api/admin/unban', express.json({ limit: '2kb' }), (req, res) => {
+  if (typeof req.body?.userId !== 'string' || !hub.users.has(req.body.userId)) return res.status(400).json({ error: 'Unknown user' });
+  hub.moderation.unban(req.body.userId);
+  hub.flush();
+  res.json({ ok: true });
+});
+app.post('/api/admin/dismiss', express.json({ limit: '2kb' }), (req, res) => {
+  if (typeof req.body?.reportId !== 'string' || !hub.moderation.dismiss(req.body.reportId)) return res.status(404).end();
+  res.json({ ok: true });
+});
+
+app.get('/admin.html', (_req, res) => res.sendFile(
+  existsSync(path.join(WEB_DIST, 'admin.html')) ? path.join(WEB_DIST, 'admin.html') : path.resolve(WEB_DIST, '../public/admin.html'),
+));
 
 // A Fire TV reports what it's playing outside FireJam (android/…/ActivityReporter.kt).
 app.post('/api/activity', express.json({ limit: '4kb' }), (req, res) => {
@@ -108,7 +136,7 @@ io.on('connection', (sock: Sock) => {
 
   sock.on('profile:list', (opts, ack) => {
     const deviceId = typeof opts?.deviceId === 'string' ? opts.deviceId : '';
-    const real = [...hub.users.values()].filter((u) => !u.isBot).sort((a, b) => b.lastSeen - a.lastSeen);
+    const real = [...hub.users.values()].filter((u) => !u.isBot && !hub.moderation.isBanned(u.id)).sort((a, b) => b.lastSeen - a.lastSeen);
     // A TV only offers the profiles bound to it; a browser only the ones it holds tokens for, plus demo people.
     const mine = Array.isArray(opts?.mine) ? opts.mine.slice(0, 20) : [];
     const list = deviceId
@@ -128,11 +156,12 @@ io.on('connection', (sock: Sock) => {
   });
 
   sock.on('hello', (msg, ack) => {
+    const deviceId = typeof msg?.deviceId === 'string' ? msg.deviceId.slice(0, 64) : '';
+    if (hub.moderation.deviceBanned(deviceId) || (msg?.userId && hub.moderation.isBanned(msg.userId))) return ack({ ok: false, error: 'banned' });
     const user = msg?.userId ? hub.users.get(msg.userId) : undefined;
     if (!user) return ack({ ok: true, data: { needsProfile: true } });
     // Knowing someone's id (everyone on the map does) isn't enough to be them: it takes the profile's
     // secret token, or a TV the profile is bound to. Demo people are open to anyone, for laptop demos.
-    const deviceId = typeof msg.deviceId === 'string' ? msg.deviceId.slice(0, 64) : '';
     const boundTv = !msg.companion && !!deviceId && user.devices.has(deviceId);
     if (!user.isBot && !tokenMatches(user, msg.token) && !boundTv) return ack({ ok: true, data: { needsProfile: true } });
     if (msg.deviceId && !msg.companion && !user.devices.has(msg.deviceId)) {
@@ -148,8 +177,11 @@ io.on('connection', (sock: Sock) => {
   });
 
   sock.on('profile:create', (msg, ack) => {
+    const deviceId = typeof msg?.deviceId === 'string' ? msg.deviceId.slice(0, 64) : '';
+    if (hub.moderation.deviceBanned(deviceId) || (me() && hub.moderation.isBanned(me()!.id))) return ack({ ok: false, error: 'banned' });
     const name = String(msg?.name ?? '').trim().slice(0, 20);
     if (!name) return ack({ ok: false, error: 'Pick a name' });
+    if (!nameAllowed(name)) return ack({ ok: false, error: 'name_not_allowed' });
     const placeId = msg.placeId && PLACES.some((p) => p.id === msg.placeId) ? msg.placeId : placeForTz(msg.tz).id;
     const user = hub.createUser(name, placeId, {
       services: new Set(services(msg.services)),
@@ -168,6 +200,11 @@ io.on('connection', (sock: Sock) => {
     <A extends unknown[]>(fn: (userId: string, ...args: A) => void, allowCompanion = false) =>
     (...args: A) => {
       const u = me();
+      if (u && hub.moderation.isBanned(u.id)) {
+        const ack = args[args.length - 1];
+        if (typeof ack === 'function') ack({ ok: false, error: 'banned' });
+        return;
+      }
       if (u && (allowCompanion || !companion())) fn(u.id, ...args);
     };
 
@@ -181,9 +218,14 @@ io.on('connection', (sock: Sock) => {
   sock.on('friend:request', guard((id, to: string) => hub.requestFriend(id, to)));
   sock.on('friend:respond', guard((id, from: string, accept: boolean) => hub.respondFriend(id, from, !!accept)));
   sock.on('friend:remove', guard((id, other: string) => hub.removeFriend(id, other)));
+  sock.on('user:block', guard((id, target: string, ack: Ack) => ack(hub.block(id, target, true)), true));
+  sock.on('user:unblock', guard((id, target: string, ack: Ack) => ack(hub.block(id, target, false)), true));
+  sock.on('user:report', guard((id, msg, ack: Ack) => ack(hub.report(id, msg)), true));
+  sock.on('jam:remove', guard((id, target: string, ack: Ack) => ack(hub.removeMember(id, target))));
 
   sock.on('jam:create', (msg, ack) => {
     const u = me();
+    if (u && hub.moderation.isBanned(u.id)) return ack({ ok: false, error: 'banned' });
     if (!u || companion()) return ack({ ok: false, error: 'Not signed in' });
     const media = mediaById(msg?.mediaId);
     if (!media) return ack({ ok: false, error: 'Unknown title' });
@@ -201,8 +243,10 @@ io.on('connection', (sock: Sock) => {
 
   sock.on('jam:join', (jamId, ack) => {
     const u = me();
+    if (u && hub.moderation.isBanned(u.id)) return ack({ ok: false, error: 'banned' });
     if (!u || companion()) return ack({ ok: false, error: 'Not signed in' });
     const status = hub.join(u.id, String(jamId));
+    if (status === 'removed' || status === 'blocked') return ack({ ok: false, error: status });
     if (status === 'missing') return ack({ ok: false, error: 'That jam has ended' });
     if (status === 'needs-service') return ack({ ok: false, error: needs(mediaById(hub.jams.get(String(jamId))!.mediaId)!) });
     ack({ ok: true, data: { status } });
@@ -210,8 +254,10 @@ io.on('connection', (sock: Sock) => {
 
   sock.on('jam:join-code', (code, ack) => {
     const u = me();
+    if (u && hub.moderation.isBanned(u.id)) return ack({ ok: false, error: 'banned' });
     if (!u || companion()) return ack({ ok: false, error: 'Not signed in' });
     const res = hub.joinByCode(u.id, String(code ?? ''));
+    if (res?.status === 'removed' || res?.status === 'blocked') return ack({ ok: false, error: res.status });
     if (!res || res.status === 'missing') return ack({ ok: false, error: 'No jam with that code' });
     if (res.status === 'needs-service') return ack({ ok: false, error: needs(mediaById(hub.jams.get(res.jamId)!.mediaId)!) });
     ack({ ok: true, data: { status: res.status, jamId: res.jamId } });
@@ -219,6 +265,7 @@ io.on('connection', (sock: Sock) => {
 
   sock.on('jam:pick', async (ack) => {
     const u = me();
+    if (u && hub.moderation.isBanned(u.id)) return ack({ ok: false, error: 'banned' });
     if (!u) return ack({ ok: false, error: 'Not signed in' });
     const jam = hub.jamOf(u.id);
     const people = (jam ? jam.members : [u.id]).map((id) => hub.users.get(id)!).filter(Boolean);
@@ -229,6 +276,7 @@ io.on('connection', (sock: Sock) => {
       options,
       jam?.mediaId,
     );
+    if (hub.moderation.isBanned(u.id)) return ack({ ok: false, error: 'banned' });
     ack({ ok: true, data: pick });
   });
 

@@ -1,16 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import type { Jam, JamPrivacy, Media, PublicUser } from '../../../shared/protocol';
+import type { ChatMsg, Jam, JamPrivacy, Media, PublicUser } from '../../../shared/protocol';
 import { canWatch, SERVICE_NAME } from '../../../shared/playhead';
 import { MediaCard, ServiceBadge, Still } from '../components/cards';
 import { PickForUs } from '../components/Pick';
 import { Flame, Icon } from '../components/Icon';
+import { ReportSheet } from '../components/sheets';
 import { Avatar, AvatarStack, Btn, Modal, Progress } from '../components/ui';
-import { inviteToJam, leaveJam, react, setPrivacy, startSharedJam } from '../lib/actions';
+import { blockUser, inviteToJam, leaveJam, react, removeFromJam, setPrivacy, startSharedJam, unblockUser } from '../lib/actions';
 import { clock, localTime, PRIVACY_HINT, PRIVACY_LABEL } from '../lib/format';
 import { native, voiceControl } from '../lib/native';
 import { focusEl, scopeRoot, useKeys } from '../lib/nav';
 import { openInPrime, PrimeStage, type PrimeSync, usePrimeSync } from './PrimeStage';
-import { go, jamPosition, mediaById, serverNow, socket, useMe, useStore, useTick } from '../lib/store';
+import { go, jamPosition, mediaById, serverNow, socket, useBlocked, useMe, useStore, useTick } from '../lib/store';
 
 const REACTIONS = ['😂', '❤️', '😮', '👏', '🔥', '😢'];
 const HIDE_AFTER_MS = 5000;
@@ -143,7 +144,7 @@ export function Player() {
   return <PlayerInner jam={jam} media={media} meId={me.user.id} />;
 }
 
-type Sheet = null | 'invite' | 'change' | 'leave';
+type Sheet = null | 'invite' | 'change' | 'leave' | 'people';
 
 function PlayerInner({ jam, media, meId }: { jam: Jam; media: Media; meId: string }) {
   useTick();
@@ -342,13 +343,18 @@ function PlayerInner({ jam, media, meId }: { jam: Jam; media: Media; meId: strin
             ))}
             <span className="sep" />
             {external && native && (
-              <Btn kind="primary" icon={<Icon name="play" fill />} onClick={() => openInPrime(media)}>
+              <Btn kind="primary" onClick={() => openInPrime(media)}>
                 Open {SERVICE_NAME[media.provider as keyof typeof SERVICE_NAME]}
               </Btn>
             )}
             <Btn icon={<Icon name="invite" />} onClick={() => setSheet('invite')}>
               Invite
             </Btn>
+            {members.length > 1 && (
+              <Btn icon={<Icon name="friends" />} onClick={() => setSheet('people')}>
+                People
+              </Btn>
+            )}
             <Btn icon={<Icon name="swap" />} onClick={() => setSheet('change')}>
               Change film
             </Btn>
@@ -373,6 +379,18 @@ function PlayerInner({ jam, media, meId }: { jam: Jam; media: Media; meId: strin
         />
       )}
       {!sharing && sheet === 'invite' && <InviteSheet jam={jam} meId={meId} onClose={() => setSheet(null)} />}
+      {sheet === 'people' && (
+        <PeopleSheet
+          jam={jam}
+          meId={meId}
+          members={members}
+          onClose={() => {
+            setSheet(null);
+            setOverlay(true);
+            bump();
+          }}
+        />
+      )}
       {sheet === 'change' && <ChangeSheet current={media.id} members={members} onClose={() => setSheet(null)} />}
       {sheet === 'leave' && (
         <Modal onClose={() => setSheet(null)} label="Leave jam" className="prompt-sheet">
@@ -442,9 +460,10 @@ function PrimePill({ sync }: { sync: PrimeSync }) {
 function Reactions() {
   const reactions = useStore((s) => s.reactions);
   const users = useStore((s) => s.world.users);
+  const blocked = useBlocked();
   return (
     <div className="reactions" aria-hidden>
-      {reactions.map((r, i) => {
+      {reactions.filter((r) => !blocked.includes(r.from)).map((r, i) => {
         const u = users.find((x) => x.id === r.from);
         // Consecutive reactions take different lanes so a burst doesn't stack on one spot.
         const lane = (i % 5) * 3.6;
@@ -463,8 +482,9 @@ function ChatFeed({ lifted }: { lifted: boolean }) {
   useTick();
   const chat = useStore((s) => s.chat);
   const users = useStore((s) => s.world.users);
+  const blocked = useBlocked();
   const now = serverNow();
-  const recent = chat.filter((c) => now - c.at < 12_000).slice(-4);
+  const recent = chat.filter((c) => now - c.at < 12_000 && !blocked.includes(c.from)).slice(-4);
   return (
     <div className={`chat-feed ${lifted ? 'lifted' : ''}`}>
       {recent.map((c) => {
@@ -479,6 +499,100 @@ function ChatFeed({ lifted }: { lifted: boolean }) {
         );
       })}
     </div>
+  );
+}
+
+/**
+ * Everyone in the jam, with the safety tools: report the person or their latest chat message, block or
+ * unblock them, and (host only) remove them from the jam.
+ */
+function PeopleSheet({ jam, meId, members, onClose }: { jam: Jam; meId: string; members: PublicUser[]; onClose: () => void }) {
+  const blocked = useBlocked();
+  const chat = useStore((s) => s.chat);
+  const [report, setReport] = useState<{ user: PublicUser; message?: ChatMsg } | null>(null);
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const isHost = jam.hostId === meId;
+  const others = members.filter((u) => u.id !== meId);
+  return (
+    <>
+      <Modal onClose={onClose} label="People in this jam" className="people-sheet">
+        <div className="sheet-body">
+          <span className="eyebrow">{jam.name}</span>
+          <h2>People in this jam</h2>
+          <p className="muted big">Report or block anyone who bothers you. You won't see people you block any more.</p>
+          {others.length === 0 && <p className="big">Nobody else is here right now.</p>}
+          <div className="people-list">
+            {others.map((u) => {
+              const iBlocked = blocked.includes(u.id);
+              const last = iBlocked ? undefined : [...chat].reverse().find((c) => c.from === u.id);
+              return (
+                <div key={u.id} className="person-row">
+                  <div className="person-row-head">
+                    <Avatar name={u.name} color={u.color} size={3.4} ring={u.online ? 'live' : 'offline'} />
+                    <span className="person-text">
+                      <b>
+                        {u.name}
+                        {u.id === jam.hostId && <em className="tag">Host</em>}
+                      </b>
+                      <span className="muted">
+                        {u.place.city} · {localTime(u.place.tz)}
+                      </span>
+                    </span>
+                  </div>
+                  {last && <p className="quote">“{last.text}”</p>}
+                  <div className="person-row-actions">
+                    <Btn icon={<Icon name="flag" />} onClick={() => setReport({ user: u })}>
+                      Report
+                    </Btn>
+                    {last && (
+                      <Btn icon={<Icon name="flag" />} onClick={() => setReport({ user: u, message: last })}>
+                        Report message
+                      </Btn>
+                    )}
+                    {iBlocked ? (
+                      <Btn icon={<Icon name="block" />} onClick={() => void unblockUser(u.id)}>
+                        Unblock
+                      </Btn>
+                    ) : (
+                      <Btn icon={<Icon name="block" />} onClick={() => void blockUser(u.id, u.name)}>
+                        Block
+                      </Btn>
+                    )}
+                    {isHost && (
+                      <Btn
+                        icon={<Icon name="leave" />}
+                        onBlur={() => setConfirm((c) => (c === u.id ? null : c))}
+                        onClick={() => {
+                          if (confirm !== u.id) return setConfirm(u.id);
+                          setConfirm(null);
+                          void removeFromJam(u.id, u.name);
+                        }}
+                      >
+                        {confirm === u.id ? 'Press OK to remove' : 'Remove from jam'}
+                      </Btn>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="sheet-actions">
+            <Btn kind="primary" autoFocus={others.length === 0} onClick={onClose}>
+              Done
+            </Btn>
+          </div>
+        </div>
+      </Modal>
+      {report && (
+        <ReportSheet
+          userId={report.user.id}
+          name={report.user.name}
+          message={report.message}
+          onClose={() => setReport(null)}
+          onDone={() => setReport(null)}
+        />
+      )}
+    </>
   );
 }
 

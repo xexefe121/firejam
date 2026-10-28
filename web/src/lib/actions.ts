@@ -1,4 +1,5 @@
-import type { JamPrivacy, Service } from '../../../shared/protocol';
+import type { JamPrivacy, ReportMsg, Service } from '../../../shared/protocol';
+import { blockedName, errorText, REPORT_THANKS, rememberBlockedName } from './safety';
 import { emitAck, getState, jamById, pushToast, rememberUser, setState, socket, SWITCH_KEY, userById } from './store';
 
 export async function joinJam(jamId: string) {
@@ -9,7 +10,7 @@ export async function joinJam(jamId: string) {
       pushToast({ kind: 'info', text: `Asked ${host?.name ?? 'the host'} to let you in…`, userId: host?.id });
     }
   } catch (e) {
-    pushToast({ kind: 'info', text: (e as Error).message });
+    pushToast({ kind: 'info', text: errorText(e) });
   }
 }
 
@@ -24,7 +25,7 @@ export async function joinByCode(code: string) {
     }
     return true;
   } catch (e) {
-    pushToast({ kind: 'info', text: (e as Error).message });
+    pushToast({ kind: 'info', text: errorText(e) });
     return false;
   }
 }
@@ -49,7 +50,56 @@ export async function watchTogether(friendId: string, mediaId: string, startAt: 
   try {
     await startJam(mediaId, 'friends', { startAt, invite: friendId });
   } catch (e) {
-    pushToast({ kind: 'info', text: (e as Error).message });
+    pushToast({ kind: 'info', text: errorText(e) });
+  }
+}
+
+/** Flag someone (or one of their messages). The server also blocks them for me. */
+export async function reportUser(msg: ReportMsg, name: string): Promise<boolean> {
+  try {
+    await emitAck((ack) => socket.emit('user:report', msg, ack));
+    rememberBlockedName(msg.target, name);
+    pushToast({ kind: 'info', text: REPORT_THANKS });
+    return true;
+  } catch (e) {
+    pushToast({ kind: 'info', text: errorText(e) });
+    return false;
+  }
+}
+
+export async function blockUser(id: string, name: string): Promise<boolean> {
+  try {
+    await emitAck((ack) => socket.emit('user:block', id, ack));
+    rememberBlockedName(id, name);
+    pushToast({ kind: 'info', text: `Blocked ${name}. You won't see them any more. Unblock in your profile.` });
+    return true;
+  } catch (e) {
+    pushToast({ kind: 'info', text: errorText(e) });
+    return false;
+  }
+}
+
+export async function unblockUser(id: string): Promise<boolean> {
+  const name = userById(id)?.name ?? blockedName(id);
+  try {
+    await emitAck((ack) => socket.emit('user:unblock', id, ack));
+    pushToast({ kind: 'info', text: name ? `Unblocked ${name}` : 'Unblocked' });
+    return true;
+  } catch (e) {
+    pushToast({ kind: 'info', text: errorText(e) });
+    return false;
+  }
+}
+
+/** Host only: take someone out of my jam. */
+export async function removeFromJam(id: string, name: string): Promise<boolean> {
+  try {
+    await emitAck((ack) => socket.emit('jam:remove', id, ack));
+    pushToast({ kind: 'info', text: `Removed ${name} from the jam` });
+    return true;
+  } catch (e) {
+    pushToast({ kind: 'info', text: errorText(e) });
+    return false;
   }
 }
 

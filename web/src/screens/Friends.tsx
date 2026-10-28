@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import { PersonCard } from '../components/cards';
 import { Icon } from '../components/Icon';
-import { JoinCodeSheet, PersonSheet } from '../components/sheets';
+import { JoinCodeSheet, PersonSheet, ReportSheet } from '../components/sheets';
 import { Avatar, Btn } from '../components/ui';
-import { addFriend, answerFriend } from '../lib/actions';
+import { addFriend, answerFriend, blockUser } from '../lib/actions';
 import { localTime } from '../lib/format';
 import { useAutoFocus } from '../lib/nav';
 import { useMe, useStore, useTick } from '../lib/store';
@@ -14,6 +14,7 @@ export function Friends() {
   const users = useStore((s) => s.world.users);
   const [person, setPerson] = useState<string | null>(null);
   const [code, setCode] = useState(false);
+  const [reporting, setReporting] = useState<{ id: string; name: string } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   useAutoFocus(ref);
   if (!me) return null;
@@ -59,6 +60,12 @@ export function Friends() {
                   Accept
                 </Btn>
                 <Btn onClick={() => answerFriend(u.id, false)}>Decline</Btn>
+                <Btn kind="quiet" icon={<Icon name="flag" />} onClick={() => setReporting({ id: u.id, name: u.name })}>
+                  Report
+                </Btn>
+                <Btn kind="quiet" icon={<Icon name="block" />} onClick={() => void blockUser(u.id, u.name)}>
+                  Block
+                </Btn>
               </div>
             ))}
           </div>
@@ -100,6 +107,7 @@ export function Friends() {
 
       {person && <PersonSheet userId={person} onClose={() => setPerson(null)} />}
       {code && <JoinCodeSheet onClose={() => setCode(false)} />}
+      {reporting && <ReportSheet userId={reporting.id} name={reporting.name} onClose={() => setReporting(null)} />}
     </div>
   );
 }

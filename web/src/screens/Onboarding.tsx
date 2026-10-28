@@ -5,7 +5,8 @@ import { Avatar, Btn } from '../components/ui';
 import { localTime } from '../lib/format';
 import { nativeInfo } from '../lib/native';
 import { focusFirst } from '../lib/nav';
-import { device, emitAck, hello, knownProfiles, rememberUser, socket, storedUserId, useStore } from '../lib/store';
+import { BE_KIND, errorCode, errorText, TRADEMARK_NOTICE } from '../lib/safety';
+import { device, emitAck, hello, knownProfiles, rememberUser, setState, socket, storedUserId, useStore } from '../lib/store';
 
 // Where someone is (their Jam Map pin and the local time friends see) comes from the
 // device's time zone, so there's nothing to pick.
@@ -15,12 +16,14 @@ export function Onboarding() {
   // On a Fire TV the store already fetched this TV's profiles; a browser lists everyone (demo screens).
   const tvProfiles = useStore((s) => s.deviceProfiles);
   const newTvProfile = useStore((s) => s.newTvProfile);
+  // The TV offered a name FireJam won't show: start empty and say so.
+  const nameRejected = useStore((s) => s.nameRejected);
   const [step, setStep] = useState<'pick' | 'new'>(() => (device && !tvProfiles.length ? 'new' : 'pick'));
   const [profiles, setProfiles] = useState<PublicUser[]>(tvProfiles);
   // Prefilled from the TV: owner's name and Prime if the app is installed.
-  const [name, setName] = useState(() => (device && !tvProfiles.length ? device.ownerName ?? '' : ''));
+  const [name, setName] = useState(() => (device && !tvProfiles.length && !nameRejected ? device.ownerName ?? '' : ''));
   const [prime, setPrime] = useState(() => !!(device?.primeInstalled ?? nativeInfo()?.primeInstalled));
-  const [error, setError] = useState('');
+  const [error, setError] = useState(() => (nameRejected ? errorText('name_not_allowed') : ''));
   const ref = useRef<HTMLDivElement>(null);
   const last = storedUserId();
 
@@ -49,7 +52,8 @@ export function Onboarding() {
       );
       rememberUser(userId);
     } catch (e) {
-      setError((e as Error).message);
+      if (errorCode(e) === 'banned') setState({ status: 'banned' });
+      else setError(errorText(e));
     }
   };
 
@@ -58,6 +62,7 @@ export function Onboarding() {
 
   return (
     <div className="onboarding" ref={ref}>
+      <div className="onboarding-main">
       <div className="brand">
         <Flame size="7rem" />
         <h1>
@@ -136,14 +141,15 @@ export function Onboarding() {
             onChange={(e) => (setName(e.target.value), setError(''))}
             onKeyDown={(e) => e.key === 'Enter' && name.trim() && focusFirst(document.querySelector<HTMLElement>('.start-row')!)}
           />
+          {error ? <p className="error">{error}</p> : null}
+          <p className="muted big">{BE_KIND}</p>
           <h3>Streaming you already have</h3>
           <div className="chips">
             <button className={`chip svc-chip ${prime ? 'on' : ''}`} data-focus onClick={() => setPrime(!prime)}>
               <Icon name={prime ? 'check' : 'plus'} size="1.3rem" /> Prime Video
-              <i>{prime ? 'Prime jams unlocked' : 'Tap if you have it'}</i>
+              <i>{prime ? 'Prime Video jams unlocked' : 'Tap if you have it'}</i>
             </button>
           </div>
-          {error && <p className="error">{error}</p>}
           {device && <p className="muted big">Prime Video is set from the apps on this TV. Change it any time in your profile.</p>}
           <div className="sheet-actions start-row">
             <Btn kind="primary" autoFocus={!!device && !!name} icon={<Icon name="play" fill />} onClick={create}>
@@ -155,6 +161,8 @@ export function Onboarding() {
           </div>
         </div>
       )}
+      </div>
+      <p className="legal onboarding-legal">{TRADEMARK_NOTICE}</p>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { randomBytes, timingSafeEqual } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
 import type {
   ClientToServer,
+  ChatMsg,
   ControlMsg,
   Jam,
   JamId,
@@ -13,6 +14,7 @@ import type {
   NowPlaying,
   PublicUser,
   Prompt,
+  ReportMsg,
   ServerToClient,
   Service,
   Toast,
@@ -22,6 +24,7 @@ import type {
 import { canWatch, positionAt, SERVICE_NAME } from '../../shared/playhead.ts';
 import { CATALOG, mediaById, serviceTitle } from './catalog.ts';
 import { placeById, PLACES } from './places.ts';
+import { maskChat, Moderation, nameAllowed, REPORT_REASONS } from './moderation.ts';
 
 export interface SocketData {
   userId?: UserId;
@@ -40,6 +43,7 @@ export interface UserRec {
   friends: Set<UserId>;
   incoming: Set<UserId>;
   outgoing: Set<UserId>;
+  blocked: Set<UserId>;
   lastSeen: number;
   createdAt: number;
   /** Bots are "online" on their own; real users are online while a TV/browser is connected. */
@@ -113,7 +117,9 @@ export const newId = (n = 6) => randomBytes(n).toString('base64url');
 /** Constant-time check of a profile's secret token. */
 export function tokenMatches(u: { token: string }, token: unknown): boolean {
   if (typeof token !== 'string' || token.length !== u.token.length) return false;
-  return timingSafeEqual(Buffer.from(token), Buffer.from(u.token));
+  const actual = Buffer.from(token);
+  const expected = Buffer.from(u.token);
+  return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
 export class Hub {
@@ -126,6 +132,10 @@ export class Hub {
   prompts = new Map<string, { prompt: Prompt; to: UserId }>();
   watching = new Map<UserId, Watching>();
   feeds = new Map<JamId, FeedItem[]>();
+  moderation = new Moderation();
+  private messages = new Map<JamId, ChatMsg[]>();
+  private removed = new Map<JamId, Set<UserId>>();
+  private chatTimes = new Map<UserId, number[]>();
   private feedSeq = 0;
   /** "Ma is watching Sintel" alerts per person, for their TV to pop up even when FireJam is closed. */
   inbox = new Map<UserId, Alert[]>();
@@ -155,6 +165,7 @@ export class Hub {
       friends: new Set(),
       incoming: new Set(),
       outgoing: new Set(),
+      blocked: new Set(),
       lastSeen: Date.now(),
       createdAt: Date.now(),
       botOnline: false,
@@ -187,6 +198,11 @@ export class Hub {
   }
 
   attach(sock: Sock, user: UserRec, companion: boolean) {
+    if (sock.data.userId) {
+      const oldJam = this.jamOf(sock.data.userId);
+      if (oldJam) sock.leave(room(oldJam.id));
+      this.detach(sock);
+    }
     sock.data.userId = user.id;
     sock.data.companion = companion;
     const map = companion ? this.companions : this.viewers;
@@ -221,6 +237,7 @@ export class Hub {
     const u = this.users.get(userId);
     const clean = String(name ?? '').replace(/\s+/g, ' ').trim().slice(0, 20);
     if (!u || !clean) return { ok: false, error: 'Type a name first' };
+    if (!nameAllowed(clean)) return { ok: false, error: 'name_not_allowed' };
     u.name = clean;
     this.flush();
     this.onPersist();
@@ -261,7 +278,7 @@ export class Hub {
   requestFriend(fromId: UserId, toId: UserId) {
     const from = this.users.get(fromId);
     const to = this.users.get(toId);
-    if (!from || !to || from === to || from.friends.has(toId)) return;
+    if (!from || !to || from === to || from.friends.has(toId) || this.hidden(fromId, toId)) return;
     if (from.incoming.has(toId)) return this.respondFriend(fromId, toId, true);
     from.outgoing.add(toId);
     to.incoming.add(fromId);
@@ -274,7 +291,7 @@ export class Hub {
   respondFriend(meId: UserId, fromId: UserId, accept: boolean) {
     const me = this.users.get(meId);
     const from = this.users.get(fromId);
-    if (!me || !from || !me.incoming.has(fromId)) return;
+    if (!me || !from || !me.incoming.has(fromId) || this.hidden(meId, fromId)) return;
     me.incoming.delete(fromId);
     from.outgoing.delete(meId);
     if (accept) {
@@ -294,8 +311,90 @@ export class Hub {
   }
 
   makeFriends(a: UserRec, b: UserRec) {
+    if (this.hidden(a.id, b.id)) return;
     a.friends.add(b.id);
     b.friends.add(a.id);
+  }
+
+  // ---------- moderation ----------
+
+  hidden(a: UserId, b: UserId): boolean {
+    return this.moderation.isBanned(a) || this.moderation.isBanned(b) ||
+      !!this.users.get(a)?.blocked.has(b) || !!this.users.get(b)?.blocked.has(a);
+  }
+
+  block(userId: UserId, target: UserId, on: boolean) {
+    const u = this.users.get(userId);
+    const other = this.users.get(target);
+    if (!u || !other || u === other) return { ok: false as const, error: 'Unknown user' };
+    if (on) {
+      u.blocked.add(target);
+      this.removeFriend(userId, target);
+      for (const [a, b] of [[u, other], [other, u]]) {
+        a.incoming.delete(b.id);
+        a.outgoing.delete(b.id);
+      }
+      for (const [id, entry] of this.prompts) {
+        if ((entry.to === userId && entry.prompt.from === target) || (entry.to === target && entry.prompt.from === userId)) this.cancelPrompt(id);
+      }
+    } else u.blocked.delete(target);
+    this.flush();
+    this.onPersist();
+    return { ok: true as const };
+  }
+
+  report(userId: UserId, msg: ReportMsg) {
+    const target = this.users.get(msg?.target);
+    if (!target || target.id === userId || !REPORT_REASONS.includes(msg?.reason) ||
+        (msg.jamId !== undefined && typeof msg.jamId !== 'string') ||
+        (msg.messageId !== undefined && typeof msg.messageId !== 'string')) return { ok: false as const, error: 'Invalid report' };
+    const message = msg.jamId && this.messages.get(msg.jamId)?.find((m) => m.id === msg.messageId && m.from === target.id);
+    const suspend = this.moderation.report(userId, msg, target.name, message ? message.text : null);
+    this.block(userId, target.id, true);
+    if (suspend && !target.isBot) this.ban(target.id, true);
+    return { ok: true as const };
+  }
+
+  ban(userId: UserId, suspended = false): boolean {
+    const u = this.users.get(userId);
+    // Demo people belong to everyone. Reports only hide them for the reporter.
+    if (!u || u.isBot) return false;
+    this.moderation.ban(userId, u.devices, suspended);
+    this.leaveJam(userId);
+    u.pendingJoin = null;
+    u.nowPlaying = null;
+    u.nativeSeenAt = 0;
+    for (const [id, entry] of this.prompts) {
+      if (entry.to === userId || entry.prompt.from === userId) this.cancelPrompt(id);
+    }
+    this.flush();
+    return true;
+  }
+
+  removeMember(hostId: UserId, target: UserId) {
+    const jam = this.jamOf(hostId);
+    if (!jam || jam.hostId !== hostId) return { ok: false as const, error: 'host_only' };
+    if (target === hostId || !jam.members.includes(target)) return { ok: false as const, error: 'Not a member' };
+    const removed = this.removed.get(jam.id) ?? new Set<UserId>();
+    removed.add(target);
+    this.removed.set(jam.id, removed);
+    for (const [id, entry] of this.prompts) {
+      if (entry.prompt.jamId === jam.id && (entry.to === target || entry.prompt.from === target)) this.cancelPrompt(id);
+    }
+    this.leaveJam(target);
+    this.toast(target, { kind: 'info', text: 'The host removed you from this jam.' });
+    return { ok: true as const };
+  }
+
+  private cancelPrompt(id: string) {
+    const entry = this.prompts.get(id);
+    if (!entry) return;
+    this.prompts.delete(id);
+    this.emitTo(entry.to, 'prompt:cancel', id);
+    if (entry.prompt.kind === 'join-request') {
+      const from = this.users.get(entry.prompt.from);
+      if (from?.pendingJoin === entry.prompt.jamId) from.pendingJoin = null;
+    }
   }
 
   // ---------- jams ----------
@@ -335,10 +434,12 @@ export class Hub {
   }
 
   /** Walk in if the jam allows it, otherwise knock on the host's door. */
-  join(userId: UserId, jamId: JamId): 'joined' | 'requested' | 'missing' | 'needs-service' {
+  join(userId: UserId, jamId: JamId): 'joined' | 'requested' | 'missing' | 'needs-service' | 'removed' | 'blocked' {
     const jam = this.jams.get(jamId);
     const user = this.users.get(userId);
     if (!jam || !user) return 'missing';
+    if (this.removed.get(jamId)?.has(userId)) return 'removed';
+    if (this.hidden(userId, jam.hostId)) return 'blocked';
     if (!this.canWatch(user, mediaById(jam.mediaId)!)) return 'needs-service';
     if (jam.members.includes(userId)) {
       this.emitTo(userId, 'jam:entered', jam.id);
@@ -372,7 +473,7 @@ export class Hub {
   invite(fromId: UserId, toId: UserId) {
     const jam = this.jamOf(fromId);
     const to = this.users.get(toId);
-    if (!jam || !to || jam.members.includes(toId)) return;
+    if (!jam || !to || jam.members.includes(toId) || this.hidden(fromId, toId) || this.removed.get(jam.id)?.has(toId)) return;
     const media = mediaById(jam.mediaId)!;
     if (!this.canWatch(to, media)) {
       const service = SERVICE_NAME[media.provider as Service];
@@ -393,11 +494,12 @@ export class Hub {
     this.emitTo(byId, 'prompt:cancel', prompt.id);
     const jam = this.jams.get(prompt.jamId);
     const by = this.users.get(byId)!;
+    if (this.hidden(byId, prompt.from)) return;
     if (prompt.kind === 'join-request') {
       const requester = this.users.get(prompt.from);
       if (!requester) return;
       requester.pendingJoin = null;
-      if (accept && jam && this.canWatch(requester, mediaById(jam.mediaId)!)) this.enterJam(requester.id, jam);
+      if (accept && jam && jam.hostId === byId && this.canWatch(requester, mediaById(jam.mediaId)!)) this.enterJam(requester.id, jam);
       else this.toast(requester.id, { kind: 'info', text: `${by.name} can't let you in right now`, userId: byId });
     } else if (accept && jam && this.canWatch(by, mediaById(jam.mediaId)!)) {
       this.enterJam(byId, jam);
@@ -409,7 +511,7 @@ export class Hub {
 
   enterJam(userId: UserId, jam: Jam) {
     const user = this.users.get(userId);
-    if (!user) return;
+    if (!user || this.moderation.isBanned(userId) || this.removed.get(jam.id)?.has(userId) || this.hidden(userId, jam.hostId)) return;
     if (this.jamOf(userId)?.id !== jam.id) this.leaveJam(userId);
     if (!jam.members.includes(userId)) jam.members.push(userId);
     const media = mediaById(jam.mediaId)!;
@@ -441,6 +543,10 @@ export class Hub {
     const humansLeft = jam.members.some((m) => { const u = this.users.get(m); return !!u && !this.botActs(u); });
     if (jam.members.length === 0 || (!jam.loop && !humansLeft)) {
       this.jams.delete(jam.id);
+      this.feeds.delete(jam.id);
+      this.messages.delete(jam.id);
+      this.removed.delete(jam.id);
+      for (const [id, entry] of this.prompts) if (entry.prompt.jamId === jam.id) this.cancelPrompt(id);
     } else {
       if (jam.hostId === userId) jam.hostId = jam.members[0];
       this.io.to(room(jam.id)).emit('toast', { kind: 'jam-member', userId, joined: false, jamId: jam.id });
@@ -507,16 +613,33 @@ export class Hub {
   react(userId: UserId, emoji: string) {
     const jam = this.jamOf(userId);
     if (!jam || !REACTIONS.includes(emoji)) return;
-    this.io.to(room(jam.id)).emit('reaction', { id: newId(4), jamId: jam.id, from: userId, emoji, at: Date.now() });
+    if (this.moderation.isBanned(userId)) return;
+    for (const id of jam.members) {
+      if (!this.users.get(id)?.blocked.has(userId) && !this.moderation.isBanned(id)) this.emitTo(id, 'reaction', { id: newId(4), jamId: jam.id, from: userId, emoji, at: Date.now() });
+    }
     this.feed(jam.id, { kind: 'reaction', from: userId, emoji });
   }
 
   chat(userId: UserId, text: string) {
     const jam = this.jamOf(userId);
-    const clean = String(text ?? '').trim().slice(0, 160);
+    const clean = String(text ?? '').normalize('NFKC').trim().slice(0, 160);
     if (!jam || !clean) return;
-    this.io.to(room(jam.id)).emit('chat', { id: newId(4), jamId: jam.id, from: userId, text: clean, at: Date.now() });
-    this.feed(jam.id, { kind: 'chat', from: userId, text: clean });
+    if (this.moderation.isBanned(userId)) return;
+    const now = Date.now();
+    const times = (this.chatTimes.get(userId) ?? []).filter((at) => now - at < 2000);
+    if (times.length >= 5) return;
+    times.push(now);
+    this.chatTimes.set(userId, times);
+    const message: ChatMsg = { id: newId(4), jamId: jam.id, from: userId, text: clean, at: now };
+    const messages = this.messages.get(jam.id) ?? [];
+    messages.push(message);
+    if (messages.length > FEED_KEEP) messages.shift();
+    this.messages.set(jam.id, messages);
+    const masked = maskChat(clean);
+    for (const id of jam.members) {
+      if (!this.users.get(id)?.blocked.has(userId) && !this.moderation.isBanned(id)) this.emitTo(id, 'chat', { ...message, text: masked });
+    }
+    this.feed(jam.id, { kind: 'chat', from: userId, text: masked });
   }
 
   private settleEndedJams() {
@@ -572,7 +695,7 @@ export class Hub {
   /** The user behind a TV's token, if it matches. */
   authed(userId: unknown, token: unknown): UserRec | undefined {
     const u = this.users.get(String(userId));
-    return u && tokenMatches(u, token) ? u : undefined;
+    return u && !this.moderation.isBanned(u.id) && tokenMatches(u, token) ? u : undefined;
   }
 
   /**
@@ -587,11 +710,11 @@ export class Hub {
     if (!wasOnline) this.flush();
     const jam = this.jamOf(user.id) ?? null;
     const media = jam ? mediaById(jam.mediaId) ?? null : null;
-    const feed = jam ? (this.feeds.get(jam.id) ?? []).filter((f) => f.id > since) : [];
+    const feed = jam ? (this.feeds.get(jam.id) ?? []).filter((f) => f.id > since && !this.hidden(user.id, f.from)) : [];
     const people: Record<string, { name: string; city: string }> = {};
     for (const id of new Set([...(jam?.members ?? []), ...feed.map((f) => f.from)])) {
       const u = this.users.get(id);
-      if (u) people[id] = { name: u.name, city: placeById(u.placeId).city };
+      if (u && !this.hidden(user.id, id)) people[id] = { name: u.name, city: placeById(u.placeId).city };
     }
     return {
       serverNow: Date.now(),
@@ -613,7 +736,7 @@ export class Hub {
     const now = Date.now();
     for (const fid of user.friends) {
       const friend = this.users.get(fid);
-      if (!friend || friend.isBot) continue;
+      if (!friend || friend.isBot || this.hidden(user.id, fid)) continue;
       if (jamId && this.jamOf(fid)?.id === jamId) continue; // already watching together
       const key = `${user.id}>${fid}:${title}`;
       if (now - (this.lastAlert.get(key) ?? 0) < 10 * 60_000) continue;
@@ -627,7 +750,7 @@ export class Hub {
   }
 
   tvInbox(user: UserRec, since: number) {
-    const items = (this.inbox.get(user.id) ?? []).filter((a) => a.id > since);
+    const items = (this.inbox.get(user.id) ?? []).filter((a) => a.id > since && !this.hidden(user.id, a.from));
     return {
       cursor: this.alertSeq,
       items: items.map((a) => {
@@ -675,7 +798,7 @@ export class Hub {
   /** A Fire TV says what it's playing outside FireJam (or that it stopped). */
   reportActivity(r: ActivityReport): boolean {
     const user = this.users.get(String(r.userId));
-    if (!user || !r.token || r.token !== user.token) return false;
+    if (!user || this.moderation.isBanned(user.id) || !r.token || r.token !== user.token) return false;
     if (!user.shareActivity || this.jamOf(user.id)) return true; // jams speak for themselves
     const title = String(r.title ?? '').trim().slice(0, 80);
     const pkg = String(r.package ?? '');
@@ -743,7 +866,7 @@ export class Hub {
   publicUser(u: UserRec, viewer: UserRec): PublicUser {
     const jam = this.jamOf(u.id);
     const self = u.id === viewer.id;
-    const friend = viewer.friends.has(u.id);
+    const friend = viewer.friends.has(u.id) && !this.hidden(viewer.id, u.id);
     const sharedJam = !!jam && jam.members.includes(viewer.id);
     return {
       id: u.id,
@@ -754,16 +877,17 @@ export class Hub {
       lastSeen: u.lastSeen,
       jamId: jam && (self || friend || sharedJam || jam.privacy === 'public') ? jam.id : null,
       isBot: u.isBot,
-      onMap: !u.ghost && (self || friend || sharedJam || jam?.privacy === 'public'),
+      onMap: !this.hidden(viewer.id, u.id) && !u.ghost && (self || friend || sharedJam || jam?.privacy === 'public'),
       services: [...u.services],
       nowPlaying: (self || friend) && u.shareActivity && !jam ? u.nowPlaying : null,
-      recent: (self || friend) && u.shareActivity ? u.history.slice(0, 6) : [],
+      recent: (self || friend) && u.shareActivity ? u.history.slice(0, 6).map((h) => ({ ...h, with: h.with.filter((id) => !this.hidden(viewer.id, id)) })) : [],
     };
   }
 
   worldFor(viewer: UserRec): WorldSnapshot {
     const users: PublicUser[] = [];
     for (const u of this.users.values()) {
+      if (this.hidden(viewer.id, u.id)) continue;
       const related =
         u.id === viewer.id ||
         viewer.friends.has(u.id) ||
@@ -773,8 +897,9 @@ export class Hub {
       if (related) users.push(this.publicUser(u, viewer));
     }
     const jams = [...this.jams.values()].filter(
-      (j) => j.privacy === 'public' || j.members.some((m) => m === viewer.id || viewer.friends.has(m)),
-    );
+      (j) => !this.moderation.isBanned(j.hostId) && (j.members.includes(viewer.id) ||
+        (!this.hidden(viewer.id, j.hostId) && (j.privacy === 'public' || j.members.some((m) => viewer.friends.has(m) && !this.hidden(viewer.id, m))))),
+    ).map((j) => ({ ...j, members: j.members.filter((id) => !this.hidden(viewer.id, id)) }));
     return { users, jams };
   }
 
@@ -784,9 +909,10 @@ export class Hub {
       ghost: u.ghost,
       shareActivity: u.shareActivity,
       token: u.token,
-      friends: [...u.friends],
-      incoming: [...u.incoming],
-      outgoing: [...u.outgoing],
+      friends: [...u.friends].filter((id) => !this.hidden(u.id, id)),
+      incoming: [...u.incoming].filter((id) => !this.hidden(u.id, id)),
+      outgoing: [...u.outgoing].filter((id) => !this.hidden(u.id, id)),
+      blocked: [...u.blocked],
       pendingJoin: u.pendingJoin,
     };
   }
@@ -799,7 +925,7 @@ export class Hub {
       this.flushQueued = false;
       for (const [id, socks] of [...this.viewers, ...this.companions]) {
         const u = this.users.get(id);
-        if (!u) continue;
+        if (!u || this.moderation.isBanned(id)) continue;
         const world = this.worldFor(u);
         const me = this.meFor(u);
         for (const s of socks) {

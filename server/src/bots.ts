@@ -87,6 +87,7 @@ export function seedBots(hub: Hub) {
       friends: new Set(),
       incoming: new Set(),
       outgoing: new Set(),
+      blocked: new Set(),
       lastSeen: Date.now() - (s.lastSeenAgoMin ?? 0) * 60_000,
       createdAt: Date.now(),
       botOnline: s.online !== false,

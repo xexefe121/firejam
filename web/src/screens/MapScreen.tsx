@@ -185,7 +185,7 @@ export function MapScreen() {
         <span><i className="dot live" /> In a jam</span>
         <span><i className="dot online" /> Online</span>
         <span><i className="dot offline" /> Away</span>
-        <span className="muted">Press OK on someone to join, add or invite them</span>
+        <span className="muted">Press OK on someone to join, add, invite, report or block them</span>
       </footer>
 
       {open && <PersonSheet userId={open} onClose={() => setOpen(null)} />}

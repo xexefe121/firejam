@@ -20,6 +20,7 @@ interface StoredUser {
   friends: string[];
   incoming: string[];
   outgoing: string[];
+  blocked?: string[];
   services?: string[];
   shareActivity?: boolean;
   token?: string;
@@ -42,6 +43,7 @@ export function load(hub: Hub) {
       friends: new Set(s.friends),
       incoming: new Set(s.incoming),
       outgoing: new Set(s.outgoing),
+      blocked: new Set(s.blocked ?? []),
       services: new Set((s.services ?? []) as Service[]),
       shareActivity: s.shareActivity ?? true,
       token: s.token ?? newId(12),
@@ -77,6 +79,7 @@ export function scheduleSave(hub: Hub) {
         friends: [...u.friends],
         incoming: [...u.incoming],
         outgoing: [...u.outgoing],
+        blocked: [...u.blocked],
         services: [...u.services],
         shareActivity: u.shareActivity,
         token: u.token,

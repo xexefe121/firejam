@@ -1,24 +1,28 @@
 import { useState } from 'react';
 import { canWatch, SERVICE_NAME } from '../../../shared/playhead';
-import type { JamPrivacy, Media, Service } from '../../../shared/protocol';
+import type { ChatMsg, JamPrivacy, Media, ReportReason, Service } from '../../../shared/protocol';
 import {
   addFriend,
   answerFriend,
+  blockUser,
   inviteToJam,
   joinByCode,
   joinJam,
   relationTo,
+  reportUser,
   setGhost,
   setServices,
   setName,
   setShare,
   startJam,
+  unblockUser,
   watchTogether,
   switchProfile,
 } from '../lib/actions';
 import { clock, localTime, nowPlayingPosition, PRIVACY_HINT, PRIVACY_LABEL } from '../lib/format';
 import { nativeInfo } from '../lib/native';
-import { iCanWatch, jamById, jamPosition, mediaById, pushToast, useMe, useStore, useTick } from '../lib/store';
+import { blockedName, COMMUNITY_RULES, errorText, REPORT_REASONS, TRADEMARK_NOTICE } from '../lib/safety';
+import { iCanWatch, jamById, jamPosition, mediaById, pushToast, useBlocked, useMe, useStore, useTick } from '../lib/store';
 import { HistoryLine, ServiceBadge, Still, StatusLine } from './cards';
 import { Icon } from './Icon';
 import { Avatar, Btn, Modal, Progress } from './ui';
@@ -28,8 +32,10 @@ export function PersonSheet({ userId, onClose }: { userId: string; onClose: () =
   useTick();
   const me = useMe();
   const user = useStore((s) => s.world.users.find((u) => u.id === userId));
+  const [reporting, setReporting] = useState(false);
   if (!user || !me) return null;
   const rel = relationTo(user.id);
+  const iBlocked = (me.blocked ?? []).includes(user.id);
   const jam = jamById(user.jamId);
   const media = jam && mediaById(jam.mediaId);
   const myJam = jamById(me.user.jamId);
@@ -54,6 +60,7 @@ export function PersonSheet({ userId, onClose }: { userId: string; onClose: () =
   };
 
   return (
+    <>
     <Modal onClose={onClose} label={user.name} className="person-sheet">
       {media && <Still media={media} className="sheet-bg" />}
       <div className="sheet-body">
@@ -169,8 +176,83 @@ export function PersonSheet({ userId, onClose }: { userId: string; onClose: () =
           )}
           {rel === 'outgoing' && <span className="tag big">Friend request sent</span>}
           {rel === 'friend' && <span className="tag big ok"><Icon name="check" size="1em" /> Friends</span>}
+        </div>
+        <div className="sheet-actions safety-actions">
+          {rel !== 'me' && (
+            <>
+              <Btn icon={<Icon name="flag" />} onClick={() => setReporting(true)}>
+                Report
+              </Btn>
+              {iBlocked ? (
+                <Btn icon={<Icon name="block" />} onClick={act(() => unblockUser(user.id))}>
+                  Unblock
+                </Btn>
+              ) : (
+                <Btn icon={<Icon name="block" />} onClick={act(() => blockUser(user.id, user.name))}>
+                  Block
+                </Btn>
+              )}
+            </>
+          )}
           <Btn kind="quiet" onClick={onClose}>
             Close
+          </Btn>
+        </div>
+      </div>
+    </Modal>
+    {reporting && <ReportSheet userId={user.id} name={user.name} onClose={() => setReporting(false)} onDone={onClose} />}
+    </>
+  );
+}
+
+/** Why are you reporting this person (or their latest message)? Four reasons, D-pad friendly. */
+export function ReportSheet({
+  userId,
+  name,
+  message,
+  onClose,
+  onDone,
+}: {
+  userId: string;
+  name: string;
+  message?: ChatMsg;
+  onClose: () => void;
+  /** After a report went through (the person is blocked for me too). Defaults to closing just this sheet. */
+  onDone?: () => void;
+}) {
+  const jamId = useMe()?.user.jamId ?? undefined;
+  const [busy, setBusy] = useState(false);
+  const send = async (reason: ReportReason) => {
+    setBusy(true);
+    const ok = await reportUser({ target: userId, reason, jamId, messageId: message?.id }, name);
+    setBusy(false);
+    if (ok) (onDone ?? onClose)();
+  };
+  return (
+    <Modal onClose={onClose} label={`Report ${name}`} className="report-sheet">
+      <div className="sheet-body">
+        <span className="eyebrow">Report</span>
+        <h2>{message ? `Report ${name}'s message` : `Report ${name}`}</h2>
+        {message && <p className="quote">“{message.text}”</p>}
+        <p className="muted big">What's wrong? We review every report, and you won't see {name} any more.</p>
+        <div className="report-options">
+          {REPORT_REASONS.map((r) => (
+            <button
+              key={r.reason}
+              className="option"
+              data-focus
+              data-autofocus={r.reason === (message ? 'abusive-messages' : 'offensive-name') || undefined}
+              disabled={busy}
+              onClick={() => send(r.reason)}
+            >
+              <Icon name="flag" size="2rem" />
+              <b>{r.label}</b>
+            </button>
+          ))}
+        </div>
+        <div className="sheet-actions">
+          <Btn kind="quiet" onClick={onClose}>
+            Cancel
           </Btn>
         </div>
       </div>
@@ -323,6 +405,13 @@ export function ProfileSheet({ onClose }: { onClose: () => void }) {
           <b>Ghost mode {me.ghost ? 'on' : 'off'}</b>
           <span>{me.ghost ? 'Hidden from the Jam Map. Friends can still invite you.' : 'Friends see your pin on the Jam Map.'}</span>
         </button>
+        <BlockedList />
+        <div className="rules">
+          <b>Community rules</b>
+          <p>{COMMUNITY_RULES}</p>
+        </div>
+        {/* Above the buttons, not below them: the D-pad scrolls to the last button and no further. */}
+        <p className="legal">{TRADEMARK_NOTICE}</p>
         <div className="sheet-actions">
           <Btn icon={<Icon name="user" />} onClick={switchProfile}>
             Switch profile
@@ -333,6 +422,26 @@ export function ProfileSheet({ onClose }: { onClose: () => void }) {
         </div>
       </div>
     </Modal>
+  );
+}
+
+/** People I blocked, each with an Unblock button. Names come from this device: the server hides blocked people. */
+function BlockedList() {
+  const blocked = useBlocked();
+  const users = useStore((s) => s.world.users);
+  return (
+    <div className="blocked-list">
+      <b>Blocked</b>
+      {blocked.length === 0 && <p className="muted">No one. Block someone from their profile card.</p>}
+      {blocked.map((id) => (
+        <div key={id} className="blocked-row">
+          <span>{users.find((u) => u.id === id)?.name ?? blockedName(id) ?? 'Blocked person'}</span>
+          <Btn icon={<Icon name="block" />} onClick={() => void unblockUser(id)}>
+            Unblock
+          </Btn>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -348,7 +457,7 @@ function NameField({ name }: { name: string }) {
       setEditing(false);
       pushToast({ kind: 'info', text: `Friends now see you as ${value.trim()}` });
     } catch (e) {
-      setError((e as Error).message);
+      setError(errorText(e));
     }
   };
   if (!editing) {
@@ -393,14 +502,12 @@ export function PrimeToggle({ services, autoFocus = true }: { services: Service[
   const toggle = () => setServices(has ? services.filter((s) => s !== 'prime') : [...services, 'prime']);
   return (
     <button className={`option wide svc-toggle ${has ? 'on' : ''}`} data-focus data-autofocus={autoFocus || undefined} onClick={toggle}>
-      <span className="svc-badge prime big">
-        <Icon name="play" fill size="0.9em" /> Prime Video
-      </span>
+      <span className="svc-badge prime big">Prime Video</span>
       <b>{has ? 'I have Prime Video' : "I don't have Prime Video"}</b>
       <span>
         {has
           ? 'You can join and start Prime Video jams with friends who have it too.'
-          : 'Turn on to watch Prime Video titles together. Everyone in a Prime jam needs their own Prime.'}
+          : 'Turn on to watch Prime Video titles together. Everyone in a Prime Video jam needs their own Prime Video access.'}
         {device && (device.primeInstalled ? ' Prime Video app found on this TV.' : ' Prime Video app not found on this TV.')}
       </span>
     </button>

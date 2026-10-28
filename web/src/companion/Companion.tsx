@@ -3,7 +3,8 @@ import { Flame, Icon } from '../components/Icon';
 import { Avatar, Progress } from '../components/ui';
 import { react, sendChat } from '../lib/actions';
 import { clock, localTime } from '../lib/format';
-import { jamPosition, mediaById, socket, useStore, useTick } from '../lib/store';
+import { BAN_TEXT } from '../lib/safety';
+import { jamPosition, mediaById, socket, useBlocked, useStore, useTick } from '../lib/store';
 
 // Phone companion, opened from the QR code on the TV. It acts as the TV's
 // viewer: reactions and chat show up on every screen in the jam, and the
@@ -17,7 +18,8 @@ export function Companion() {
   const me = useStore((s) => s.me);
   const jam = useStore((s) => s.world.jams.find((j) => j.members.includes(s.me?.user.id ?? '')));
   const users = useStore((s) => s.world.users);
-  const chat = useStore((s) => s.chat);
+  const blocked = useBlocked();
+  const chat = useStore((s) => s.chat).filter((c) => !blocked.includes(c.from));
   const [text, setText] = useState('');
   const feed = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -28,7 +30,13 @@ export function Companion() {
     return (
       <div className="companion center">
         <Flame size="4rem" />
-        <p>{status === 'onboarding' ? 'Scan the QR code from FireJam on your TV to pair this phone.' : 'Connecting…'}</p>
+        <p>
+          {status === 'banned'
+            ? BAN_TEXT
+            : status === 'onboarding'
+              ? 'Scan the QR code from FireJam on your TV to pair this phone.'
+              : 'Connecting…'}
+        </p>
       </div>
     );
   }

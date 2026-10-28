@@ -115,7 +115,7 @@ export function Home() {
         hint={
           me.user.services.includes('prime')
             ? 'Plays in Prime Video on every TV. Friends with Prime can join.'
-            : 'Everyone in a Prime jam needs their own Prime Video'
+            : 'Everyone in the jam needs their own Prime Video'
         }
       >
         {catalog.filter((m) => m.provider === 'prime').map((m) => (

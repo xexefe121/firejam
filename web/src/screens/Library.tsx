@@ -22,7 +22,7 @@ export function Library() {
   const primeSection = (
     <section className="block library-prime" key="prime">
       <h3>
-        Prime Video <span>Everyone in the jam needs Prime. Each TV plays it in its own Prime Video app, in step.</span>
+        Watch on Prime Video <span>Everyone in the jam needs Prime Video. Each TV plays it in its own Prime Video app, in step.</span>
       </h3>
       <div className="grid media-grid prime-grid">
         {shows.map((m) => (

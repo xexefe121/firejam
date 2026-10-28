@@ -53,7 +53,11 @@ Turn on your Fire TV and FireJam tells you who's watching right now, where they 
 
 FireJam comes with free open movies from the Blender Foundation, so you can start a jam straight away.
 
+Safe by design: FireJam hides offensive words in names and chat, and you can report or block anyone from your remote. Hosts can remove people from their jam, and reported profiles are reviewed and can be suspended.
+
 FireJam is open source: https://github.com/xexefe121/firejam
+
+This app was not created or endorsed by Amazon. Fire TV, Prime Video and Alexa are trademarks of Amazon.com, Inc. or its affiliates.
 
 **Feature bullets**
 
@@ -77,9 +81,10 @@ FireJam is open source: https://github.com/xexefe121/firejam
 
 ## Content rating
 
-No violence, sexual content, profanity, drugs, alcohol, gambling or horror in the app itself. The films are the Blender Foundation's open movies. Relevant answers:
+The films are the Blender Foundation's open movies. Answers submitted on 24 October 2026:
 
-- **User-generated content and communication:** yes. People in a jam can send text messages and emoji reactions to each other.
+- **Violence:** moderate realistic violence (fear, tension, distress; Tears of Steel) and moderate cartoon or fantasy violence (Sintel, Big Buck Bunny). Drugs, nudity, sex, intolerance, profanity: none. Educational: no.
+- **User-generated content and communication:** yes. People in a jam can send text messages and emoji reactions to each other. Offensive words are filtered, and people can report, block and (hosts) remove others.
 - **Account or profile creation:** yes. A name and a city (from the TV's time zone).
 - **Location sharing:** yes, coarse. Friends see your city and local time; no GPS or precise location.
 - **Personal information collected:** a display name; see the privacy policy.
@@ -97,5 +102,9 @@ Website: https://d12le9d1o14nhz.cloudfront.net
 ## Testing notes for Amazon's reviewers
 
 FireJam works with nothing but the Fire TV remote. On first launch, enter a name to create a profile (no password). Home shows demo friends who are always watching something; press **Join** on any of them to enter their jam, or open **Watch**, pick a film and press **Start**. Scan the invite QR with a phone to chat and react. "Alexa, pause" pauses the jam.
+
+Moderation, as asked for in the 26 October 2026 review: names and chat pass through a server-side word filter (try sending a swear word from the phone; it arrives masked). Each person in a jam, on the Friends screen and on the Jam Map has Report and Block; a host also has Remove from jam. Reports go to an operator page (`/admin.html`) where profiles can be suspended or banned, and a profile reported by three different people is suspended automatically until it is reviewed.
+
+Trademarks, as asked for in the same review: FireJam refers to Prime Video, Fire TV and Alexa in plain text only to describe compatibility, uses none of Amazon's logos or badges, and says in the app and in this description that it was not created or endorsed by Amazon.
 
 Two optional extras need access that Fire TV only grants over adb: following Prime Video's playback (notification access) and drawing pop-ups over other apps (display over other apps). Without them, a Prime Video jam opens Prime Video but cannot keep it in step, and friend pop-ups show only while FireJam is open. Everything else works without them.

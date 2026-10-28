@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FireJam moderation</title>
+<style>
+  body { font: 16px system-ui, sans-serif; max-width: 960px; margin: 32px auto; padding: 0 16px; }
+  input, button { font: inherit; padding: 8px; margin: 4px; }
+  article { border-top: 1px solid #bbb; padding: 16px 0; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  #status { min-height: 1.5em; }
+</style>
+<h1>FireJam moderation</h1>
+<form id="login">
+  <label>Admin token <input id="token" type="password" autocomplete="off" required></label>
+  <button>Load reports</button>
+  <button id="forget" type="button">Forget token</button>
+</form>
+<p id="status" role="status"></p>
+<main id="reports"></main>
+<script>
+  const token = document.getElementById('token');
+  const status = document.getElementById('status');
+  const reports = document.getElementById('reports');
+  token.value = sessionStorage.getItem('firejam-admin-token') || '';
+
+  async function api(route, body) {
+    const res = await fetch(`/api/admin/${route}`, {
+      method: body ? 'POST' : 'GET',
+      headers: { Authorization: `Bearer ${token.value}`, 'Content-Type': 'application/json' },
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    });
+    if (!res.ok) throw new Error(res.status === 404 ? 'Admin API disabled, or report not found.' : res.status === 401 ? 'Token rejected.' : `Request failed (${res.status}).`);
+    return res.json();
+  }
+
+  function line(parent, tag, value) {
+    const el = document.createElement(tag);
+    el.textContent = value;
+    parent.append(el);
+    return el;
+  }
+
+  async function load() {
+    try {
+      const data = await api('reports');
+      reports.replaceChildren();
+      status.textContent = `${data.reports.length} reports. Dismiss marks a report reviewed; Unban lifts a suspension or ban.`;
+      for (const r of data.reports) {
+        const article = document.createElement('article');
+        const count = data.counts[r.target];
+        const ban = data.bans.find((b) => b.userId === r.target);
+        line(article, 'h2', `${r.targetName} (${r.target})`);
+        line(article, 'p', `${new Date(r.at).toLocaleString()} · ${r.reason} · reporter ${r.reporter}`);
+        line(article, 'p', `${count.total} total; ${count.active} open; ${count.reporters} distinct reporters in 7 days. ${ban ? ban.suspended ? 'Suspended' : 'Banned' : 'Active'}. ${r.dismissedAt ? 'Dismissed' : 'Open'}.`);
+        line(article, 'p', `Jam: ${r.jamId || '—'} · Message: ${r.messageId || '—'}`);
+        line(article, 'pre', r.text || '(No message captured)');
+        for (const action of ['ban', 'unban', 'dismiss']) {
+          const button = line(article, 'button', action[0].toUpperCase() + action.slice(1));
+          button.type = 'button';
+          button.disabled = action === 'dismiss' && !!r.dismissedAt;
+          button.onclick = async () => {
+            button.disabled = true;
+            try {
+              await api(action, action === 'dismiss' ? { reportId: r.id } : { userId: r.target });
+              await load();
+            } catch (e) { status.textContent = e.message; button.disabled = false; }
+          };
+        }
+        reports.append(article);
+      }
+    } catch (e) { status.textContent = e.message; }
+  }
+
+  document.getElementById('login').onsubmit = (e) => {
+    e.preventDefault();
+    sessionStorage.setItem('firejam-admin-token', token.value);
+    load();
+  };
+  document.getElementById('forget').onclick = () => {
+    sessionStorage.removeItem('firejam-admin-token');
+    token.value = '';
+    reports.replaceChildren();
+    status.textContent = 'Token cleared.';
+  };
+</script>
+</html>

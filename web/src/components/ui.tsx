@@ -98,6 +98,7 @@ export function Btn({
   disabled,
   className = '',
   icon,
+  onBlur,
 }: {
   children: ReactNode;
   onClick?: () => void;
@@ -106,6 +107,7 @@ export function Btn({
   disabled?: boolean;
   className?: string;
   icon?: ReactNode;
+  onBlur?: () => void;
 }) {
   return (
     <button
@@ -114,6 +116,7 @@ export function Btn({
       data-autofocus={autoFocus || undefined}
       disabled={disabled}
       onClick={onClick}
+      onBlur={onBlur}
     >
       {icon}
       <span>{children}</span>

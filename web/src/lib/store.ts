@@ -16,15 +16,18 @@ import type {
 } from '../../../shared/protocol';
 import { canWatch, positionAt } from '../../../shared/playhead';
 import { deviceInfo } from './native';
+import { errorCode, errorText } from './safety';
 
 export type Screen = 'home' | 'map' | 'friends' | 'library' | 'player';
 
 export interface State {
-  status: 'connecting' | 'onboarding' | 'ready';
+  status: 'connecting' | 'onboarding' | 'ready' | 'banned';
   /** Profiles made on this Fire TV, when there's more than one to choose from. */
   deviceProfiles: PublicUser[];
   /** The picker is up because someone switched to a Fire TV profile FireJam hasn't met. */
   newTvProfile: boolean;
+  /** The name the TV offered was refused (offensive), so onboarding asks for another. */
+  nameRejected: boolean;
   online: boolean;
   me: MeState | null;
   world: WorldSnapshot;
@@ -49,6 +52,7 @@ let state: State = {
   status: 'connecting',
   deviceProfiles: [],
   newTvProfile: false,
+  nameRejected: false,
   online: false,
   me: null,
   world: { users: [], jams: [] },
@@ -159,6 +163,7 @@ export function hello(userId: string | undefined) {
   const token = userId ? tokenFor(userId) : undefined;
   socket.emit('hello', { userId, token, companion: isCompanion, deviceId: device?.deviceId, tvProfile: device?.tvProfile ?? undefined }, (res) => {
     if (res.ok && res.data && (res.data as { needsProfile: boolean }).needsProfile) setState({ status: 'onboarding' });
+    else if (!res.ok && res.error === 'banned') setState({ status: 'banned' });
   });
 }
 
@@ -196,15 +201,22 @@ async function signInOnTv() {
     return hello(tv.linked);
   }
   if (list.length === 0 && device.ownerName) {
-    const { userId } = await emitAck<{ userId: string }>((ack) =>
-      socket.emit(
-        'profile:create',
-        { name: device.ownerName!, tz: device.timezone, services: device.primeInstalled ? ['prime'] : [], deviceId: device.deviceId, tvProfile },
-        ack,
-      ),
-    );
-    rememberUser(userId);
-    pushToast({ kind: 'info', text: `Signed in as ${device.ownerName} from this TV. Change it any time in your profile.` });
+    try {
+      const { userId } = await emitAck<{ userId: string }>((ack) =>
+        socket.emit(
+          'profile:create',
+          { name: device.ownerName!, tz: device.timezone, services: device.primeInstalled ? ['prime'] : [], deviceId: device.deviceId, tvProfile },
+          ack,
+        ),
+      );
+      rememberUser(userId);
+      pushToast({ kind: 'info', text: `Signed in as ${device.ownerName} from this TV. Change it any time in your profile.` });
+    } catch (e) {
+      // The TV's owner name was refused: ask for another by hand instead of getting stuck.
+      const code = errorCode(e);
+      if (code === 'banned') setState({ status: 'banned' });
+      else setState({ status: 'onboarding', deviceProfiles: list, newTvProfile: false, nameRejected: code === 'name_not_allowed' });
+    }
     return;
   }
   // A Fire TV profile FireJam hasn't met: the TV's only FireJam profile if no other Fire TV profile
@@ -248,10 +260,10 @@ socket.on('session', (s) => {
     // A four-letter code comes from an invite QR (/j/K7QF); a jam id from a friend alert on the TV.
     if (/^[a-z0-9]{4}$/i.test(join)) {
       socket.emit('jam:join-code', join.toUpperCase(), (res) => {
-        if (!res.ok) pushToast({ kind: 'info', text: res.error });
+        if (!res.ok) pushToast({ kind: 'info', text: errorText(res.error) });
         else if ((res.data as { status: string }).status === 'requested') pushToast({ kind: 'info', text: 'Asked the host to let you in…' });
       });
-    } else socket.emit('jam:join', join, () => {});
+    } else socket.emit('jam:join', join, (res) => !res.ok && pushToast({ kind: 'info', text: errorText(res.error) }));
   }
 });
 socket.on('world', (world) => setState({ world }));
@@ -285,11 +297,20 @@ socket.on('toast', pushToast);
 socket.on('prompt', (p) => setState((s) => ({ prompts: [...s.prompts.filter((x) => x.id !== p.id), p] })));
 socket.on('prompt:cancel', (id) => setState((s) => ({ prompts: s.prompts.filter((x) => x.id !== id) })));
 
+/** Whether I blocked this person. The server already filters them out; this is the belt to its braces. */
+const isBlocked = (id: string) => !!state.me?.blocked?.includes(id);
+const NO_ONE: string[] = [];
+/** The people I blocked (stable empty list when none, so selectors don't re-render). */
+export const useBlocked = () => useStore((s) => s.me?.blocked ?? NO_ONE);
+
 socket.on('reaction', (r) => {
+  if (isBlocked(r.from)) return;
   setState((s) => ({ reactions: [...s.reactions, r].slice(-24) }));
   setTimeout(() => setState((s) => ({ reactions: s.reactions.filter((x) => x.id !== r.id) })), 3800);
 });
-socket.on('chat', (c) => setState((s) => ({ chat: [...s.chat, c].slice(-30) })));
+socket.on('chat', (c) => {
+  if (!isBlocked(c.from)) setState((s) => ({ chat: [...s.chat, c].slice(-30) }));
+});
 
 socket.on('jam:entered', () => {
   if (!isCompanion) setState({ screen: 'player', chat: [] });
