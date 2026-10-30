@@ -1,12 +1,38 @@
-# FireJam 🔥
+<p align="center">
+  <img src="docs/store/firetv-icon-1280x720.png" width="640" alt="FireJam. The living room is back.">
+</p>
 
+<h3 align="center">Watch TV together, wherever you are.</h3>
 
+<p align="center">
+  Same film, same second, on every TV in the jam. Chat and reactions from your phone, "Alexa, pause" for everyone,<br>
+  and a world map of everyone you love, lit up by what they're watching.
+</p>
+
+<p align="center">
+  <a href="https://www.amazon.com/dp/B0HP7K3JT8"><img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png" height="56" alt="Available at Amazon Appstore"></a>
+</p>
+
+<p align="center">
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/release-0.2.0-ff6a1f" alt="Release 0.2.0"></a>
+  <a href="https://www.amazon.com/dp/B0HP7K3JT8"><img src="https://img.shields.io/badge/Fire%20TV-Fire%20OS%205%E2%80%938-ff3d6e" alt="Fire TV, Fire OS 5 to 8"></a>
+  <img src="https://img.shields.io/badge/Android-API%2022%E2%80%9334-c13cff" alt="Android API 22 to 34">
+  <img src="https://img.shields.io/badge/tests-32%20passing-2ea44f" alt="32 end-to-end tests passing">
+  <a href="https://d12le9d1o14nhz.cloudfront.net"><img src="https://img.shields.io/badge/live-AWS%20Sydney-ffb547" alt="Live on AWS"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
+</p>
+
+<p align="center">
+  <a href="https://www.amazon.com/dp/B0HP7K3JT8"><b>Get it on Fire TV</b></a> ·
+  <a href="https://player.vimeo.com/video/1238894842?h=40702f1acb"><b>Watch the demo</b></a> ·
+  <a href="https://d12le9d1o14nhz.cloudfront.net"><b>Try it in a browser</b></a> ·
+  <a href="CHANGELOG.md"><b>Release notes</b></a> ·
+  <a href="PRIVACY.md"><b>Privacy</b></a>
+</p>
 
 https://github.com/user-attachments/assets/1c8f86b5-697b-439e-ba3c-3973743d2122
 
-
-
-**The living room is back.** FireJam makes watching TV multiplayer again.
+## The living room is back
 
 **FireJam is Ela's idea.** When Ela was small, Sunday night meant one thing. Ma, Ela, the sofa, one blanket, one TV. Nobody remembers what they watched. Everybody remembers watching it together.
 
@@ -16,27 +42,30 @@ The living room is dead. FireJam brings it back.
 
 FireJam is Spotify Jam for Fire TV. You see what your friends are watching, join them in one click, and land on the exact same frame. Everyone can play, pause and skip, and everyone sees who did it. Reactions float up on every screen, your phone becomes the keyboard, and a Snap-Map-style **Jam Map** shows who's watching what around the world.
 
-> Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX).
+> Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX), and now live on the Amazon Appstore.
 
-**Get it on your Fire TV:** FireJam is live on the Amazon Appstore, free: **https://www.amazon.com/dp/B0HP7K3JT8** (Australia: https://www.amazon.com.au/dp/B0HP7K3JT8). On a Fire TV, search for *FireJam*.
+## What's new in 0.2.0
+
+*30 October 2026 · first release on the Amazon Appstore · [full release notes](CHANGELOG.md)*
+
+- **On the Amazon Appstore.** Free, in every country Amazon sells apps, on 96 Fire TV models, back to the first Fire TV Stick. On a Fire TV, search for *FireJam*.
+- **Safe by design.** Offensive words are hidden in names and chat. Report or block anyone from your remote, and hosts can remove people from their jam. Reported profiles are reviewed, and a profile reported by three different people is suspended until it has been.
+- **Built for Android 14.** FireJam now targets API 34 and still runs on Fire OS 5, built with Android Gradle Plugin 8.2 and JDK 17.
+- **Clear about who made it.** Prime Video appears only as plain text to say what works with what, and the app says that it was not created or endorsed by Amazon.
 
 ## Demo
 
-<!-- Vimeo embed code for HTML pages; GitHub README does not render iframes.
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/1238894842?h=40702f1acb" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
--->
 [![Watch the FireJam demo](docs/gallery/00-thumbnail.png)](https://player.vimeo.com/video/1238894842?h=40702f1acb)
 
-[Watch the FireJam demo on Vimeo](https://player.vimeo.com/video/1238894842?h=40702f1acb)
 | Home | Jam Map |
 | --- | --- |
-| ![Ma is watching Sintel in Hyderabad. One click pulls up a chair.](docs/gallery/01-home.png) | ![Everyone you love, lit up by what they're watching](docs/gallery/02-jam-map.png) |
-| **Share first** | **Prime Video, together** |
-| ![Every jam opens on its invite](docs/gallery/04-share-first-invite.png) | ![Every TV opens its own Prime Video, kept in step](docs/gallery/07-prime-video-jam.png) |
-| **Prime-first Watch screen** | **Anyone can pause** |
-| ![Prime Video titles first](docs/gallery/03-watch-prime-first.png) | ![Everyone sees who did; "Alexa, pause" works too](docs/gallery/06-player-controls.png) |
+| ![Ma is watching Sintel in Hyderabad. One click pulls up a chair.](docs/store/v2/01-home.png) | ![Everyone you love, lit up by what they're watching](docs/store/v2/02-jam-map.png) |
+| **Share first** | **Watch on Prime Video** |
+| ![Every jam opens on its invite](docs/store/v2/04-share-first-invite.png) | ![Prime Video titles first, FireJam's free films below](docs/store/v2/03-watch-prime-first.png) |
+| **Anyone can pause** | **Report and block** |
+| ![Everyone sees who did; "Alexa, pause" works too](docs/store/v2/05-player-controls.png) | ![Report, block or remove anyone in a jam](docs/store/v2/06-people-report-block.png) |
 
-All screenshots were taken on a real Fire TV Stick 4K Max running FireJam against the live AWS server.
+Screenshots of the TV app at 1920×1080, the resolution the Fire TV draws it at.
 
 ---
 
@@ -57,6 +86,7 @@ All screenshots were taken on a real Fire TV Stick 4K Max running FireJam agains
 | **Phone companion** | In the Invite sheet, **Pair my phone as a remote** shows a QR code just for you. Your phone (iPhone Safari or any browser) sends reactions and chat (typing on a phone beats typing with a remote) and can play/pause for the room. No app install. |
 | **Prime-first Watch screen** | For anyone with Prime Video, the Watch screen leads with 19 Prime Video shows and films (including Indian favourites like The Family Man, Mirzapur and Panchayat), with FireJam's free films below. Without Prime, the free films come first. |
 | **Private sign-in** | Everyone's id is visible on the map, so an id alone signs nobody in. A screen needs the profile's secret token (kept by the TV or browser that made it, and carried by the phone QR code) or has to be a Fire TV the profile is bound to. Browsers only offer their own profiles and the demo people. |
+| **Safety** | FireJam hides offensive words in names and chat before anyone sees them. Every person in a jam, on the Friends screen and on the Jam Map has **Report** and **Block**; blocking hides their messages, reactions, requests and invites. A jam's host can **Remove from jam**. Reports are kept for review on an operator page (`/admin.html`, enabled by `FIREJAM_ADMIN_TOKEN`), and a profile reported by three different people is suspended until it has been reviewed. |
 | **Prime Video jams** | If you and your friends all have Prime Video, you can jam on Prime titles. Every TV opens the title in its **own** Prime Video app, on its owner's account, and FireJam keeps them in step. Anyone in the jam without Prime can't start, join or be invited, and a jam can't switch to a Prime title until everyone in it has Prime. |
 
 The demo world comes with a small cast (Ma in Hyderabad, Leo in London, a public "Bunny Marathon" running out of São Paulo…) so a fresh install already feels alive. They're clearly tagged **Demo**, they accept friend requests and invites, and they react during the film. Any of them can be "picked up" from the profile screen to drive a second screen in a live demo.
@@ -233,6 +263,7 @@ server/src/
   catalog.ts           titles: Blender open movies (CC-BY) + Prime Video titles
   places.ts            cities, coordinates and time zones
   store.ts             JSON persistence for real profiles
+  moderation.ts        word filter, reports, blocks, suspensions and bans
   index.ts             Express + Socket.IO wiring
 web/src/
   lib/nav.ts           D-pad spatial navigation + remote key handling
@@ -240,6 +271,7 @@ web/src/
   screens/             Onboarding, Home, MapScreen, Friends, Library, Player, PrimeStage
   lib/native.ts        bridge to the Fire TV shell (Prime Video open/sync/overlay)
   companion/           phone companion (/m)
+web/public/admin.html  operator page for reports and bans
 android/               Fire OS WebView shell (Kotlin): remote keys, Prime Video launch, media-session sync, overlay
 docs/                  demo script and hackathon submission notes
 ```
@@ -250,7 +282,7 @@ docs/                  demo script and hackathon submission notes
 - **Title links.** Real `gti` deep links for the whole Prime catalogue, so every TV lands on the right title without searching.
 - **"Alexa, start a jam with Mum."** Voice is the most natural remote for the people FireJam is for. An Alexa+ integration would start, join and invite by voice.
 - **Talk while you watch.** Push-to-talk through the phone companion, ducking the film's audio while someone speaks.
-- **Real accounts.** Login with Amazon, contact-based friend discovery, and abuse controls before public jams go beyond a demo.
+- **Real accounts.** Login with Amazon and contact-based friend discovery.
 
 ## Credits
 
