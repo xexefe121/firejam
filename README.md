@@ -2,12 +2,14 @@
   <img src="docs/store/firetv-icon-1280x720.png" width="640" alt="FireJam. The living room is back.">
 </p>
 
-<h3 align="center">Watch TV together, wherever you are.</h3>
+<h2 align="center">Spotify Jam, but for Fire TV.</h2>
 
 <p align="center">
-  Same film, same second, on every TV in the jam. Chat and reactions from your phone, "Alexa, pause" for everyone,<br>
-  and a world map of everyone you love, lit up by what they're watching.
+  See what your friends and family are watching, join in one click, and land on the exact same frame,<br>
+  even when they're on the other side of the world. Chat from your phone, and "Alexa, pause" pauses it for everyone.
 </p>
+
+https://github.com/user-attachments/assets/1c8f86b5-697b-439e-ba3c-3973743d2122
 
 <p align="center">
   <a href="https://www.amazon.com/dp/B0HP7K3JT8"><img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png" height="56" alt="Available at Amazon Appstore"></a>
@@ -30,8 +32,6 @@
   <a href="PRIVACY.md"><b>Privacy</b></a>
 </p>
 
-https://github.com/user-attachments/assets/1c8f86b5-697b-439e-ba3c-3973743d2122
-
 ## The living room is back
 
 **FireJam is Ela's idea.** When Ela was small, Sunday night meant one thing. Ma, Ela, the sofa, one blanket, one TV. Nobody remembers what they watched. Everybody remembers watching it together.
@@ -40,7 +40,7 @@ Then they grew up and moved apart. Ma is in Hyderabad. Ela is in Sydney. Same sh
 
 The living room is dead. FireJam brings it back.
 
-FireJam is Spotify Jam for Fire TV. You see what your friends are watching, join them in one click, and land on the exact same frame. Everyone can play, pause and skip, and everyone sees who did it. Reactions float up on every screen, your phone becomes the keyboard, and a Snap-Map-style **Jam Map** shows who's watching what around the world.
+In a jam, everyone can play, pause and skip, and everyone sees who did it. Reactions float up on every screen, your phone becomes the keyboard, and a Snap-Map-style **Jam Map** shows who's watching what around the world.
 
 > Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX), and now live on the Amazon Appstore.
 
