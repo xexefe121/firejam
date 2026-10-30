@@ -5,7 +5,7 @@
 <h2 align="center">Spotify Jam, but for Fire TV.</h2>
 
 <p align="center">
-  See what your friends and family are watching, join in one click, and land on the exact same frame,<br>
+  See what your friends and family are watching, join in one click, and land on the exact same frame,
   even when they're on the other side of the world. Chat from your phone, and "Alexa, pause" pauses it for everyone.
 </p>
 
