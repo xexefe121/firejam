@@ -18,6 +18,8 @@ FireJam is Spotify Jam for Fire TV. You see what your friends are watching, join
 
 > Built for the Amazon Developer Hackathon 2026, **Fire TV track** (family entertainment, multi-modal UX).
 
+**Get it on your Fire TV:** FireJam is live on the Amazon Appstore, free: **https://www.amazon.com/dp/B0HP7K3JT8** (Australia: https://www.amazon.com.au/dp/B0HP7K3JT8). On a Fire TV, search for *FireJam*.
+
 ## Demo
 
 <!-- Vimeo embed code for HTML pages; GitHub README does not render iframes.
@@ -189,7 +191,9 @@ Verified end to end on a Fire TV Stick 4K Max: the TV signs in, plays a jam in s
 
 ## Install it on any TV
 
-Open **https://d12le9d1o14nhz.cloudfront.net/get** for step-by-step instructions:
+**Fire TV:** install FireJam from the Amazon Appstore (https://www.amazon.com/dp/B0HP7K3JT8), or search for *FireJam* on the TV.
+
+For other TVs, or to sideload the latest build, open **https://d12le9d1o14nhz.cloudfront.net/get** for step-by-step instructions:
 
 - **Android TV / Google TV** (Sony, TCL, Mi, OnePlus, Philips, Hisense…) **and Fire TV:** install the free *Downloader* app from the TV's store and enter `https://d12le9d1o14nhz.cloudfront.net/firejam.apk`. Every deploy ships the latest TV app at that address. On Android TVs, FireJam's Home screen walks through two switches with an **Open Settings** banner, one at a time: *Notification access* (Prime sync and sharing what's on) and *Display over other apps* (friend pop-ups, since TVs don't pop notifications up). Fire TV has neither screen, so it uses the adb commands below.
 
@@ -255,3 +259,5 @@ Films by the Blender Foundation under Creative Commons Attribution: *Sintel* (du
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+FireJam was not created or endorsed by Amazon. Fire TV, Prime Video and Alexa are trademarks of Amazon.com, Inc. or its affiliates.

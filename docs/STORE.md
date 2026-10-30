@@ -1,5 +1,7 @@
 # Amazon Appstore listing (Fire TV)
 
+**Live since 30 October 2026:** https://www.amazon.com/dp/B0HP7K3JT8 (ASIN B0HP7K3JT8; Australia: https://www.amazon.com.au/dp/B0HP7K3JT8).
+
 Everything the Amazon Developer Console asks for, ready to paste. Images are in `docs/store/`.
 
 ## App file
